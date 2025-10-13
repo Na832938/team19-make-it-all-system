@@ -14,19 +14,31 @@
 </head>
 
 <body>
+    <div class="Topic-PopUp" display="none">
+        <div class="Topic-PopUp-Content">
+            <span class="close" onclick="closeTopicPopUp()">&times;</span>
+            <h2>Create New Topic</h2>
+            <form id="topic-form"> <!-- Should we use PHP or not -->
+            <label for="topic-title">Title:</label><br>
+            <input type="text" id="topic-title" placeholder="Topic Title">
+            <br><br>
+            <label for="topic-description">Description:</label><br>
+            <input type="textarea" id="topic-description" placeholder="Topic Description"></input>
+            <br><br>
+            <input type="submit" value="Create Topic">
+            </form>
+            <button onclick="closeTopicPopUp()">Cancel</button>
+        </div>
+    </div>
+
     <nav>
-        <button onclick=>Create Topic</button>
-        <button onclick=createPostElement()>Create Post</button>
+        <button onclick="displayTopicPopUp()">Create Topic</button>
         <button onclick="">View Topics</button>
         <button onclick="">Search Topic</button>
     </nav>
-    <h1>Post Feed</h1>
-    <div id="posts-container">
-        <!-- Posts will be dynamically loaded here -->
-    <div class="post">
-        <div class="post-title">Sample Post Title</div>
-        <div class="post-content">This is a sample post content.</div>
-    </div>
+    <h1>Topic Feed</h1>
+    <div id="topics-container">
+        <!-- Posts will be dynamically loaded here-->
     </div>
 </body>
 </html>
