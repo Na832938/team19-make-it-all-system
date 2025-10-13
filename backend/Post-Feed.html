@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Post-Feed.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .post { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .post-title { font-weight: bold; font-size: 1.2em; }
+        .post-content { margin-top: 8px; }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button onclick=>Create Topic</button>
+        <button onclick=createPostElement()>Create Post</button>
+        <button onclick="">View Topics</button>
+        <button onclick="">Search Topic</button>
+    </nav>
+    <h1>Post Feed</h1>
+    <div id="posts-container">
+        <!-- Posts will be dynamically loaded here -->
+    <div class="post">
+        <div class="post-title">Sample Post Title</div>
+        <div class="post-content">This is a sample post content.</div>
+    </div>
+    </div>
+</body>
+</html>
