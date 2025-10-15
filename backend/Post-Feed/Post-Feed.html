@@ -18,12 +18,12 @@
         <div class="Topic-PopUp-Content">
             <span class="close" onclick="closeTopicPopUp()">&times;</span>
             <h2>Create New Topic</h2>
-            <form id="topic-form"> <!-- Should we use PHP or not -->
+            <form id="topic-form" action ='/backend/Post-Feed/Topic_form.php' method="GET"> <!-- Should we use PHP or not -->
             <label for="topic-title">Title:</label><br>
-            <input type="text" id="topic-title" placeholder="Topic Title">
+            <input type="text" id="topic-title" placeholder="Topic Title" required></input>
             <br><br>
             <label for="topic-description">Description:</label><br>
-            <input type="textarea" id="topic-description" placeholder="Topic Description"></input>
+            <input type="textarea" id="topic-description" placeholder="Topic Description" required></input>
             <br><br>
             <input type="submit" value="Create Topic">
             </form>

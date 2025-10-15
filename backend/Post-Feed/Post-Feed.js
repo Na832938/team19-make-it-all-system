@@ -1,3 +1,8 @@
+// Fetch topics data from PHP file and populate topics array
+fetch('./Topic_form.php')
+    .then(data => data.json())
+
+    
 let displayTopicPopUp = () => {
     document.querySelector('.Topic-PopUp').style.display = 'block';
 }
