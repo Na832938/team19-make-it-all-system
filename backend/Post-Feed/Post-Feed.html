@@ -5,6 +5,7 @@
     <title>Post Feed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="Post-Feed.js"></script>
+    <script src="Topic_Form_Process.js"></script>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .post { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
@@ -18,12 +19,12 @@
         <div class="Topic-PopUp-Content">
             <span class="close" onclick="closeTopicPopUp()">&times;</span>
             <h2>Create New Topic</h2>
-            <form id="topic-form" action ='/backend/Post-Feed/Topic_form.php' method="GET"> <!-- Should we use PHP or not -->
+            <form id="topic-form" action ='' method="POST">
             <label for="topic-title">Title:</label><br>
-            <input type="text" id="topic-title" placeholder="Topic Title" required></input>
+            <input type="text" name="topic-title"  placeholder="Topic Title" required></input>
             <br><br>
             <label for="topic-description">Description:</label><br>
-            <input type="textarea" id="topic-description" placeholder="Topic Description" required></input>
+            <input type="textarea" name="topic-description" placeholder="Topic Description" required></input>
             <br><br>
             <input type="submit" value="Create Topic">
             </form>

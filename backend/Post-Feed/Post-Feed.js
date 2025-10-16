@@ -1,7 +1,3 @@
-// Fetch topics data from PHP file and populate topics array
-fetch('./Topic_form.php')
-    .then(data => data.json())
-
     
 let displayTopicPopUp = () => {
     document.querySelector('.Topic-PopUp').style.display = 'block';
@@ -44,8 +40,9 @@ function addPostToTopic(topic, postTitle, postContent) {
     topic.posts.push(post);
     return post;
 }
-    
+
 document.addEventListener('DOMContentLoaded', () => {
+    
     const topicsContainer = document.getElementById('topics-container');
     document.getElementById('topic-form').addEventListener('submit', () => {
     
