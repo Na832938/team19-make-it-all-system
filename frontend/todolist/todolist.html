@@ -3,18 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <title>My To-Do List</title>
-  <link rel="stylesheet" href="TodoList.css" />
+  <link rel="stylesheet" href="todolist.css" />
 </head>
 <body>
   <div class="container">
     <h2>My To-Do List</h2>
     <form id="taskForm">
-      <input type="text" id="taskName" placeholder="Task name" required />
-      <button type="submit">Add Task</button>
-    </form>
-    <ul id="taskList"></ul>
+  <input type="text" id="taskName" placeholder="Task name" required />
+  <select id="priority">
+    <option value="Low">Low</option>
+    <option value="Medium" selected>Medium</option>
+    <option value="High">High</option>
+  </select>
+  <input type="date" id="dueDate" />
+  <button type="submit">Add Task</button>
+</form>
+
+<ul id="taskList"></ul>
+
   </div>
 
-  <script src="TodoList.js"></script>
+  <script src="todolist.js"></script>
 </body>
 </html>
