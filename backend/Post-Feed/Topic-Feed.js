@@ -5,6 +5,7 @@ function displayTopicPopUp() {
 
 function closeTopicPopUp() {
   document.querySelector('.Topic-PopUp').style.display = 'none';
+  loadTopics(); // Refresh topics after closing the pop-up
 }
 
 function createPostElement(title, content) {
@@ -14,7 +15,7 @@ function createPostElement(title, content) {
   return postDiv;
 }
 
-function searchTopic() {
+function searchTopic() {// to rewrite 
   const searchTerm = prompt("Enter topic title to search:");
   if (!searchTerm) return;
 
@@ -40,21 +41,49 @@ function searchTopic() {
       }
     
 
+// Function to load and display topics from topics.txt
+async function loadTopics() {
+  try {
+    const response = await fetch('topics.txt', { cache: 'no-store' }); // prevent caching
+    if (!response.ok) {
+      throw new Error('Failed to load topics file.');
+    }
+
+    const text = await response.text();
+
+    const topicsContainer = document.getElementById('topics-container');
+    topicsContainer.innerHTML = ''; // clear previous entries
+
+    const lines = text.trim().split('\n');
+
+    lines.forEach(line => {
+      // Expected format: Title: <title> | Description: <description>
+      const match = line.match(/Title:\s*(.*?)\s*\|\s*Description:\s*(.*)/);
+      if (match) {
+        const title = match[1];
+        const description = match[2];
+
+        const topicDiv = document.createElement('div');
+        topicDiv.className = 'post';
+        topicDiv.innerHTML = `
+          <div class="post-title">${title}</div>
+          <div class="post-content">${description}</div>
+          <button onclick="goToTopic('${encodeURIComponent(title)}')">Go to Topic</button>
+        `;
+        topicsContainer.appendChild(topicDiv);
+      }
+    });
+
+  } catch (error) {
+    console.error('Error loading topics:', error);
+    document.getElementById('topics-container').innerHTML =
+      '<p style="color:red;">Error loading topics.</p>';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  const topicsContainer = document.getElementById('topics-container');
-
-  // When the form successfully posts, you can update the feed dynamically if needed
-  document.getElementById('topic-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const title = document.getElementById('topic-title').value;
-    const desc = document.getElementById('topic-description').value;
-
-    const topicDiv = document.createElement('div');
-    topicDiv.className = 'topic';
-    topicDiv.innerHTML = `<h2>${title}</h2><p>${desc}</p>`;
-
-    topicsContainer.appendChild(topicDiv);
-    closeTopicPopUp();
-  });
+    loadTopics();
 });
+
+function goToTopic(title) {
+    
