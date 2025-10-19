@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<div class="Topic-PopUp"></div>
+<div class="Topic-PopUp">
     <div class="Topic-PopUp-Content">
         <span class="close" onclick="closeTopicPopUp()">&times;</span>
         <h2>Create New Post</h2>
@@ -39,6 +39,7 @@
   <nav>
     <button onclick="displayTopicPopUp()">Create Post</button>
     <button onclick="window.location.href ='Topic-Feed.html'">Back to topics</button>
+    <button onclick="loadPosts()">Refresh Posts </button>
   </nav>
 
   <h1>Topic Feed</h1>
@@ -46,7 +47,7 @@
 
   <!-- Load JS at bottom -->
   
-  <script src="Topic-Feed.js"></script>
+  <script src="Topic.js"></script>
   <script src="Post_Form_Process.js"></script>
 </body>
 </html>
