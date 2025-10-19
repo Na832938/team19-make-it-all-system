@@ -18,34 +18,35 @@
 </head>
 
 <body>
-  <div class="Topic-PopUp">
+<div class="Topic-PopUp"></div>
     <div class="Topic-PopUp-Content">
-      <span class="close" onclick="closeTopicPopUp()">&times;</span>
-      <h2>Create New Topic</h2>
-      <form id="topic-form" method="POST">
-        <label for="topic-title">Title:</label><br>
-        <input type="text" name="topic-title" id="topic-title" placeholder="Topic Title" required><br><br>
+        <span class="close" onclick="closeTopicPopUp()">&times;</span>
+        <h2>Create New Post</h2>
+        <form id="post-form" method="POST">
+            <label for="post-title">Title:</label><br>
+            <input type="text" name="post-title" id="post-title" placeholder="Post Title" required><br><br>
 
-        <label for="topic-description">Description:</label><br>
-        <textarea name="topic-description" id="topic-description" placeholder="Topic Description" required></textarea><br><br>
+            <label for="post-content">Content:</label><br>
+            <textarea name="post-content" id="post-content" placeholder="Post Content" required></textarea><br><br>
 
-        <input type="submit" value="Create Topic">
-      </form>
-      <button onclick="closeTopicPopUp()">Cancel</button>
+            <input type="submit" value="Create Post">
+        </form>
+        <button onclick="closeTopicPopUp()">Cancel</button>
     </div>
+</div>
   </div>
 
   <nav>
-    <button onclick="displayTopicPopUp()">Create Topic</button>
-    <button onclick="searchTopic()">Search Topic</button>
+    <button onclick="displayTopicPopUp()">Create Post</button>
+    <button onclick="window.location.href ='Topic-Feed.html'">Back to topics</button>
   </nav>
 
   <h1>Topic Feed</h1>
-  <div id="topics-container"></div>
+  <div id="posts-container"></div>
 
   <!-- Load JS at bottom -->
   
   <script src="Topic-Feed.js"></script>
-  <script src="Topic_Form_Process.js"></script>
+  <script src="Post_Form_Process.js"></script>
 </body>
 </html>
