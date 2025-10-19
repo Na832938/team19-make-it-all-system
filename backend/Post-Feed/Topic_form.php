@@ -1,5 +1,6 @@
 <?php
-$title=$description="";
+header('Content-Type: application/json');
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -7,31 +8,23 @@ function test_input($data) {
   return $data;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (empty($_POST['topic-title'])) {
-        error_log("Title is required.");
-    }else{
-        $title = test_input($_POST['topic-title']);
-        //echo $title;
-    
-    }
-    if (empty($_POST['topic-description'])) {
-       error_log("Description is required."); 
-    }else{
-        $description = test_input( $_POST['topic-description']);}
-        //echo $description;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+  exit;
+}
 
- }else{
-     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
-    exit;
-    }
-   
+$title = !empty($_POST['topic-title']) ? test_input($_POST['topic-title']) : '';
+$description = !empty($_POST['topic-description']) ? test_input($_POST['topic-description']) : '';
 
+if (empty($title) || empty($description)) {
+  echo json_encode(['success' => false, 'message' => 'All fields are required.']);
+  exit;
+}
 
-
-// Use file as database for the start
+// Store in file
 $file = 'topics.txt';
-$data = "Title: $title , Description: $description\n";
-file_put_contents($file, $data, FILE_APPEND); 
+$data = "Title: $title | Description: $description\n";
+file_put_contents($file, $data, FILE_APPEND);
+
 echo json_encode(['success' => true, 'message' => 'Topic created successfully!']);
 ?>

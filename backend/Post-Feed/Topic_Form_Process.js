@@ -1,23 +1,27 @@
-document.getElementById('topic-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent the default form submission
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('topic-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    const formData = new FormData(this);
+    const formData = new FormData(form);
 
     fetch('Topic_form.php', {
-        method: 'POST',
-        body: formData
+      method: 'POST',
+      body: formData
     })
     .then(response => response.json())
     .then(data => {
-        const responseMessage = document.querySelector('Topic-PopUp-Content');
-        if (data.success) {
-            responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
-        } else {
-            responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
-        }
+      const content = document.querySelector('.Topic-PopUp-Content');
+      if (data.success) {
+        content.innerHTML += `<p style="color: green;">${data.message}</p>`;
+      } else {
+        content.innerHTML += `<p style="color: red;">${data.message}</p>`;
+      }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        document.querySelector('Topic-PopUp-Content').innerHTML = '<p style="color: red;">An error occurred. Please try again.</p>';
+    .catch(err => {
+      console.error('Error:', err);
+      document.querySelector('.Topic-PopUp-Content')
+        .innerHTML += '<p style="color: red;">An error occurred.</p>';
     });
+  });
 });
