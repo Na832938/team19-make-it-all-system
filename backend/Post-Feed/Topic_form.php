@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //echo $description;
 
  }else{
-     error_log(json_encode(['success' => false, 'message' => 'Invalid request method.']));
+     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
     exit;
     }
    
@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Use file as database for the start
 $file = 'topics.txt';
 $data = "Title: $title , Description: $description\n";
-file_put_contents($file, $data, FILE_APPEND);
-
-error_log(json_encode(['success' => true, 'message' => 'Topic created successfully!']));
+file_put_contents($file, $data, FILE_APPEND); 
+echo json_encode(['success' => true, 'message' => 'Topic created successfully!']);
 ?>

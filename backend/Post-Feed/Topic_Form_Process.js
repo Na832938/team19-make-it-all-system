@@ -1,21 +1,23 @@
-$( "topic-form" ).on( "submit", function(e) {
-    var dataString = $(this).serialize();
-    
-    // alert(dataString); return false; 
-    $.ajax({
-      type: "POST",
-      url: "Topic_form.php",
-      data: dataString,
-      success: function () {
-        $("Topic-PopUp-Content").html("");
-        $("Topic-PopUp-Content").html("<div id='message'></div>");
-        $("#message")
-          .html("<h2>Topic Created!</h2>")
-          .append("<button onclick='closeTopicPopUp()'>Close</button>")
-          .hide()
-          .fadeIn(1500);
-      }
+document.getElementById('topic-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(this);
+
+    fetch('Topic_form.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const responseMessage = document.querySelector('Topic-PopUp-Content');
+        if (data.success) {
+            responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+        } else {
+            responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.querySelector('Topic-PopUp-Content').innerHTML = '<p style="color: red;">An error occurred. Please try again.</p>';
     });
-    e.preventDefault();
-  });
-;
+});
