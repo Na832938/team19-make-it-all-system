@@ -8,9 +8,11 @@ function closeTopicPopUp() {
 }
 
 async function loadPosts() {
-    console.log("loadPosts called");
+    const URL = new URLSearchParams(window.location.search);
+    const selectedTopic= URL.get('topic') || null;
+    console.log("Loading posts for topic:", selectedTopic);
   try {
-    console.log("loadPosts called");
+    
     const response = await fetch('posts.txt', { cache: 'no-store' }); // prevent caching
     if (!response.ok) {
       throw new Error('Failed to load topics file.');
@@ -25,10 +27,13 @@ async function loadPosts() {
 
     lines.forEach(line => {
       // Expected format: Title: <title> | Description: <description>
-      const match = line.match(/Title:\s*(.*?)\s*\|\s*Description:\s*(.*)/);
+      const match = line.match(/Topic:\s*(.*?)\s*\|\s*Title:\s*(.*?)\s*\|\s*Description:\s*(.*)/);
       if (match) {
-        const title = match[1];
-        const description = match[2];
+        const topic = match[1];
+        console.log("Found post for topic:", topic);
+        const title = match[2];
+        const description = match[3];
+        if (topic === selectedTopic){
 
         const topicDiv = document.createElement('div');
         topicDiv.className = 'post';
@@ -37,7 +42,8 @@ async function loadPosts() {
           <div class="post-content">${description}</div>
         `;
         topicsContainer.appendChild(topicDiv);
-      }
+      }}
+      
     });}catch (error) {
     console.error('Error loading posts:', error);
   };}

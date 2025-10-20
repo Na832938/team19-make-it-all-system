@@ -86,5 +86,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function goToTopic(title) {
-  window.location.href = `Topic.html?title=${title}`;
+  window.location.href = `Topic.html?topic=${title}`;
 }

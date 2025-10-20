@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
 
     const formData = new FormData(form);
+    formData.append('topic', new URLSearchParams(window.location.search).get('topic') || '');
+    console.log(formData.get('topic'));
 
     fetch('Post_form.php', {
       method: 'POST',
