@@ -1,6 +1,5 @@
 
-Title: Error with Printer | Description: This topic is related to errors in the printing system
-Title: test | Description: this is a second test
-Title: new topic test | Description: tgdiwgi
-Title: other test | Description: closing test
-Title: tets | Description: tits for life
+Title: Software Development | Description: This topic gives you to Software Development tips
+Title: Software Issues | Description: This topic contains common software issues and solution
+Title: Printing | Description: This topic helps you with anything related to printing
+
