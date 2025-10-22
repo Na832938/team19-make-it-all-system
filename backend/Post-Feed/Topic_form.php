@@ -22,7 +22,7 @@ if (empty($title) || empty($description)) {
 }
 
 // Store in file
-$file = 'topics.txt';
+$file = __DIR__ . '/Topics.txt';
 $data = "Title: $title | Description: $description\n";
 file_put_contents($file, $data, FILE_APPEND);
 

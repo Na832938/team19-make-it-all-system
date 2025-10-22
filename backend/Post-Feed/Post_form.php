@@ -24,7 +24,7 @@ if (empty($title) || empty($description) || empty($topic)) {
 }
 
 // Store in file
-$file = 'posts.txt';
+$file = __DIR__ . '/posts.txt';
 $data = "Topic: $topic | Title: $title | Description: $description\n";
 file_put_contents($file, $data, FILE_APPEND);
 

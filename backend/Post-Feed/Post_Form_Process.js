@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append('topic', new URLSearchParams(window.location.search).get('topic') || '');
     console.log(formData.get('topic'));
 
-    fetch('Post_form.php', {
+    fetch('/backend/Post-Feed/Post_form.php', {
       method: 'POST',
       body: formData
     })

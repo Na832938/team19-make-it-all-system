@@ -19,7 +19,7 @@ function searchTopic() {// to rewrite
   const searchTerm = prompt("Enter topic title to search:");
   if (!searchTerm) return;
 
-  fetch('Topics.txt')
+  fetch('/backend/Post-Feed/Topics.txt')
     .then(response => response.text())
     .then(data => {
       const topics = data.split('\n').filter(line => line.trim() !== '');
@@ -44,7 +44,7 @@ function searchTopic() {// to rewrite
 // Function to load and display topics from topics.txt
 async function loadTopics() {
   try {
-    const response = await fetch('topics.txt', { cache: 'no-store' }); // prevent caching
+    const response = await fetch('/backend/Post-Feed/Topics.txt', { cache: 'no-store' }); // prevent caching
     if (!response.ok) {
       throw new Error('Failed to load topics file.');
     }

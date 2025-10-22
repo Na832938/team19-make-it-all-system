@@ -13,7 +13,7 @@ async function loadPosts() {
     console.log("Loading posts for topic:", selectedTopic);
   try {
     
-    const response = await fetch('posts.txt', { cache: 'no-store' }); // prevent caching
+    const response = await fetch('/backend/Post-Feed/posts.txt', { cache: 'no-store' }); // prevent caching
     if (!response.ok) {
       throw new Error('Failed to load topics file.');
     }

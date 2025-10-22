@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const formData = new FormData(form);
 
-    fetch('Topic_form.php', {
+    fetch('../../backend/Post-Feed/Topic_form.php', {
       method: 'POST',
       body: formData
     })
