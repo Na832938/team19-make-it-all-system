@@ -32,8 +32,13 @@ Exports (screenshots, mockups) and design documentation will be stored in `/desi
 | **Design** | Figma |
 | **Database (later phase)** | MySQL |
 | **Backend/server (later phase)** | PHP |
-
+T
 ---
 
 ## 📁 Folder Structure  
 
+- Frontend
+- Backend
+- Prototype
+- Design
+- 
