@@ -33,7 +33,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ fontFamily: "Arial", background: "#f0f2f5", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div style={{ background: "#f0f2f5", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <div style={{ background: "white", padding: "2rem", borderRadius: "10px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)", width: "300px", textAlign: "center" }}>
         <h2>Employee Login</h2>
         <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }} />
