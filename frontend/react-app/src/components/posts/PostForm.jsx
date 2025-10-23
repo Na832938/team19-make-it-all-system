@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './PostForm.css';
 
 export default function PostForm({ onCreate }) {
   const [title, setTitle] = useState("");
@@ -13,21 +14,19 @@ export default function PostForm({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
+    <form className="post-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Post Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        style={{ width: "100%", marginBottom: "0.5rem", padding: "0.5rem" }}
       />
       <textarea
         placeholder="Post Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        style={{ width: "100%", marginBottom: "0.5rem", padding: "0.5rem" }}
       />
-      <button type="submit" style={{ padding: "0.5rem 1rem" }}>Create Post</button>
+      <button type="submit">Create Post</button>
     </form>
   );
 }

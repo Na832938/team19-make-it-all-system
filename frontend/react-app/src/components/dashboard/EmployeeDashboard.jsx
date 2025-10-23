@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import TodoPage from '../tasks/TodoPage.jsx'; // reuse existing to-do logic
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './EmployeeDashboard.css';
 
 export default function EmployeeDashboard() {
-  // Simulated employee & task data
   const [employee] = useState({
     name: 'John Doe',
     position: 'Software Engineer',
@@ -32,11 +32,11 @@ export default function EmployeeDashboard() {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-center mb-4">Employee Dashboard</h1>
+    <div className="container dashboard-container">
+      <h1 className="dashboard-header">Employee Dashboard</h1>
 
       {/* Progress Section */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header">Task Completion Progress</div>
         <div className="card-body">
           <div className="progress">
@@ -55,7 +55,7 @@ export default function EmployeeDashboard() {
       </div>
 
       {/* Employee Info */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header">Employee Information</div>
         <div className="card-body">
           <p><strong>Name:</strong> {employee.name}</p>
@@ -65,7 +65,7 @@ export default function EmployeeDashboard() {
       </div>
 
       {/* Task Overview */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header">Task Overview</div>
         <div className="card-body">
           <p>You have {totalTasks} tasks assigned.</p>
@@ -78,7 +78,7 @@ export default function EmployeeDashboard() {
       </div>
 
       {/* Topic & Post Sharing */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header">Topic & Post Sharing</div>
         <div className="card-body">
           <input
@@ -100,7 +100,7 @@ export default function EmployeeDashboard() {
       </div>
 
       {/* Integrate TodoPage */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header">Detailed Task Management</div>
         <div className="card-body">
           <TodoPage />

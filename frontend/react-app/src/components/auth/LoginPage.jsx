@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './LoginPage.css';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -33,13 +34,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ background: "#f0f2f5", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div style={{ background: "white", padding: "2rem", borderRadius: "10px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)", width: "300px", textAlign: "center" }}>
+    <div className="login-container">
+      <div className="login-box">
         <h2>Employee Login</h2>
-        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }} />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }} />
-        <button onClick={login} style={{ width: "100%", padding: "0.5rem", background: "#007bff", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>Login</button>
-        <div style={{ marginTop: "1rem", fontSize: "0.9rem", color: msgColor }}>{message}</div>
+        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        <button onClick={login}>Login</button>
+        <div className="login-message" style={{ color: msgColor }}>{message}</div>
       </div>
     </div>
   );

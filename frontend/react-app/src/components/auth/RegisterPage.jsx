@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './RegisterPage.css';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -59,52 +60,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={{
-      fontFamily: "Arial, sans-serif",
-      background: "#f0f2f5",
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
-      <div style={{
-        background: "white",
-        padding: "2rem",
-        borderRadius: "10px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-        width: "300px",
-        textAlign: "center"
-      }}>
+    <div className="register-container">
+      <div className="register-box">
         <h2>Register Account</h2>
         <input
           type="text"
           placeholder="Username (must match employee)"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
-          style={{ width: "100%", padding: "0.5rem", margin: "0.5rem 0", borderRadius: "5px", border: "1px solid #ccc" }}
         />
-        <button
-          onClick={register}
-          style={{ width: "100%", padding: "0.5rem", background: "#28a745", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}
-        >
-          Register
-        </button>
+        <button onClick={register}>Register</button>
         {message && (
-          <div style={{ marginTop: "1rem", fontSize: "0.9rem", color: msgColor }}>
+          <div className="register-message" style={{ color: msgColor }}>
             {message}
           </div>
         )}

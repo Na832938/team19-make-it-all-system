@@ -1,0 +1,19 @@
+/* EmployeeDashboard.css */
+
+.dashboard-container {
+  margin-top: 2rem;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card + .card {
+  margin-top: 1.5rem;
+}
+
+.progress-bar {
+  font-weight: bold;
+  text-align: center;
+}

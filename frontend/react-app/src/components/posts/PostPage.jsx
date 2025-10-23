@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PostForm from "./PostForm";
 import PostList from "./PostList";
+import './PostPage.css';
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
@@ -10,7 +11,7 @@ export default function PostPage() {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
+    <div className="post-page">
       <h2>Topic Feed</h2>
       <PostForm onCreate={handleCreate} />
       <PostList posts={posts} />
