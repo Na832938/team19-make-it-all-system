@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post Feed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .post { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+    .post-title { font-weight: bold; font-size: 1.2em; }
+    .post-content { margin-top: 8px; }
+    .Topic-PopUp { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                   background: rgba(0,0,0,0.5); }
+    .Topic-PopUp-Content { background: #fff; padding: 20px; margin: 10% auto; width: 300px; border-radius: 8px; }
+    .close { cursor: pointer; float: right; }
+  </style>
+</head>
+
+<body>
+<div class="Topic-PopUp">
+    <div class="Topic-PopUp-Content">
+        <span class="close" onclick="closeTopicPopUp()">&times;</span>
+        <h2>Create New Post</h2>
+        <form id="post-form" method="POST">
+            <label for="post-title">Title:</label><br>
+            <input type="text" name="post-title" id="post-title" placeholder="Post Title" required><br><br>
+
+            <label for="post-content">Content:</label><br>
+            <textarea name="post-content" id="post-content" placeholder="Post Content" required></textarea><br><br>
+
+            <input type="submit" value="Create Post">
+        </form>
+        <button onclick="closeTopicPopUp()">Cancel</button>
+    </div>
+</div>
+  </div>
+
+  <nav>
+    <button onclick="displayTopicPopUp()">Create Post</button>
+    <button onclick="window.location.href ='Topic-Feed.html'">Back to topics</button>
+    <button onclick="loadPosts()">Refresh Posts </button>
+  </nav>
+
+  <h1>Topic Feed</h1>
+  <div id="posts-container"></div>
+
+  <!-- Load JS at bottom -->
+  
+  <script src="/backend/Post-Feed/Topic.js"></script>
+  <script src="/backend/Post-Feed/Post_Form_Process.js"></script>
+</body>
+</html>
