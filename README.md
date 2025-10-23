@@ -18,22 +18,20 @@ Figma is free for students and supports real-time collaboration.
 - **Figma Workspace:** (https://www.figma.com/team_invite/redeem/sBtXqhi0ng2vrhRBE3B5VY)
 - **Design Owner:** *Nanda Kumudhan*  
 
-Exports (screenshots, mockups) and design documentation will be stored in `/design`.
+Exports (screenshots, mockups) and design documentation are stored in `/design`.
 
 ---
 
 ## 🛠️ Technologies  
 | Category | Tools / Frameworks |
 |-----------|-------------------|
-| **Frontend (prototype)** | React.js, HTML, CSS |
+| **Frontend (prototype)** | React.js (mainly `App.jsx`, HTML, CSS) |
 | **Styling** | Bootstrap |
 | **Charts (if used)** | Chart.js |
 | **Version Control** | GitHub |
 | **Design** | Figma |
 | **Database (later phase)** | MySQL |
 | **Backend/server (later phase)** | PHP |
-T
----
 
 ## 📁 Folder Structure  
 
