@@ -36,7 +36,3 @@ Exports (screenshots, mockups) and design documentation are stored in `/design`.
 Currently, the **frontend** is developed using **React.js** for component-based task and control logic, alongside standard **HTML** and **CSS** for structure and styling.  
 The project will soon be **compiled for PHP server compatibility**, and the **folder structure** will be reorganized accordingly.
 
----
-
-## 📁 Folder Structure (Current)  
-
