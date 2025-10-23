@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TodoPage from "./TodoPage";
-import PostPage from "./PostPage";
-import LoginPage from "./LoginPage";
-import RegisterPage from "./RegisterPage";
+import TodoPage from "./components/tasks/TodoPage";
+import PostPage from "./components/posts/PostPage";
+import LoginPage from "./components/auth/LoginPage";
+import RegisterPage from "./components/auth/RegisterPage";
 
 function App() {
   return (

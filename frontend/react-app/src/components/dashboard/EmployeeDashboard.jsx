@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import TodoPage from './TodoPage.jsx'; // reuse existing to-do logic
+import TodoPage from '../tasks/TodoPage.jsx'; // reuse existing to-do logic
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function EmployeeDashboard() {
