@@ -1,13 +1,7 @@
-/* App.css - CSS specifically for styling the App component (layout, containers, etc.) */
-.App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
+/* App.css - layout only */
 
-.app-header {
-  background-color: #282c34;
-  padding: 20px;
+.App {
+  margin: 0 auto;
 }
 
 .app-container {
