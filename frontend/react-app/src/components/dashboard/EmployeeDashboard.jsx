@@ -1,110 +1,89 @@
-import React, { useState } from 'react';
-import TodoPage from '../tasks/TodoPage.jsx'; // reuse existing to-do logic
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './EmployeeDashboard.css';
+import { useState } from "react";
+import TodoPage from "../tasks/TodoPage.jsx";
+import "./EmployeeDashboard.css";
 
 export default function EmployeeDashboard() {
   const [employee] = useState({
-    name: 'John Doe',
-    position: 'Software Engineer',
-    department: 'Development'
+    name: "John Doe",
+    position: "Software Engineer",
+    department: "Development",
   });
 
-  const [tasks, setTasks] = useState([
-    { title: 'Finish report', completed: true },
-    { title: 'Attend team meeting', completed: false },
-    { title: 'Update project plan', completed: true },
-    { title: 'Review code', completed: false }
+  const [tasks] = useState([
+    { title: "Finish report", completed: true },
+    { title: "Attend team meeting", completed: false },
+    { title: "Update project plan", completed: true },
+    { title: "Review code", completed: false },
   ]);
 
   const totalTasks = tasks.length;
-  const completedTasks = tasks.filter(t => t.completed).length;
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  const completedTasks = tasks.filter((t) => t.completed).length;
+  const progress =
+    totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
-  const [topic, setTopic] = useState('');
-  const [post, setPost] = useState('');
+  const [topic, setTopic] = useState("");
+  const [post, setPost] = useState("");
 
   const handlePost = () => {
-    if (!topic.trim() || !post.trim()) return alert('Enter both topic and post.');
-    console.log('Shared:', { topic, post });
-    setTopic('');
-    setPost('');
+    if (!topic.trim() || !post.trim()) return;
+    setTopic("");
+    setPost("");
   };
 
   return (
-    <div className="container dashboard-container">
+    <div className="dashboard-container">
       <h1 className="dashboard-header">Employee Dashboard</h1>
 
-      {/* Progress Section */}
       <div className="card">
-        <div className="card-header">Task Completion Progress</div>
-        <div className="card-body">
-          <div className="progress">
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: `${progress}%` }}
-              aria-valuenow={progress}
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              {progress}%
-            </div>
-          </div>
-        </div>
+        <h2>Task Completion Progress</h2>
+        <div className="progress-bar">{progress}%</div>
       </div>
 
-      {/* Employee Info */}
       <div className="card">
-        <div className="card-header">Employee Information</div>
-        <div className="card-body">
-          <p><strong>Name:</strong> {employee.name}</p>
-          <p><strong>Position:</strong> {employee.position}</p>
-          <p><strong>Department:</strong> {employee.department}</p>
-        </div>
+        <h2>Employee Information</h2>
+        <p>
+          <strong>Name:</strong> {employee.name}
+        </p>
+        <p>
+          <strong>Position:</strong> {employee.position}
+        </p>
+        <p>
+          <strong>Department:</strong> {employee.department}
+        </p>
       </div>
 
-      {/* Task Overview */}
       <div className="card">
-        <div className="card-header">Task Overview</div>
-        <div className="card-body">
-          <p>You have {totalTasks} tasks assigned.</p>
-          <ul>
-            {tasks.map((t, i) => (
-              <li key={i}>{t.title} – {t.completed ? '✅ Done' : '❌ Pending'}</li>
-            ))}
-          </ul>
-        </div>
+        <h2>Task Overview</h2>
+        <p>You have {totalTasks} tasks assigned.</p>
+        <ul>
+          {tasks.map((t, i) => (
+            <li key={i}>
+              {t.title} – {t.completed ? "Done" : "Pending"}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Topic & Post Sharing */}
       <div className="card">
-        <div className="card-header">Topic & Post Sharing</div>
-        <div className="card-body">
-          <input
-            type="text"
-            className="form-control mb-2"
-            placeholder="Enter topic"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-          />
-          <textarea
-            className="form-control mb-2"
-            rows="3"
-            placeholder="Write your post"
-            value={post}
-            onChange={(e) => setPost(e.target.value)}
-          />
-          <button className="btn btn-primary" onClick={handlePost}>Share</button>
-        </div>
+        <h2>Topic & Post Sharing</h2>
+        <input
+          type="text"
+          placeholder="Enter topic"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+        />
+        <textarea
+          rows="3"
+          placeholder="Write your post"
+          value={post}
+          onChange={(e) => setPost(e.target.value)}
+        />
+        <button onClick={handlePost}>Share</button>
       </div>
 
-      {/* Integrate TodoPage */}
       <div className="card">
-        <div className="card-header">Detailed Task Management</div>
-        <div className="card-body">
-          <TodoPage />
-        </div>
+        <h2>Detailed Task Management</h2>
+        <TodoPage />
       </div>
     </div>
   );

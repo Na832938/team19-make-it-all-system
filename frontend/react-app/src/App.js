@@ -4,7 +4,7 @@ import PostPage from "./components/posts/PostPage";
 import LoginPage from "./components/auth/LoginPage";
 import RegisterPage from "./components/auth/RegisterPage";
 import TopicPage from "./components/topics/TopicPage";
-
+import EmployeeDashboard from "./components/dashboard/EmployeeDashboard";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/todo" element={<TodoPage />} />
         <Route path="/posts" element={<PostPage />} />
         <Route path="/topics" element={<TopicPage />} />
+        <Route path="/dashboard" element={<EmployeeDashboard />} />
       </Routes>
     </Router>
   );
