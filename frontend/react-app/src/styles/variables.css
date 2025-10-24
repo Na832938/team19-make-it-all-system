@@ -1,3 +1,11 @@
 :root {
+  --primary-color: #000;
+  --secondary-color: #f5f5f5;
+  --text-color: #111;
+  --border-color: #ddd;
+  --border-radius: 8px;
   --font-family: 'Inter', sans-serif;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
 }
