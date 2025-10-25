@@ -1,5 +1,7 @@
 import { useState } from "react";
 import './LoginPage.css';
+import Button from '../common/Button.jsx';
+import TextInput from '../common/TextInput.jsx';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -15,6 +17,7 @@ const users = [
 ];
 
 export default function LoginPage() {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -33,13 +36,15 @@ export default function LoginPage() {
     }
   };
 
-  return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Employee Login</h2>
-        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        <button onClick={login}>Login</button>
+   return (
+    <div>
+      <div>
+        <h1 className="login-heading">Login</h1>
+
+        <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+        <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        <Button type="button" onClick={login}>Login</Button>
+
         <div className="login-message" style={{ color: msgColor }}>{message}</div>
       </div>
     </div>

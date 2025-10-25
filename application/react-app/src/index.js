@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './styles/variables.css';
 import './styles/index.css';
 import App from './App';
+
+// optional, if you have global resets
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
