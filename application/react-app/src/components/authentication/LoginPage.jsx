@@ -37,16 +37,18 @@ export default function LoginPage() {
   };
 
    return (
-    <div className="login-container">
-      <div className="login-box">
-        <h1 className="login-heading">Login</h1>
+    
+      <div className="vertical-center">
+        <div className="card-container card-vertical">
+        <h1>Login</h1>
 
         <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
         <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
         <Button type="button" onClick={login}>Login</Button>
 
-        <div className="login-message" style={{ color: msgColor }}>{message}</div>
+        <div className="" style={{ color: msgColor }}>{message}</div>
       </div>
     </div>
+
   );
 }
