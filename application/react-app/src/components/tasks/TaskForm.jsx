@@ -17,28 +17,28 @@ export default function TaskForm({ onAdd }) {
   };
 
   return (
-    <form className="task-form" onSubmit={handleSubmit} autoComplete="off">
-      <Label text="Task name:">
-        <TextInput name="taskName" type="text" placeholder="Task name" required />
-      </Label>
+      <form className="task-form" onSubmit={handleSubmit} autoComplete="off">
+        <Label text="Task name:">
+          <TextInput name="taskName" type="text" placeholder="Task name" required />
+        </Label>
 
-      <Label text="Priority:">
-        <Select
-          name="priority"
-          defaultValue="Medium"
-          options={[
-            { value: 'Low', label: 'Low' },
-            { value: 'Medium', label: 'Medium' },
-            { value: 'High', label: 'High' },
-          ]}
-        />
-      </Label>
+        <Label text="Priority:">
+          <Select
+            name="priority"
+            defaultValue="Medium"
+            options={[
+              { value: 'Low', label: 'Low' },
+              { value: 'Medium', label: 'Medium' },
+              { value: 'High', label: 'High' },
+            ]}
+          />
+        </Label>
 
-      <Label text="Due date:">
-        <TextInput name="dueDate" type="date" />
-      </Label>
+        <Label text="Due date:">
+          <TextInput name="dueDate" type="date" />
+        </Label>
 
-      <Button type="primary">Add Task</Button>
-    </form>
+        <Button type="primary">Add Task</Button>
+      </form>
   );
 }

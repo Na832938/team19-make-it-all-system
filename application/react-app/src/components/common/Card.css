@@ -1,0 +1,49 @@
+.card-container {
+  background-color: rgba(255, 255, 255, 0.95); /* light translucent surface */
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* softer, modern shadow */
+  border: none; /* optional: remove rigid border */
+  padding: 2rem;
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 480px;
+  box-sizing: border-box;
+  margin: 1rem auto; /* adds spacing between stacked cards */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* better alignment for form inputs, content */
+  gap: var(--space-md);
+}
+
+.card-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+@media (max-width: 550px) {
+  .card-container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .card-horizontal {
+    flex-direction: column;
+  }
+}
+
+.full-width-card {
+  grid-column: 1 / -1;
+  width: 100%;
+}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TextInput from '../common/TextInput';
 import Button from '../common/Button';
 import Label from '../common/Label';
+import Card from '../common/Label';
 import TextArea from '../common/TextArea';
 import './TopicForm.css';
 
@@ -31,28 +32,29 @@ export default function TopicForm({ onCreate }) {
   };
 
   return (
-    <form className="topic-form" onSubmit={handleSubmit} autoComplete="off">
-      <Label text="Topic Title:">
-        <TextInput
-          type="text"
-          placeholder="Enter topic title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </Label>
 
-      <Label text="Topic Description:">
-        <TextArea
-          placeholder="Enter topic description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          rows={5}
-        />
-      </Label>
+        <form className="topic-form" onSubmit={handleSubmit} autoComplete="off">
+      
+            <TextInput
+              type="text"
+              placeholder="Enter topic title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+      
 
-      <Button type="primary">Create Topic</Button>
+          
+            <TextArea
+              placeholder="Enter topic description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={5}
+            />
+          
 
-      {message && <p className="form-message">{message}</p>}
-    </form>
+          <Button type="primary">Create Topic</Button>
+
+          {message && <p className="form-message">{message}</p>}
+        </form>
   );
 }

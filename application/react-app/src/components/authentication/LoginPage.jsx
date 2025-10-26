@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './LoginPage.css';
-import { Button, TextInput } from '../common';
+import { Button, TextInput, Card } from '../common';
 import { Link } from 'react-router-dom';
 
 const users = [
@@ -39,18 +39,18 @@ export default function LoginPage() {
    return (
     
       <div className="vertical-center">
-        <div className="card-container card-vertical">
-        <h2> Login </h2>
+        <Card>
+            <h2> Login </h2>
 
-        <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-        <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        <Button type="primary" onClick={login}>Login</Button>
-        <div style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
-          Don't have an account? <Link to="/register">Register here</Link>
-        </div>
+              <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+              <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+              <Button type="primary" onClick={login}>Login</Button>
+              <div style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+                Don't have an account? <Link to="/register">Register here</Link>
+              </div>
 
-        <div className="" style={{ color: msgColor }}>{message}</div>
-      </div>
+              <div className="" style={{ color: msgColor }}>{message}</div>
+        </Card>
     </div>
 
   );

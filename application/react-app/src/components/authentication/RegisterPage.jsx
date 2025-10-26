@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './RegisterPage.css';
-import { Button, TextInput } from '../common';
+import { Button, TextInput, Card} from '../common';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -62,14 +62,14 @@ export default function RegisterPage() {
 
   return (
     <div className="vertical-center">
-      <div className="card-container card-vertical">
+      <Card vertical={true}>
         <h2>Register Account</h2>
         <TextInput type="text" placeholder="Username (must match employee)" value={username} onChange={e => setUsername(e.target.value)} />
         <TextInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
         <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
         <Button type="primary" onClick={register}>Register</Button>
         {message && <div className={msgClass}>{message}</div>}
-      </div>
+      </Card>
     </div>
   );
 }

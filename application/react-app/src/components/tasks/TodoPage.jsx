@@ -3,8 +3,9 @@ import { useState } from 'react';
 import TaskForm from './TaskForm.jsx';
 import TaskControls from './TaskControls.jsx';
 import TaskList from './TaskList.jsx';
+import Card from "../common/Card";
 
-function TodoPage() {
+export default function TodoPage() {
   const [tasks, setTasks] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [filters, setFilters] = useState({ status: 'All', priority: 'All', q: '', sort: 'none' });
@@ -30,7 +31,6 @@ function TodoPage() {
     setTasks([...tasks, { ...task, id, status: 'To Do' }]);
   };
 
-
   const updateTask = (id, updated) => setTasks(tasks.map(t => t.id === id ? { ...t, ...updated } : t));
   const deleteTask = (id) => setTasks(tasks.filter(t => t.id !== id));
   const changeStatus = (id) => {
@@ -42,21 +42,24 @@ function TodoPage() {
   };
 
   return (
-    <main className="container">
-      <h2>My To-Do List</h2>
-      <TaskForm onAdd={addTask} />
-      <TaskControls filters={filters} onChange={setFilters} />
-      <TaskList
-        tasks={filteredTasks}
-        editingId={editingId}
-        onEdit={setEditingId}
-        onDelete={deleteTask}
-        onSave={(id) => setEditingId(null)}
-        onCancel={() => setEditingId(null)}
-        onStatusChange={changeStatus}
-      />
-    </main>
+    <div className="horizontal-center">
+      <Card vertical={true} className="card-container">
+        <h2>Add Task</h2>
+        <TaskForm onAdd={addTask} />
+      </Card>
+
+      <Card vertical={true} className="card-container">
+        <TaskControls filters={filters} onChange={setFilters} />
+        <TaskList
+          tasks={filteredTasks}
+          editingId={editingId}
+          onEdit={setEditingId}
+          onDelete={deleteTask}
+          onSave={() => setEditingId(null)}
+          onCancel={() => setEditingId(null)}
+          onStatusChange={changeStatus}
+        />
+      </Card>
+    </div>
   );
 }
-
-export default TodoPage;

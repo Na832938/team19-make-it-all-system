@@ -13,17 +13,7 @@ body {
   font-weight: 400;
 }
 
-/* Generic card container: used for all elements */
-.card-container {
-  background-color: var(--surface-colour);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-neutral-colour);
-  padding: var(--space-xl);
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-}
+
 
 /* Vertical container: centers children vertically and horizontally */
 .vertical-center {
@@ -37,26 +27,29 @@ body {
 
 /* Horizontal container: constrains content width and centers horizontally */
 .horizontal-center {
-  max-width: 1200px;   /* or your preferred container width */
-  margin-left: auto;
-  margin-right: auto;
+  /* or your preferred container width */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
 }
 
-/* Layout modifiers */
-.card-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
 }
 
-.card-horizontal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: var(--space-sm);
+    gap: var(--space-md);
+  }
 }

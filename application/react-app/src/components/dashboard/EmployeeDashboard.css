@@ -1,17 +1,25 @@
-/* EmployeeDashboard.css */
-
-.dashboard-container {
-  margin-top: 2rem;
-}
+/* src/components/dashboard/EmployeeDashboard.css */
 
 .dashboard-header {
   text-align: center;
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-heading-lg);
+  color: var(--primary-text-colour);
 }
 
-.card + .card {
-  margin-top: 1rem;
+.dashboard-container {
+  width: 100%;
+  padding: var(--space-md);
 }
 
-.progress-bar {
-  text-align: center;
+/* Only override grid specifics unique to this page */
+.grid-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Last card spans full width in the grid */
+.full-width-card {
+  grid-column: 1 / -1;
 }

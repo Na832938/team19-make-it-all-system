@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./TopicPage.css";
 import TopicForm from "./TopicForm";
 import TopicList from "./TopicList";
+import { Card } from '../common';
 
 export default function TopicPage() {
 
@@ -20,10 +21,17 @@ export default function TopicPage() {
   };
 
   return (
-    <div className="topic-page">
-      <h2>Topics</h2>
-      <TopicForm onCreate={handleCreateTopic} />
-      <TopicList topics={topics} onSelect={handleSelectTopic} />
-    </div>
+
+      <div className="vertical-center">
+        
+        <Card>
+          <h2>Create Topic</h2>
+          
+          <TopicForm onCreate={handleCreateTopic} />
+          <TopicList topics={topics} onSelect={handleSelectTopic} />
+        </Card>
+        
+      </div>
+
   );
 }
