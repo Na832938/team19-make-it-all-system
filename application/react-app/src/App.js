@@ -16,6 +16,7 @@ function App() {
         <Route path="/posts" element={<PostPage />} />
         <Route path="/topics" element={<TopicPage />} />
         <Route path="/dashboard" element={<EmployeeDashboard />} />
+        <Route path="/knowledge" element={<KnowledgeBase />}/>
       </Routes>
     </Router>
   );
