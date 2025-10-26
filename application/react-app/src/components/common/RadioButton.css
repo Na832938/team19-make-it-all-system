@@ -1,0 +1,38 @@
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  color: var(--primary-text-colour);
+  cursor: pointer;
+  gap: var(--space-sm);
+}
+
+.radio-wrapper.disabled {
+  cursor: not-allowed;
+  color: var(--secondary-text-colour);
+}
+
+.radio-input {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--border-neutral-colour);
+  border-radius: 50%;
+  accent-color: var(--primary-colour);
+  background-color: var(--surface-colour);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.radio-input:disabled {
+  background-color: var(--disabled-colour);
+  border-color: var(--border-neutral-colour);
+}
+
+.radio-input:focus-visible {
+  outline: 2px solid var(--focus-colour);
+  outline-offset: 2px;
+}
+
+.radio-label {
+  user-select: none;
+}

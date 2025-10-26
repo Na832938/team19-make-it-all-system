@@ -1,6 +1,10 @@
+// src/components/dashboard/EmployeeDashboard.jsx
 import { useState } from "react";
+import { ProgressBar } from "../common";
 import TodoPage from "../tasks/TodoPage.jsx";
 import "./EmployeeDashboard.css";
+import TopicForm from "../topics/TopicForm.jsx";
+import PostList from "../posts/PostList.jsx"; // if available
 
 export default function EmployeeDashboard() {
   const [employee] = useState({
@@ -31,59 +35,50 @@ export default function EmployeeDashboard() {
   };
 
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-header">Employee Dashboard</h1>
+    <div className="dashboard-container vertical-center">
+      <div className="horizontal-center">
+        <h1 className="dashboard-header">Employee Dashboard</h1>
 
-      <div className="card">
-        <h2>Task Completion Progress</h2>
-        <div className="progress-bar">{progress}%</div>
-      </div>
+        {/* Progress Card */}
+        <div className="card-container card-vertical">
+          <h2>Task Completion Progress</h2>
+          <ProgressBar value={progress} label={`${progress}%`} />
+        </div>
 
-      <div className="card">
-        <h2>Employee Information</h2>
-        <p>
-          <strong>Name:</strong> {employee.name}
-        </p>
-        <p>
-          <strong>Position:</strong> {employee.position}
-        </p>
-        <p>
-          <strong>Department:</strong> {employee.department}
-        </p>
-      </div>
+        {/* Employee Info */}
+        <div className="card-container card-vertical">
+          <h2>Employee Information</h2>
+          <p><strong>Name:</strong> {employee.name}</p>
+          <p><strong>Position:</strong> {employee.position}</p>
+          <p><strong>Department:</strong> {employee.department}</p>
+        </div>
 
-      <div className="card">
-        <h2>Task Overview</h2>
-        <p>You have {totalTasks} tasks assigned.</p>
-        <ul>
-          {tasks.map((t, i) => (
-            <li key={i}>
-              {t.title} – {t.completed ? "Done" : "Pending"}
-            </li>
-          ))}
-        </ul>
-      </div>
+        {/* Task Overview */}
+        <div className="card-container card-vertical">
+          <h2>Task Overview</h2>
+          <p>You have {totalTasks} tasks assigned.</p>
+          <ul>
+            {tasks.map((t, i) => (
+              <li key={i}>
+                {t.title} — {t.completed ? "Done" : "Pending"}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div className="card">
-        <h2>Topic & Post Sharing</h2>
-        <input
-          type="text"
-          placeholder="Enter topic"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-        />
-        <textarea
-          rows="3"
-          placeholder="Write your post"
-          value={post}
-          onChange={(e) => setPost(e.target.value)}
-        />
-        <button onClick={handlePost}>Share</button>
-      </div>
+        {/* Topic / Post Section */}
+        <div className="card card-vertical">
+          <h2>Topic & Post Sharing</h2>
+          <TopicForm />
+          <PostList />
+        </div>
 
-      <div className="card">
-        <h2>Detailed Task Management</h2>
-        <TodoPage />
+
+        {/* Task Management */}
+        <div className="card-container card-vertical">
+          <h2>Detailed Task Management</h2>
+          <TodoPage />
+        </div>
       </div>
     </div>
   );

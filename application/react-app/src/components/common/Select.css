@@ -1,0 +1,26 @@
+.select {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border-neutral-colour);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  color: var(--primary-text-colour);
+  background-color: var(--surface-colour);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select:hover {
+  border-color: var(--primary-colour);
+}
+
+.select:focus {
+  border-color: var(--focus-colour);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2); /* focus ring using primary-colour */
+  outline: none;
+}
+
+.select:disabled {
+  background-color: var(--disabled-colour);
+  cursor: not-allowed;
+  color: var(--secondary-text-colour);
+}

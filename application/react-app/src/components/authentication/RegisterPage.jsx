@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './RegisterPage.css';
+import { Button, TextInput } from '../common';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -26,67 +27,48 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [msgColor, setMsgColor] = useState("black");
+  const [msgClass, setMsgClass] = useState("");
 
   const register = () => {
     const employee = users.find(user => user.username === username.trim());
     if (!employee) {
-      setMsgColor("red");
+      setMsgClass("message-error");
       setMessage("Username does not match any employee.");
       return;
     }
 
     if (email.toLowerCase() !== employee.email.toLowerCase()) {
-      setMsgColor("red");
+      setMsgClass("message-error");
       setMessage("Email must match the employee's registered email.");
       return;
     }
 
     if (!validatePassword(password)) {
-      setMsgColor("red");
+      setMsgClass("message-error");
       setMessage("Password must be 8+ chars, include 1 capital and 1 special character.");
       return;
     }
 
     if (employee.password && employee.password !== "") {
-      setMsgColor("red");
+      setMsgClass("message-error");
       setMessage("This account is already registered.");
       return;
     }
 
     employee.password = password;
-    setMsgColor("green");
+    setMsgClass("message-success");
     setMessage(`Registration successful for ${employee.username}.`);
   };
 
   return (
-    <div className="register-container">
-      <div className="register-box">
+    <div className="vertical-center">
+      <div className="card-container card-vertical">
         <h2>Register Account</h2>
-        <input
-          type="text"
-          placeholder="Username (must match employee)"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button onClick={register}>Register</button>
-        {message && (
-          <div className="register-message" style={{ color: msgColor }}>
-            {message}
-          </div>
-        )}
+        <TextInput type="text" placeholder="Username (must match employee)" value={username} onChange={e => setUsername(e.target.value)} />
+        <TextInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+        <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        <Button type="primary" onClick={register}>Register</Button>
+        {message && <div className={msgClass}>{message}</div>}
       </div>
     </div>
   );

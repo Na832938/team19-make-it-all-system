@@ -1,4 +1,6 @@
+// src/components/posts/PostForm.jsx
 import { useState } from "react";
+import { TextInput, TextArea, Button } from "../common";
 import './PostForm.css';
 
 export default function PostForm({ onCreate }) {
@@ -14,19 +16,24 @@ export default function PostForm({ onCreate }) {
   };
 
   return (
-    <form className="post-form" onSubmit={handleSubmit}>
-      <input
+    <form className="post-form" onSubmit={handleSubmit} autoComplete="off">
+      <TextInput
         type="text"
         placeholder="Post Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
-      <textarea
+      <TextArea
+        rows={4}
         placeholder="Post Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        required
       />
-      <button type="submit">Create Post</button>
+      <Button type="primary" onClick={handleSubmit}>
+        Create Post
+      </Button>
     </form>
   );
 }

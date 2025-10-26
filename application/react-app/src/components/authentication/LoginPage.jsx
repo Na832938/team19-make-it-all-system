@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './LoginPage.css';
-import Button from '../common/Button.jsx';
-import TextInput from '../common/TextInput.jsx';
+import { Button, TextInput } from '../common';
+import { Link } from 'react-router-dom';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -40,11 +40,14 @@ export default function LoginPage() {
     
       <div className="vertical-center">
         <div className="card-container card-vertical">
-        <h1>Login</h1>
+        <h2> Login </h2>
 
         <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
         <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        <Button type="button" onClick={login}>Login</Button>
+        <Button type="primary" onClick={login}>Login</Button>
+        <div style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+          Don't have an account? <Link to="/register">Register here</Link>
+        </div>
 
         <div className="" style={{ color: msgColor }}>{message}</div>
       </div>
