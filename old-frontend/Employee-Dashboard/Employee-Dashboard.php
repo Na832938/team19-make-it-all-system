@@ -66,8 +66,8 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
             </div>
         </div>
     </div>
-
-    </script>
+    <!-- Link to external JS -->
+    <script src="Edashboard.js"></script>
 </body>
 </html>
 
