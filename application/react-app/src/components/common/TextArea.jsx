@@ -2,7 +2,7 @@ import './TextArea.css';
 
 export default function TextArea({ value, onChange, placeholder, rows = 4, disabled = false }) {
   return (
-    <TextArea
+    <textarea
       className="textarea"
       value={value}
       onChange={onChange}

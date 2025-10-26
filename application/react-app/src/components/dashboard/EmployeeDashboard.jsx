@@ -34,6 +34,13 @@ export default function EmployeeDashboard() {
     setPost("");
   };
 
+  const [topics, setTopics] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  const handleCreateTopic = (topic) => setTopics(prev => [...prev, topic]);
+  const handleCreatePost = (post) => setPosts(prev => [post, ...prev]);
+
+
   return (
     <div className="dashboard-container vertical-center">
       <div className="horizontal-center">
@@ -69,8 +76,8 @@ export default function EmployeeDashboard() {
         {/* Topic / Post Section */}
         <div className="card card-vertical">
           <h2>Topic & Post Sharing</h2>
-          <TopicForm />
-          <PostList />
+            <TopicForm onCreate={handleCreateTopic} />
+            <PostList posts={posts} />
         </div>
 
 

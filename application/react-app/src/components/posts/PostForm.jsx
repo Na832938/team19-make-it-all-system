@@ -31,7 +31,7 @@ export default function PostForm({ onCreate }) {
         onChange={(e) => setContent(e.target.value)}
         required
       />
-      <Button type="primary" onClick={handleSubmit}>
+      <Button type="submit">
         Create Post
       </Button>
     </form>
