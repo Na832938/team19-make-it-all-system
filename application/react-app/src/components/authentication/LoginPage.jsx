@@ -30,6 +30,7 @@ export default function LoginPage() {
     if (foundUser) {
       setMsgColor("green");
       setMessage(`Login successful! Welcome ${foundUser.role} ${foundUser.username}.`);
+      window.location(window.href = "/dashboard");
     } else {
       setMsgColor("red");
       setMessage("Invalid username or password.");
