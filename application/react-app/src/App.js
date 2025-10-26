@@ -5,6 +5,7 @@ import LoginPage from "./components/authentication/LoginPage";
 import RegisterPage from "./components/authentication/RegisterPage";
 import TopicPage from "./components/topics/TopicPage";
 import EmployeeDashboard from "./components/dashboard/EmployeeDashboard";
+import KnowledgeBase from "./components/KnowledgeBase/KnowledgeBase";
 
 function App() {
   return (
