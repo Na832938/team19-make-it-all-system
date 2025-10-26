@@ -1,4 +1,3 @@
-
 <?php
 // Simulated data (in real use, this would come from a database)
 $tasks = [
@@ -8,7 +7,7 @@ $tasks = [
     ["Review code", false]
 ];
 
-$totalTasks = count($tasks); // ✅ Define this before using it
+$totalTasks = count($tasks);
 $completedTasks = count(array_filter($tasks, function($task) {
     return $task[1] === true;
 }));
@@ -21,8 +20,7 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrapead>
 <body>
     <div class="container mt-4">
         <h1 class="text-center">Employee Dashboard</h1>
@@ -61,13 +59,15 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
         <div class="card mt-4">
             <div class="card-header">Topic & Post Sharing</div>
             <div class="card-body">
-                <input type="text" id="topic-input" class="form-control mb-2" placeholder="Enter topic">
-                <textarea id="post-input" class="form-control mb-2" rows="3" placeholder="Write your post"></textarea>
+                <input type="text" id="topicInput" class="form-control mb-2" placeholder="Enter topic">
+                <textarea id="postInput" class="form-control mb-2" rows="3" placeholder="Write your post"></textarea>
+                <button id="shareButton" class="btn btn-success">Share Post</button>
+                <div id="sharedPosts" class="mt-3"></div>
             </div>
         </div>
     </div>
+
     <!-- Link to external JS -->
-    <script src="Edashboard.js"></script>
+    Edashboard.js</script>
 </body>
 </html>
-
