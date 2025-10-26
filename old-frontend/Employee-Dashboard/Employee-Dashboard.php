@@ -44,9 +44,6 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
             <div class="card-header">Your To-Do List</div>
             <div class="card-body">
                 <ul class="list-group mb-3" id="todoList">
-                    <li class="list-group-item">Check emails</li>
-                    <li class="list-group-item">Prepare meeting notes</li>
-                    <li class="list-group-item">Review project timeline</li>
                 </ul>
                 <input type="text" id="newTaskInput" class="form-control mb-2" placeholder="Add a new task">
                 <button class="btn btn-primary" onclick="addTask()">Add Task</button>
