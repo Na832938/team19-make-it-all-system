@@ -15,6 +15,5 @@
 .login-box {
   padding: var(--space-xl);
   width: 100%;
-  max-width: 400px;
   text-align: center;
 }

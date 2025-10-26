@@ -37,8 +37,8 @@ export default function LoginPage() {
   };
 
    return (
-    <div>
-      <div>
+    <div className="login-container">
+      <div className="login-box">
         <h1 className="login-heading">Login</h1>
 
         <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
