@@ -1,7 +1,9 @@
-// src/components/posts/PostForm.jsx
 import { useState } from "react";
-import { TextInput, TextArea, Button } from "../common";
-import './PostForm.css';
+import TextInput from "../common/TextInput";
+import TextArea from "../common/TextArea";
+import Button from "../common/Button";
+import Label from "../common/Label";
+import "./PostForm.css";
 
 export default function PostForm({ onCreate }) {
   const [title, setTitle] = useState("");
@@ -16,24 +18,28 @@ export default function PostForm({ onCreate }) {
   };
 
   return (
-    <form className="post-form" onSubmit={handleSubmit} autoComplete="off">
-      <TextInput
-        type="text"
-        placeholder="Post Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <TextArea
-        rows={4}
-        placeholder="Post Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        required
-      />
-      <Button type="submit">
-        Create Post
-      </Button>
+    <form className="card-vertical" onSubmit={handleSubmit} autoComplete="off">
+      <Label text="Post Title:">
+        <TextInput
+          type="text"
+          placeholder="Enter post title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </Label>
+
+      <Label text="Content:">
+        <TextArea
+          rows={5}
+          placeholder="Write your content here"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        />
+      </Label>
+
+      <Button type="primary">Create Post</Button>
     </form>
   );
 }

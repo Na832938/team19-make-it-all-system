@@ -1,13 +1,15 @@
-// src/components/dashboard/EmployeeDashboard.jsx
 import { useState } from "react";
 import { ProgressBar, Card } from "../common";
 import TodoPage from "../tasks/TodoPage.jsx";
-import TopicForm from "../topics/TopicForm.jsx";
-import PostList from "../posts/PostList.jsx";
-import TaskForm from "../tasks/TaskForm.jsx";
+import TopicPage from "../topics/TopicPage.jsx";
+import PostPage from "../posts/PostPage.jsx";
+import Sidebar from "./Sidebar.jsx";
+import Navbar from "./Navbar";
 import "./EmployeeDashboard.css";
 
 export default function EmployeeDashboard() {
+  const [activeSection, setActiveSection] = useState("dashboard");
+
   const [employee] = useState({
     name: "John Doe",
     position: "Software Engineer",
@@ -21,64 +23,55 @@ export default function EmployeeDashboard() {
     { title: "Review code", completed: false },
   ]);
 
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((t) => t.completed).length;
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-
-  const [topics, setTopics] = useState([]);
   const [posts, setPosts] = useState([]);
-
-  const handleCreateTopic = (topic) => setTopics(prev => [...prev, topic]);
   const handleCreatePost = (post) => setPosts(prev => [post, ...prev]);
 
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((t) => t.completed).length;
+  const progress = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
   return (
-    <div className="dashboard-container vertical-center">
-      <div className="grid-container">
-        <Card vertical={true}>
-          <h2>Task Completion Progress</h2>
-          <ProgressBar value={progress} label={`${progress}%`} />
-        </Card>
+    <div className="app">
+      <Navbar user={employee} />
+      <div className="app-body">
+        <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 
-        <Card vertical={true}>
-          <h2>Employee Information</h2>
-          <p><strong>Name:</strong> {employee.name}</p>
-          <p><strong>Position:</strong> {employee.position}</p>
-          <p><strong>Department:</strong> {employee.department}</p>
-        </Card>
+        <main className="app-main">
+          {activeSection === "dashboard" && (
+            <div className="dashboard-grid">
 
-        <Card vertical={true}>
-          <h2>Task Overview</h2>
-          <p>You have {totalTasks} tasks assigned.</p>
-          <ul>
-            {tasks.map((t, i) => (
-              <li key={i}>{t.title} — {t.completed ? "Done" : "Pending"}</li>
-            ))}
-          </ul>
-        </Card>
+              <Card vertical>
+                <h2>Employee Information</h2>
+                <p><strong>Name:</strong> {employee.name}</p>
+                <p><strong>Position:</strong> {employee.position}</p>
+                <p><strong>Department:</strong> {employee.department}</p>
+              </Card>
 
-        
-          <Card vertical={true}>
-            <h2>Topic & Post Sharing</h2>
-            <TopicForm onCreate={handleCreateTopic} />
-          </Card>
-       
+              <Card vertical>
+                <h2>Task Overview</h2>
+                <p>You have {totalTasks} tasks assigned.</p>
+                <ul>
+                  {tasks.map((t, i) => (
+                    <li key={i}>
+                      {t.title} — {t.completed ? "Done" : "Pending"}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
 
-          <Card vertical={true}>
-            <h2>Task Creation</h2>
-            <TaskForm onCreate={handleCreateTopic} />
-          </Card>
-        
+              <Card vertical>
+                <h2>Task Completion & Metrics</h2>
+                <ProgressBar value={progress} label={`${progress}%`} />
+                <p>Completed Tasks: {completedTasks}</p>
+                <p>Pending Tasks: {totalTasks - completedTasks}</p>
+              </Card>
+            </div>
+          )}
 
-        <Card vertical={true}>
-          <h2> Posts </h2>
-          <PostList posts={posts} />
-        </Card>
-
-        <Card vertical={false} className="full-width-card">
-          <h2>Detailed Task Management</h2>
-          <TodoPage />
-        </Card>
-        
+          {activeSection === "todo" && <TodoPage />}
+          {activeSection === "topics" && <TopicPage />}
+          {activeSection === "posts" && <PostPage />}
+        </main>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ const users = [
 ];
 
 export default function LoginPage() {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -36,22 +35,28 @@ export default function LoginPage() {
     }
   };
 
-   return (
-    
-      <div className="vertical-center">
-        <Card>
-            <h2> Login </h2>
-
-              <TextInput type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-              <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-              <Button type="primary" onClick={login}>Login</Button>
-              <div style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
-                Don't have an account? <Link to="/register">Register here</Link>
-              </div>
-
-              <div className="" style={{ color: msgColor }}>{message}</div>
-        </Card>
+  return (
+    <div className="vertical-center">
+      <Card useContainer={false}>
+        <h2>Login</h2>
+        <TextInput
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <TextInput
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <Button type="primary" onClick={login}>Login</Button>
+        <div className="auth-link">
+          Don&apos;t have an account? <Link to="/register">Register here</Link>
+        </div>
+        <div className="auth-message" style={{ color: msgColor }}>{message}</div>
+      </Card>
     </div>
-
   );
 }

@@ -7,3 +7,4 @@ export { default as TextArea } from './TextArea.jsx';
 export { default as Label } from './Label.jsx';
 export { default as ProgressBar } from './ProgressBar.jsx';
 export { default as Card } from './Card.jsx';
+export { default as Dropdown } from './Dropdown.jsx';

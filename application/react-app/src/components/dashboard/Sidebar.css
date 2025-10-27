@@ -1,0 +1,38 @@
+.app-sidebar {
+  background: var(--surface-colour-alt);
+  border-right: 1px solid var(--border-neutral-colour);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.app-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.app-sidebar button {
+  color: var(--text-muted-colour);
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.app-sidebar button:hover {
+  color: var(--text-colour);
+  background: var(--surface-colour);
+}
+
+.app-sidebar button.active {
+  color: var(--primary-colour);
+  font-weight: 600;
+  background: var(--surface-colour);
+}

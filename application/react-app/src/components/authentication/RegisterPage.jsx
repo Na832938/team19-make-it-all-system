@@ -62,7 +62,7 @@ export default function RegisterPage() {
 
   return (
     <div className="vertical-center">
-      <Card vertical={true}>
+      <Card vertical={true} useContainer={false}>
         <h2>Register Account</h2>
         <TextInput type="text" placeholder="Username (must match employee)" value={username} onChange={e => setUsername(e.target.value)} />
         <TextInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />

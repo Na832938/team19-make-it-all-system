@@ -1,11 +1,11 @@
-// TodoPage.jsx
 import { useState } from 'react';
 import TaskForm from './TaskForm.jsx';
 import TaskControls from './TaskControls.jsx';
 import TaskList from './TaskList.jsx';
-import Card from "../common/Card";
+import Card from '../common/Card.jsx';
+import './TodoPage.css';
 
-export default function TodoPage() {
+function TodoPage() {
   const [tasks, setTasks] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [filters, setFilters] = useState({ status: 'All', priority: 'All', q: '', sort: 'none' });
@@ -27,7 +27,7 @@ export default function TodoPage() {
     });
 
   const addTask = (task) => {
-    const id = (window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : Date.now().toString() + Math.random().toString(16).slice(2));
+    const id = (window.crypto?.randomUUID?.() ?? Date.now().toString() + Math.random().toString(16).slice(2));
     setTasks([...tasks, { ...task, id, status: 'To Do' }]);
   };
 
@@ -42,24 +42,38 @@ export default function TodoPage() {
   };
 
   return (
-    <div className="horizontal-center">
-      <Card vertical={true} className="card-container">
-        <h2>Add Task</h2>
-        <TaskForm onAdd={addTask} />
-      </Card>
+      <div className="todo-page">
+  <div className="todo-cards">
 
-      <Card vertical={true} className="card-container">
+    {/* Top form card */}
+    <Card className="card-vertical">
+      <h2>Add Task</h2>
+      <TaskForm onAdd={addTask} />
+    </Card>
+
+    {/* Full-width tasks card */}
+    <Card vertical className="full-width-card">
+      <h2>Tasks</h2>
+      <div className="horizontal-center" style={{ marginBottom: "1rem" }}>
         <TaskControls filters={filters} onChange={setFilters} />
-        <TaskList
-          tasks={filteredTasks}
-          editingId={editingId}
-          onEdit={setEditingId}
-          onDelete={deleteTask}
-          onSave={() => setEditingId(null)}
-          onCancel={() => setEditingId(null)}
-          onStatusChange={changeStatus}
-        />
-      </Card>
-    </div>
-  );
+      </div>
+
+      <TaskList
+        tasks={filteredTasks}
+        editingId={editingId}
+        onEdit={setEditingId}
+        onDelete={deleteTask}
+        onSave={() => setEditingId(null)}
+        onCancel={() => setEditingId(null)}
+        onStatusChange={changeStatus}
+      />
+    </Card>
+
+  </div>
+</div>
+
+    );
+
 }
+
+export default TodoPage;

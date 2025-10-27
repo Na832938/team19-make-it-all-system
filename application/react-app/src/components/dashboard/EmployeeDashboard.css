@@ -1,25 +1,70 @@
-/* src/components/dashboard/EmployeeDashboard.css */
+/* ===============================
+   EMPLOYEE DASHBOARD — CORE GRID
+   =============================== */
 
-.dashboard-header {
-  text-align: center;
-  margin-bottom: var(--space-lg);
-  font-size: var(--font-size-heading-lg);
+/* Root application wrapper */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--secondary-colour);
   color: var(--primary-text-colour);
+  gap: var(--space-md);
+   padding: var(--space-md);
 }
 
-.dashboard-container {
+/* -------------------------------
+   BODY GRID
+   ------------------------------- */
+.app-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 70px);
+  background: var(--secondary-colour);
+  overflow: hidden;
+}
+
+/* -------------------------------
+   MAIN CONTENT AREA
+   ------------------------------- */
+.app-main {
+  padding: var(--space-sm);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-sm);
+  overflow-y: auto;
+}
+
+/* -------------------------------
+   DASHBOARD CARD GRID
+   ------------------------------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   width: 100%;
-  padding: var(--space-md);
+  gap: var(--space-sm);
 }
 
-/* Only override grid specifics unique to this page */
-.grid-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* -------------------------------
+   RESPONSIVE LAYOUT
+   ------------------------------- */
+@media (max-width: 1024px) {
+  .app-body {
+    grid-template-columns: 200px 1fr;
+  }
 }
 
-/* Last card spans full width in the grid */
-.full-width-card {
-  grid-column: 1 / -1;
+@media (max-width: 900px) {
+  .app-body {
+    grid-template-columns: 1fr;
+  }
+
+  .app-main {
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }

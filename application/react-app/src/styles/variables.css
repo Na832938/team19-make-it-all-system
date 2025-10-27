@@ -1,20 +1,25 @@
 :root {
 
-  /* Global colour schemes */
-  --primary-colour: #1a73e8;
-  --primary-hover: #1558b0;
-  --secondary-colour: #f5f7fa;
-  --secondary-hover: #e4e6eb;
-  --surface-colour: #ffffff;
-  --primary-text-colour: #202124;
-  --secondary-text-colour: #5f6368;
-  --border-neutral-colour: #dadce0;
-  --success-colour: #34a853;
-  --error-colour: #ea4335;
-  --danger-colour: #dc2626;
-  --danger-hover: #b91c1c;
-  --focus-colour: #1a73e8;
-  --disabled-colour: #cccccc;
+  /* Global Colour Palette */
+  --primary-colour: #1a73e8;       /* Keep: strong blue for actions */
+  --primary-hover: #1669c1;        /* Slightly darker for hover */
+  --secondary-colour: #f1f3f4;     /* Softer neutral for backgrounds */
+  --secondary-hover: #e2e4e6;      /* Light hover effect */
+  --surface-colour: #ffffff;       /* Cards, surfaces */
+  --primary-text-colour: #202124;  /* Main text */
+  --secondary-text-colour: #5f6368;/* Subtext */
+  --border-neutral-colour: #e0e0e0;/* Slightly softer than #dadce0 */
+  --success-colour: #34a853;       /* Actions like completed tasks */
+  --error-colour: #ea4335;         /* Error states */
+  --danger-colour: #d93025;        /* Strong red for critical */
+  --danger-hover: #b71c1c;         /* Hover on danger buttons */
+  --focus-colour: #1a73e8;         /* Form focus outlines */
+  --disabled-colour: #d1d1d1;      /* Disabled inputs/buttons */
+
+  /* Shadows remain the same for cards */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 2px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
 
   /* Typography */
   --font-family-base: 'Ubuntu', sans-serif;
@@ -24,11 +29,11 @@
   --font-size-caption: 0.875rem;   /* 14px → 0.875rem */
 
   /* Spacing */
-  --space-xs: 0.25rem;  /* 4px → 0.25rem */
-  --space-sm: 0.5rem;   /* 8px → 0.5rem */
-  --space-md: 1rem;     /* 16px → 1rem */
-  --space-lg: 1.5rem;   /* 24px → 1.5rem */
-  --space-xl: 2rem;     /* 32px → 2rem */
+  --space-xs: 0.5rem;  /* 4px → 0.25rem */
+  --space-sm: 1.0rem;   /* 8px → 0.5rem */
+  --space-md: 1.5rem;     /* 16px → 1rem */
+  --space-lg: 2.0rem;   /* 24px → 1.5rem */
+  --space-xl: 2.5rem;     /* 32px → 2rem */
 
   /* Radius */
   --radius-sm: 0.25rem; /* 4px → 0.25rem */

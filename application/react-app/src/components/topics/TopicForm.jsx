@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import TextInput from '../common/TextInput';
-import Button from '../common/Button';
-import Label from '../common/Label';
-import Card from '../common/Label';
-import TextArea from '../common/TextArea';
+import {TextInput, Button, TextArea} from '../common';
 import './TopicForm.css';
 
 export default function TopicForm({ onCreate }) {
@@ -31,30 +27,28 @@ export default function TopicForm({ onCreate }) {
     setTimeout(() => setMessage(''), 1500);
   };
 
-  return (
+    return (
 
-        <form className="topic-form" onSubmit={handleSubmit} autoComplete="off">
-      
-            <TextInput
-              type="text"
-              placeholder="Enter topic title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-      
+        <form className="card-vertical" onSubmit={handleSubmit} autoComplete="off">
+          <TextInput
+            type="text"
+            placeholder="Enter topic title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
 
-          
-            <TextArea
-              placeholder="Enter topic description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              rows={5}
-            />
-          
+          <TextArea
+            placeholder="Enter topic description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            rows={5}
+          />
 
           <Button type="primary">Create Topic</Button>
 
           {message && <p className="form-message">{message}</p>}
         </form>
-  );
+    
+    );
+
 }

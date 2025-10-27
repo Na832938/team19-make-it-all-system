@@ -1,3 +1,6 @@
+/* ===============================
+   GLOBAL BASE STYLES
+   =============================== */
 
 * {
   box-sizing: border-box;
@@ -10,37 +13,33 @@ body {
   background-color: var(--secondary-colour);
   color: var(--primary-text-colour);
   font-size: var(--font-size-body);
-  font-weight: 400;
+  line-height: 1.5;
 }
 
+/* ===============================
+   LAYOUT UTILITIES
+   =============================== */
 
-
-/* Vertical container: centers children vertically and horizontally */
 .vertical-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* full viewport height */
-  background-color: var(--secondary-colour);
+  min-height: 100vh;
 }
 
-/* Horizontal container: constrains content width and centers horizontally */
 .horizontal-center {
-  /* or your preferred container width */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
   width: 100%;
+  padding: 0 var(--space-md);
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-lg);
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-md);
@@ -49,7 +48,65 @@ body {
 @media (max-width: 600px) {
   .grid-container {
     grid-template-columns: 1fr;
-    padding: var(--space-sm);
     gap: var(--space-md);
+  }
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===============================
+   DESIGN TOKENS
+   =============================== */
+
+:root {
+  --primary-colour: #1a73e8;
+  --primary-hover: #1558b0;
+  --secondary-colour: #f5f7fa;
+  --surface-colour: #ffffff;
+  --primary-text-colour: #202124;
+  --secondary-text-colour: #5f6368;
+  --border-neutral-colour: #dadce0;
+  --success-colour: #34a853;
+  --error-colour: #ea4335;
+  --danger-colour: #dc2626;
+  --danger-hover: #b91c1c;
+  --focus-colour: #1a73e8;
+  --disabled-colour: #cccccc;
+
+  --font-family-base: 'Ubuntu', sans-serif;
+  --font-size-heading-lg: 2rem;
+  --font-size-heading-md: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-caption: 0.875rem;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================
+   TYPOGRAPHIC RESPONSIVENESS
+   =============================== */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-heading-lg: 1.75rem;
+    --font-size-heading-md: 1.25rem;
+    --font-size-body: 0.95rem;
+    --space-md: 0.75rem;
+    --space-lg: 1rem;
   }
 }

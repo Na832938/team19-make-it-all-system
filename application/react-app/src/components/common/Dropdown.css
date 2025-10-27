@@ -1,0 +1,35 @@
+.dropdown {
+  position: absolute;
+  background: var(--surface-colour-alt);
+  border: 1px solid var(--border-neutral-colour);
+  border-radius: 6px;
+  padding: 0; /* remove top/bottom padding to match height exactly */
+  height: calc(var(--space-lg) + 0.5rem); /* same as text-input */
+  top: 0; /* align vertically with input, adjust if needed */
+  right: 0; /* adjust according to your layout */
+  z-index: 1000;
+  display: flex;
+  align-items: center; /* centers button content vertically */
+}
+
+.dropdown button {
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;  /* fill parent dropdown height */
+  padding: 0 1rem; /* horizontal padding only */
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-colour);
+  display: flex;
+  align-items: center; /* vertically center text */
+}
+
+
+.dropdown button:hover {
+  background-color: var(--surface-colour);
+}
+.dropdown button:focus {
+  outline: none;
+  background-color: var(--surface-colour);
+}

@@ -1,9 +1,8 @@
-// PostPage.jsx
 import { useState } from "react";
 import PostForm from "./PostForm";
 import PostList from "./PostList";
 import Card from "../common/Card";
-import './PostPage.css';
+import "./PostPage.css";
 
 export default function PostPage() {
   const [posts, setPosts] = useState([
@@ -12,21 +11,21 @@ export default function PostPage() {
     { id: 3, topic: "Printing", title: "PRINTING PAPER", content: "PLEASE REFILL PRINTER WHEN YOU USE THE LAST SHEETS OF PAPER !!!!" }
   ]);
 
-  const handleCreate = (newPost) => {
-    setPosts([newPost, ...posts]); // newest on top
-  };
+  const handleCreate = (newPost) => setPosts([newPost, ...posts]);
 
   return (
-    <div className="vertical-center">
-      <Card vertical={true} className="card-container">
-        <h2>Create Post</h2>
-        <PostForm onCreate={handleCreate} />
-      </Card>
+    <div className="post-page">
+      <div className="dashboard-grid">
+        <div>
+          <h2>Create Post</h2>
+          <PostForm onCreate={handleCreate} />
+        </div>
 
-      <Card vertical={true} className="card-container">
-        <h2>Topic Feed</h2>
-        <PostList posts={posts} />
-      </Card>
+        <Card className="card-vertical full-width-card">
+          <h2>Post Feed</h2>
+          <PostList posts={posts} />
+        </Card>
+      </div>
     </div>
   );
 }
