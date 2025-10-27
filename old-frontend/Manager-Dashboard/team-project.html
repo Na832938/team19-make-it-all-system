@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" context="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        </script>
+        <title>Manager Dashboard</title>
+        <style>
+
+            .filter {
+                position: absolute; top: 10px; right: 10px;
+            }
+            
+
+            .test-chart {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 30px;
+                box-shadow: 0 2px 6px rgba (0, 0, 0, 0.1);
+                
+            }
+
+         
+
+            .chart-container {
+                width: 40%;
+                min-width: 200px;
+                border: 1px solid #000;
+                background: #FAF9F6;
+                
+
+            }
+
+            .team-member-info {
+                background: #FAF9F6;
+                border: 1px solid #000;
+            }
+
+  
+
+        </style>
+    </head>
+    <body>
+
+        <button class="filter">Filer Search</button>
+
+        <div class="test-chart">
+            <div class="chart-container">
+                <canvas id="chart1"></canvas>
+            </div>
+            <div class="team-member-info">
+                <h3>Team member workload for project 1</h3>
+                <ul>
+                    <li>John: Task 1, Task 4</li>
+                    <li>David: Task 2, Task 3</li>
+                    <li>Alice: Task 5, Task 8</li>
+                    <li>Susan: Task 7, Task 6</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-chart">
+            <div class="chart-container">
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="team-member-info">
+                <h3>Team member workload for project 2</h3>
+                <ul>
+                    <li>Paula: Task 5, Task 2</li>
+                    <li>Jason: Task 3</li>
+                    <li>Linda: Task 1, Task 4</li>
+                    <li>Samuel: Task 6, Task 7</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-chart">
+            <div class="chart-container">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="team-member-info">
+                <h3>Team member workload for project 3</h3>
+                <ul>
+                    <li>Bryce: Task 4, Task 3</li>
+                    <li>Anderson: Task 2, Task 6</li>
+                    <li>Imogen: Task 5, Task 1</li>
+                    <li>Jamal: Task 7</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <script>
+            new Chart(document.getElementById('chart1'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Incomplete'],
+                    datasets: [{
+                        data: [73, 27],
+                        backgroundColor: ['#36A2EB', '#FF6384'],
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: 'Project 1' }
+                    
+                    }
+                }
+            });
+        </script>
+
+                <script>
+            new Chart(document.getElementById('chart2'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Incomplete'],
+                    datasets: [{
+                        data: [12, 88],
+                        backgroundColor: ['#36A2EB', '#FF6384'],
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: 'Project 2' }
+                    
+                    }
+                }
+            });
+        </script>
+
+                <script>
+            new Chart(document.getElementById('chart3'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Incomplete'],
+                    datasets: [{
+                        data: [98, 2],
+                        backgroundColor: ['#36A2EB', '#FF6384'],
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: 'Project 3' }
+                    
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
