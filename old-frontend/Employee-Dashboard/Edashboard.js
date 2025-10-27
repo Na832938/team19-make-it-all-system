@@ -7,8 +7,6 @@ function sharePost() {
     const post = postInput.value.trim();
     const wordCount = post.split(/\s+/).filter(word => word.length > 0).length;
 
-
-
     if (!topic) {
         alert('Please enter a topic before sharing your post.');
         return;
@@ -18,9 +16,9 @@ function sharePost() {
         alert('Please enter a post before sharing.');
         return;
     }
-
+    
     if (!topic && !post) {
-        alert('Please enter both a topic and a post before attempting to share.');
+        alert('Please enter both a topic and a post before sharing.');
         return;
     }
 
@@ -37,6 +35,26 @@ function sharePost() {
     topicInput.value = '';
     postInput.value = '';
 }
-// Event listener for the share button
 document.getElementById('shareButton').addEventListener('click', sharePost);
+
+function notes() {
+    const notesInput = document.getElementById('notesInput');
+    const notesList = document.getElementById('notesList');
+    const sharedNotes = document.getElementById('sharedNotes');
+
+    const note = notesInput.value.trim();
+
+    if (!note) {
+        alert('Please enter a note before adding.');
+        return;
+    }
+
+    const noteElement = document.createElement('li');
+    noteElement.className = 'list-group-item';
+    noteElement.textContent = note;
+    notesList.appendChild(noteElement);
+
+    notesInput.value = '';
+}
+document.getElementById('notesButton').addEventListener('click', notes);
 

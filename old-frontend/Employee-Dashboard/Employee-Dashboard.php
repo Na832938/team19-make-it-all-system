@@ -1,9 +1,12 @@
+
 <?php
+session_start();
+
 // Simulated data (in real use, this would come from a database)
 $tasks = [
-    ["Finish report", true],
+    ["Finish report", false],
     ["Attend team meeting", false],
-    ["Update project plan", true],
+    ["Update project plan", false],
     ["Review code", false]
 ];
 
@@ -13,7 +16,13 @@ $completedTasks = count(array_filter($tasks, function($task) {
 }));
 
 $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
+
+// Get employee info from session
+$employeeName = $_SESSION['employee_name'] ?? 'N/A';
+$employeePosition = $_SESSION['employee_position'] ?? 'N/A';
+$employeeDepartment = $_SESSION['employee_department'] ?? 'N/A';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,11 +64,12 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
         <div class="card mt-4">
             <div class="card-header">Employee Information</div>
             <div class="card-body">
-                <p>Name: </p>
-                <p>Position: </p>
-                <p>Department: </p>
+                <p><strong>Name:</strong> <?= htmlspecialchars($employeeName) ?></p>
+                <p><strong>Position:</strong> <?= htmlspecialchars($employeePosition) ?></p>
+                <p><strong>Department:</strong> <?= htmlspecialchars($employeeDepartment) ?></p>
             </div>
         </div>
+
 
         <!-- Task Overview Section -->
         <div class="card mt-4">
@@ -79,9 +89,19 @@ $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
                 <div id="sharedPosts" class="mt-3"></div>
             </div>
         </div>
+
+        <!-- notes sharing sections -->
+        <div class="card mt-4">
+            <div class="card-header">Notes</div>
+            <div class="card-body">
+                <textarea id="notesInput" class="form-control mb-2" rows="2" placeholder="Write your notes"></textarea>
+                <button id="notesButton" class="btn btn-success">Add Notes</button>
+                <ul id="notesList" class="lis-group mt-3"></ul>
+            </div>
+        </div>
     </div>
 
     <!-- Link to external JS -->
-    Edashboard.js</script>
+    <script src="Edashboard.js"></script>
 </body>
 </html>
