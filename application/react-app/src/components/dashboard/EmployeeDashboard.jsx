@@ -5,6 +5,7 @@ import TopicPage from "../topics/TopicPage.jsx";
 import PostPage from "../posts/PostPage.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar";
+import Footer from "./Footer.jsx";
 import "./EmployeeDashboard.css";
 
 export default function EmployeeDashboard() {
@@ -73,6 +74,7 @@ export default function EmployeeDashboard() {
           {activeSection === "posts" && <PostPage />}
         </main>
       </div>
+        <Footer></Footer>
     </div>
   );
 }
