@@ -1,5 +1,5 @@
 .dropdown {
-  position: absolute;
+  position: relative;
   background: var(--surface-colour-alt);
   border: 1px solid var(--border-neutral-colour);
   border-radius: 6px;

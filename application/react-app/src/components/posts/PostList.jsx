@@ -1,52 +1,45 @@
 // PostList.jsx
-import "./PostList.css";
+import ListSection from "../common/ListSection";
 
-export default function PostList({ posts }) {
-  if (!posts || posts.length === 0) {
-    return <div className="no-posts">No posts available.</div>;
-  }
-
+export default function PostList({ posts, onView, onEdit, onDelete }) {
   return (
-    <section className="post-section">
-      <div className="post-section-header">
-        <h2>Latest Posts</h2>
-        <div className="post-filter-info">
-          <p>{posts.length} posts</p>
-        </div>
-      </div>
-
-      <div className="post-card">
-        <div className="post-list">
-          {posts.map((post) => (
-            <div key={post.id} className="post-row">
-              <div className="post-icon">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/3039/3039388.png"
-                  alt="Post icon"
-                />
-              </div>
-
-              <div className="post-details">
-                <h3>{post.title}</h3>
-                <p className="post-topic">{post.topic}</p>
-                <p className="post-content">{post.content}</p>
-              </div>
-
-              <div className="post-actions">
-                <button className="icon-button" title="View">
-                  <i className="ph-eye"></i>
-                </button>
-                <button className="icon-button" title="Edit">
-                  <i className="ph-pencil"></i>
-                </button>
-                <button className="icon-button" title="Delete">
-                  <i className="ph-trash"></i>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <ListSection
+      title="Latest Posts"
+      items={posts}
+      iconUrl="https://cdn-icons-png.flaticon.com/512/3039/3039388.png"
+      emptyMessage="No posts available."
+      renderDetails={(post) => (
+        <>
+          <h3>{post.title}</h3>
+          <p className="post-topic">{post.topic}</p>
+          <p className="post-content">{post.content}</p>
+        </>
+      )}
+      renderActions={(post) => (
+        <>
+          <button
+            className="icon-button"
+            onClick={() => onView(post.id)}
+            title="View"
+          >
+            <i className="ph-eye"></i>
+          </button>
+          <button
+            className="icon-button"
+            onClick={() => onEdit(post.id)}
+            title="Edit"
+          >
+            <i className="ph-pencil"></i>
+          </button>
+          <button
+            className="icon-button"
+            onClick={() => onDelete(post.id)}
+            title="Delete"
+          >
+            <i className="ph-trash"></i>
+          </button>
+        </>
+      )}
+    />
   );
 }

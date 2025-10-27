@@ -1,0 +1,102 @@
+/* ListSection.css — topic styles converted to generic list styles */
+
+.list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.list-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.list-card {
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.list-row:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.list-icon img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.list-details {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.list-details dt,
+.list-details h3 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.list-details dd,
+.list-details p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.list-action {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.list-link {
+  color: #007bff;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #007bff;
+}
+
+.no-items {
+  text-align: center;
+  padding: 1rem;
+  color: #777;
+  font-size: 0.95rem;
+}
