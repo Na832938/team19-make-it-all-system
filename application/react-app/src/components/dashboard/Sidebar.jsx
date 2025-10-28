@@ -6,6 +6,7 @@ export default function Sidebar({ activeSection, setActiveSection }) {
     { key: "todo", label: "Tasks" },
     { key: "topics", label: "Topics" },
     { key: "posts", label: "Posts" },
+    { key: "KnowledgeBase", label: "Knowledge Base" }
   ];
 
   return (

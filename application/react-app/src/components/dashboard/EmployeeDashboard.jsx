@@ -3,6 +3,7 @@ import { ProgressBar, Card } from "../common";
 import TodoPage from "../tasks/TodoPage.jsx";
 import TopicPage from "../topics/TopicPage.jsx";
 import PostPage from "../posts/PostPage.jsx";
+import KnowledgeBase from "../knowledge-base/KnowledgeBase.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar";
 import Footer from "./Footer.jsx";
@@ -72,6 +73,7 @@ export default function EmployeeDashboard() {
           {activeSection === "todo" && <TodoPage />}
           {activeSection === "topics" && <TopicPage />}
           {activeSection === "posts" && <PostPage />}
+          {activeSection === "KnowledgeBase" && <KnowledgeBase />}
         </main>
       </div>
         <Footer></Footer>
