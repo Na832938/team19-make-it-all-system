@@ -5,12 +5,14 @@
 /* Root wrapper */
 .app {
   display: flex;
+  position: fixed;
   flex-direction: column;
-  min-height: 100vh;
   background: var(--secondary-colour);
   color: var(--primary-text-colour);
   gap: var(--space-md);
   padding: var(--space-md);
+  height: 98%;
+  width: 98%;
 }
 
 /* -------------------------------
@@ -18,9 +20,8 @@
    ------------------------------- */
 .app-body {
   display: grid;
-  grid-template-columns: 240px 1fr 300px;
+  grid-template-columns: 240px 1fr 200px;
   gap: var(--space-md);
-  min-height: calc(100vh - 70px);
   overflow: hidden;
 }
 
@@ -33,7 +34,7 @@
   grid-template-rows: auto 1fr;
   gap: var(--space-sm);
   overflow-y: scroll;
-  width: 100%;
+  width: 120%;
 }
 
 /* -------------------------------
