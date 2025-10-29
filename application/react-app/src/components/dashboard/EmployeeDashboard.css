@@ -28,10 +28,12 @@
    MAIN CONTENT AREA
    ------------------------------- */
 .app-body-main-content {
+  padding: var(--space-sm);
   display: grid;
   grid-template-rows: auto 1fr;
   gap: var(--space-sm);
-  overflow-y: auto;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 /* -------------------------------

@@ -38,7 +38,7 @@ export default function EmployeeDashboard() {
       <div className="app-body">
         <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 
-        <main className="app-main">
+        <main className="app-body-main-content">
           {activeSection === "dashboard" && (
             <div className="dashboard-grid">
 
