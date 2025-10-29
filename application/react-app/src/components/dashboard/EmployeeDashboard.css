@@ -35,6 +35,7 @@
   gap: var(--space-sm);
   overflow-y: scroll;
   width: 120%;
+  margin-bottom:9.7% ;
 }
 
 /* -------------------------------
