@@ -7,6 +7,13 @@
   border-bottom: 1px solid var(--border-neutral-colour);
 }
 
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
 .app-header-navigation a {
   margin-right: 1.5rem;
   text-decoration: none;

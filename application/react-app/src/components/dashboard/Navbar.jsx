@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "../common";
+import { Dropdown, Button } from "../common";
 import "./Navbar.css";
 
 export default function Navbar({ user }) {
@@ -8,7 +8,6 @@ export default function Navbar({ user }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear auth (localStorage/session/etc.)
     localStorage.removeItem("user");
     navigate("/login");
   };
@@ -18,23 +17,26 @@ export default function Navbar({ user }) {
       <div className="app-header-logo">
         <h1>Make it all</h1>
       </div>
-      <div className="app-header-navigation">
-     
 
+      <div className="app-header-navigation">
+        {/* navigation links */}
       </div>
+
       <div className="app-header-actions">
-        <button
-          className="user-profile"
-          onClick={() => setOpen(!open)}
-        >
+        <Button type="primary" className="user-profile" onClick={() => setOpen(!open)}>
           <span>{user.name}</span>
           <span>
             <img src="/avatar-placeholder.png" alt="avatar" />
           </span>
-        </button>
-          <Dropdown isOpen={open}>
-            <button onClick={handleLogout}>Logout</button>
-          </Dropdown>
+        </Button>
+
+        <Dropdown isOpen={open}>
+          <div className="dropdown-user-info">
+            <img src="/avatar-placeholder.png" alt="avatar" />
+            <span>{user.name}</span>
+          </div>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Dropdown>
       </div>
     </header>
   );

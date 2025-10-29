@@ -1,35 +1,68 @@
 .dropdown {
-  position: relative;
-  background: var(--surface-colour-alt);
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  right: 0;
+  display: none;
+  flex-direction: column;
+  background: var(--secondary-colour);
   border: 1px solid var(--border-neutral-colour);
-  border-radius: 6px;
-  padding: 0; /* remove top/bottom padding to match height exactly */
-  height: calc(var(--space-lg) + 0.5rem); /* same as text-input */
-  top: 0; /* align vertically with input, adjust if needed */
-  right: 0; /* adjust according to your layout */
-  z-index: 1000;
-  display: flex;
-  align-items: center; /* centers button content vertically */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md);
+  min-width: 200px;
+  z-index: 10;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
 }
 
-.dropdown button {
-  background: transparent;
-  border: none;
-  width: 100%;
-  height: 100%;  /* fill parent dropdown height */
-  padding: 0 1rem; /* horizontal padding only */
-  text-align: left;
+.dropdown.open {
+  display: flex;
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-neutral-colour);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--primary-text-colour);
+}
+
+.dropdown-user-info img {
+  width: 2rem; /* 32px */
+  height: 2rem;
+  border-radius: var(--radius-lg);
+}
+
+.user-profile {
+  background: var(--primary-colour);
+  color: var(--surface-colour);
+  border: 1px solid var(--primary-colour);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-md);
   cursor: pointer;
-  color: var(--text-colour);
   display: flex;
-  align-items: center; /* vertically center text */
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 600;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.dropdown button:hover {
-  background-color: var(--surface-colour);
+.user-profile:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-lg);
 }
-.dropdown button:focus {
-  outline: none;
-  background-color: var(--surface-colour);
+
+.user-profile span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.user-profile img {
+  width: 2rem; /* 32px */
+  height: 2rem;
+  border-radius: var(--radius-lg);
 }
