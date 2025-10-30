@@ -1,4 +1,5 @@
 import SubjectList from './KnowledgeItem.jsx';
+import Card from '../common/Card.jsx';
 
 const subjects = [
   { id: 1, Question: "How to order printing paper ?", description: "Just send an email to HR " },
@@ -10,10 +11,10 @@ export default function KnowledgeBase() {
   return (
     <div className="knowledge-page">
       <div className="dashboard-grid">
-        <div className="full-width-card">
+        <Card className="card-vertical full-width-card">
           <h2>Subjects</h2>
           <SubjectList subjects={subjects} />
-        </div>
+        </Card>
       </div>
     </div>
   );

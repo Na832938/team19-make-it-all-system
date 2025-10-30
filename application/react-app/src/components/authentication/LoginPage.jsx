@@ -36,9 +36,8 @@ export default function LoginPage() {
 
   return (
     <div className="vertical-center">
-      <Card useContainer={false} className="login-card">
-        <h2>Login</h2>
-        <div className="login-fields">
+      <Card vertical useContainer={false}>
+          <h2>Login</h2>
           <TextInput
             type="text"
             placeholder="Username"
@@ -52,14 +51,12 @@ export default function LoginPage() {
             onChange={e => setPassword(e.target.value)}
           />
           <Button type="primary" onClick={login}>Login</Button>
-        </div>
-        <div className="auth-link">
-          Don&apos;t have an account? <Link to="/register">Register here</Link>
-        </div>
-        <div className="auth-message" style={{ color: msgColor }}>
-          {message}
-        </div>
-      </Card>
+          <div className="auth-link">
+            Don’t have an account? <Link to="/register">Register here</Link>
+          </div>
+          {message && <div className="auth-message" style={{ color: msgColor }}>{message}</div>}
+        </Card>
+
     </div>
   );
 }
