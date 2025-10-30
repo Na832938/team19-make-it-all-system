@@ -2,7 +2,6 @@ import { useState } from "react";
 import TopicForm from "./TopicForm";
 import TopicList from "./TopicList";
 import Card from "../common/Card";
-import "./TopicPage.css";
 
 export default function TopicPage() {
   const [topics, setTopics] = useState([

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {TextInput, Button, TextArea} from '../common';
-import './TopicForm.css';
 
 export default function TopicForm({ onCreate }) {
   const [title, setTitle] = useState('');

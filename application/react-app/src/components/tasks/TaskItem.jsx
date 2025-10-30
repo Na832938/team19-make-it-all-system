@@ -1,7 +1,6 @@
 import TextInput from '../common/TextInput';
 import Select from '../common/Select';
 import Button from '../common/Button';
-import './TaskItem.css';
 
 export default function TaskItem({
   task,

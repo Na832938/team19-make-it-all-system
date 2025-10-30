@@ -1,11 +1,10 @@
 import Select from '../common/Select';
 import TextInput from '../common/TextInput';
 import Label from '../common/Label';
-import './TaskControls.css';
 
 export default function TaskControls({ filters, onChange }) {
   return (
-    <section className="controls">
+    <section className="horizontal-center" style={{ gap: 'var(--space-md)', flexWrap: 'nowrap', alignItems: 'center' }}>
       <Label text="Status:">
         <Select
           value={filters.status}

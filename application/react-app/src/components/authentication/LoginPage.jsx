@@ -1,5 +1,4 @@
 import { useState } from "react";
-import './LoginPage.css';
 import { Button, TextInput, Card } from '../common';
 import { Link } from 'react-router-dom';
 

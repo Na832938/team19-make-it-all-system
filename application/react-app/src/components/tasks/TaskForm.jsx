@@ -2,7 +2,6 @@ import TextInput from '../common/TextInput';
 import Select from '../common/Select';
 import Button from '../common/Button';
 import Label from '../common/Label';
-import './TaskForm.css';
 
 export default function TaskForm({ onAdd }) {
   const handleSubmit = (e) => {

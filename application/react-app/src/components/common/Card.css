@@ -1,8 +1,12 @@
 .card-container {
   width: 80%;
-  max-width: 100%;       /* allow responsiveness */
-  margin: var(--space-lg);
+  max-width: 100%;
+  margin: 0;
+  padding: var(--space-lg);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .card-vertical, .card-horizontal {

@@ -3,7 +3,6 @@ import TextInput from "../common/TextInput";
 import TextArea from "../common/TextArea";
 import Button from "../common/Button";
 import Label from "../common/Label";
-import "./PostForm.css";
 
 export default function PostForm({ onCreate }) {
   const [title, setTitle] = useState("");

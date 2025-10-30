@@ -1,5 +1,4 @@
 import { useState } from "react";
-import './RegisterPage.css';
 import { Button, TextInput, Card} from '../common';
 
 const users = [

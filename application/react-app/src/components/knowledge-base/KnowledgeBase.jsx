@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './KnowledgeBase.css';
 import TopicForm from "../topics/TopicForm";
 import TopicList from "../topics/TopicList";
 

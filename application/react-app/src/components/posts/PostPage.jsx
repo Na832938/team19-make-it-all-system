@@ -2,7 +2,6 @@ import { useState } from "react";
 import PostForm from "./PostForm";
 import PostList from "./PostList";
 import Card from "../common/Card";
-import "./PostPage.css";
 
 export default function PostPage() {
   const [posts, setPosts] = useState([
