@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './KnowledgeBase.css';
 import TopicForm from "../topics/TopicForm";
-import TopicList from "../topics/TopicList";
+import SubjectList from './knowledgeItem';
 
 export default function KnowledgeBase() {
 
@@ -23,7 +23,7 @@ export default function KnowledgeBase() {
     <div className="topic-page">
       <h2>Subjects</h2>
       <TopicForm onCreate={handleCreateSubject} />
-      <TopicList topics={subject} onSelect={handleSelectSubject} />
+      <SubjectList subjects={subject} onSelect={handleSelectSubject} />
     </div>
   );
 }
