@@ -4,9 +4,10 @@ import Label from '../common/Label';
 
 export default function TaskControls({ filters, onChange }) {
   return (
-    <section className="horizontal-center" style={{ gap: 'var(--space-md)', flexWrap: 'nowrap', alignItems: 'center' }}>
+    <section className="task-controls">
       <Label text="Status:">
         <Select
+          name="status"
           value={filters.status}
           onChange={e => onChange({ ...filters, status: e.target.value })}
           options={[
@@ -20,6 +21,7 @@ export default function TaskControls({ filters, onChange }) {
 
       <Label text="Priority:">
         <Select
+          name="priority"
           value={filters.priority}
           onChange={e => onChange({ ...filters, priority: e.target.value })}
           options={[
@@ -33,6 +35,7 @@ export default function TaskControls({ filters, onChange }) {
 
       <Label text="Search:">
         <TextInput
+          name="search"
           type="text"
           value={filters.q}
           onChange={e => onChange({ ...filters, q: e.target.value })}
@@ -42,6 +45,7 @@ export default function TaskControls({ filters, onChange }) {
 
       <Label text="Sort by:">
         <Select
+          name="sort"
           value={filters.sort}
           onChange={e => onChange({ ...filters, sort: e.target.value })}
           options={[

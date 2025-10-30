@@ -1,12 +1,14 @@
 import React from "react";
-import './Card.css';
+import "./Card.css";
 
-export default function Card({ children, vertical = true, useContainer = true, className = "" }) {
-  const layoutClass = vertical ? "card-vertical" : "card-horizontal";
-  const containerClass = useContainer ? "card-container" : "";
-  
+export default function Card({
+  children,
+  vertical = true,
+  className = "",
+}) {
+  const layoutClass = vertical ? "card card-vertical" : "card card-horizontal";
   return (
-    <div className={`${containerClass} ${layoutClass} ${className}`}>
+    <div className={`${layoutClass} ${className}`.trim()}>
       {children}
     </div>
   );

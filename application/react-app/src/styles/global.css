@@ -11,18 +11,15 @@ html, body, #root {
 body {
   display: flex;
   flex-direction: column;
+  font-family: var(--font-family-base);
   background: var(--surface-colour);
   color: var(--primary-text-colour);
-  font-family: var(--font-family-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-main {
+/* Main container */
+#root, main {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -43,46 +40,85 @@ main {
 .horizontal-center {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
   flex-wrap: wrap;
   width: 100%;
-  padding: 0 var(--space-md);
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-lg);
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-md);
+  padding: var(--space-lg);
+  box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
+/* Form / control alignment */
+.controls-row {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  flex-wrap: nowrap;
 }
+
+.controls-row > .flex-grow {
+  flex-grow: 1;
+}
+
+/* ===============================
+   LINKS
+   =============================== */
 
 a {
   color: var(--primary-colour);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
+  color: var(--primary-hover);
   text-decoration: underline;
 }
 
-.controls-row {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-md);
-  flex-wrap: nowrap;
-  align-items: center;
+/* ===============================
+   RESPONSIVE ADJUSTMENTS
+   =============================== */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-heading-lg: 1.75rem;
+    --font-size-heading-md: 1.25rem;
+    --font-size-body: 0.95rem;
+    --space-md: 0.75rem;
+    --space-lg: 1rem;
+  }
+
+  .grid-container {
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
 }
-.controls-row > * {
-  flex-shrink: 0;
+
+@media (max-width: 480px) {
+  .horizontal-center {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
-.controls-row > .flex-grow {
-  flex-grow: 1;
-}
+/* ===============================
+   ANIMATIONS
+   =============================== */ 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}   

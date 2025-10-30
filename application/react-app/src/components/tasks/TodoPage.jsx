@@ -4,7 +4,7 @@ import TaskControls from './TaskControls.jsx';
 import TaskList from './TaskList.jsx';
 import Card from '../common/Card.jsx';
 
-function TodoPage() {
+export default function TodoPage() {
   const [tasks, setTasks] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [filters, setFilters] = useState({
@@ -21,8 +21,7 @@ function TodoPage() {
       (t) =>
         (filters.status === 'All' || t.status === filters.status) &&
         (filters.priority === 'All' || t.priority === filters.priority) &&
-        (!filters.q ||
-          t.title.toLowerCase().includes(filters.q.toLowerCase()))
+        (!filters.q || t.title.toLowerCase().includes(filters.q.toLowerCase()))
     )
     .sort((a, b) => {
       switch (filters.sort) {
@@ -61,75 +60,35 @@ function TodoPage() {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-lg)',
-        background: 'var(--secondary-colour)',
-        color: 'var(--primary-text-colour)',
-        width: '100%',
-        boxSizing: 'border-box',
-        padding: 'var(--space-md)',
-      }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: 'var(--space-md)',
-          alignItems: 'stretch',
-          width: '100%',
-        }}
-      >
+    <div className="vertical-center" style={{ gap: 'var(--space-lg)', width: '100%' }}>
+      <div className="dashboard-grid" style={{ width: '100%' }}>
+
         <Card>
-          <h2
-            style={{
-              fontSize: 'var(--font-size-heading-md)',
-              fontWeight: 600,
-              marginBottom: 'var(--space-sm)',
-            }}
-          >
-            Add Task
-          </h2>
-          <TaskForm onAdd={addTask} />
-        </Card>
-
-        <Card style={{ gridColumn: '1 / -1', width: '100%' }}>
-          <h2
-            style={{
-              fontSize: 'var(--font-size-heading-md)',
-              fontWeight: 600,
-              marginBottom: 'var(--space-sm)',
-            }}
-          >
-            Tasks
-          </h2>
-
-          <div
-            className="horizontal-center"
-            style={{
-              marginBottom: '1rem',
-              gap: 'var(--space-md)',
-              flexWrap: 'nowrap',
-            }}
-          >
-            <TaskControls filters={filters} onChange={setFilters} />
+          <div>
+            <h2>Add Task</h2>
+            <TaskForm onAdd={addTask} />
           </div>
-
-          <TaskList
-            tasks={filteredTasks}
-            editingId={editingId}
-            onEdit={setEditingId}
-            onDelete={deleteTask}
-            onSave={() => setEditingId(null)}
-            onCancel={() => setEditingId(null)}
-            onStatusChange={changeStatus}
-          />
         </Card>
+
+        <Card className="full-width-card">
+          <div>
+            <h2>Tasks</h2>
+            <div className="horizontal-center" style={{ marginBottom: '1rem', gap: 'var(--space-md)', flexWrap: 'nowrap' }}>
+              <TaskControls filters={filters} onChange={setFilters} />
+            </div>
+            <TaskList
+              tasks={filteredTasks}
+              editingId={editingId}
+              onEdit={setEditingId}
+              onDelete={deleteTask}
+              onSave={() => setEditingId(null)}
+              onCancel={() => setEditingId(null)}
+              onStatusChange={changeStatus}
+            />
+          </div>
+        </Card>
+
       </div>
     </div>
   );
 }
-
-export default TodoPage;

@@ -1,18 +1,20 @@
+/* Dropdown.css */
 .dropdown {
   position: absolute;
   top: calc(100% + var(--space-xs));
   right: 0;
   display: none;
   flex-direction: column;
-  background: var(--secondary-colour);
+  background: var(--surface-colour);
   border: 1px solid var(--border-neutral-colour);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   padding: var(--space-md);
   min-width: 200px;
-  z-index: 10;
+  z-index: 20;
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dropdown.open {
@@ -31,7 +33,7 @@
 }
 
 .dropdown-user-info img {
-  width: 2rem; /* 32px */
+  width: 2rem;
   height: 2rem;
   border-radius: var(--radius-lg);
 }
@@ -62,7 +64,20 @@
 }
 
 .user-profile img {
-  width: 2rem; /* 32px */
+  width: 2rem;
   height: 2rem;
   border-radius: var(--radius-lg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .dropdown {
+    right: var(--space-md);
+    left: var(--space-md);
+    min-width: auto;
+    width: auto;
+  }
+  .user-profile {
+    padding: var(--space-xs) var(--space-sm);
+  }
 }

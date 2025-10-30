@@ -39,14 +39,3 @@
   --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  :root {
-    --font-size-heading-lg: 1.75rem;
-    --font-size-heading-md: 1.25rem;
-    --font-size-body: 0.95rem;
-    --space-md: 0.75rem;
-    --space-lg: 1rem;
-  }
-}

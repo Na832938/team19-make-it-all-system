@@ -1,9 +1,16 @@
+// Label.jsx
 import './Label.css';
 
-export default function Label({ text, children, htmlFor }) {
+export default function Label
+({ 
+  text, 
+  children, 
+  htmlFor }) {
   return (
-    <label className="label" htmlFor={htmlFor}>
-      <span className="label-text">{text}</span>
+    <label 
+    className="label" 
+    htmlFor={htmlFor}>
+      {text && <span className="label-text">{text}</span>}
       {children}
     </label>
   );

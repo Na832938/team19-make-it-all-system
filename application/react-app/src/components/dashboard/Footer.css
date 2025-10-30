@@ -8,7 +8,7 @@
   background: var(--surface-colour);
   border-top: 1px solid var(--border-neutral-colour);
   text-align: center;
-  padding: 1rem;
+  padding: var(--space-md);
 }
 
 .footer-content {

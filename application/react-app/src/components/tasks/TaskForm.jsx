@@ -16,7 +16,7 @@ export default function TaskForm({ onAdd }) {
   };
 
   return (
-      <form className="task-form" onSubmit={handleSubmit} autoComplete="off">
+      <form className="card-vertical" onSubmit={handleSubmit} autoComplete="off">
         <Label text="Task name:">
           <TextInput name="taskName" type="text" placeholder="Task name" required />
         </Label>

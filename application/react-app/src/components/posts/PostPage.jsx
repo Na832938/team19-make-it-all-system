@@ -13,17 +13,23 @@ export default function PostPage() {
   const handleCreate = (newPost) => setPosts([newPost, ...posts]);
 
   return (
-    <div className="post-page">
-      <div className="dashboard-grid">
-        <div>
-          <h2>Create Post</h2>
-          <PostForm onCreate={handleCreate} />
-        </div>
+    <div className="vertical-center" style={{ gap: 'var(--space-lg)', width: '100%' }}>
+      <div className="dashboard-grid" style={{ width: '100%' }}>
 
-        <Card className="card-vertical full-width-card">
-          <h2>Post Feed</h2>
-          <PostList posts={posts} />
+        <Card>
+          <div>
+            <h2>Create Post</h2>
+            <PostForm onCreate={handleCreate} />
+          </div>
         </Card>
+
+        <Card className="full-width-card">
+          <div>
+            <h2>Post Feed</h2>
+            <PostList posts={posts} />
+          </div>
+        </Card>
+
       </div>
     </div>
   );

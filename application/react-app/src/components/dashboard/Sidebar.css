@@ -1,10 +1,12 @@
+/* Sidebar.css */
 .app-sidebar {
-  background: var(--surface-colour-alt);
+  background: var(--surface-colour);
   border-right: 1px solid var(--border-neutral-colour);
   padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: var(--space-md);
+  min-width: 200px;
 }
 
 .app-sidebar nav {
@@ -14,12 +16,12 @@
 }
 
 .app-sidebar button {
-  color: var(--text-muted-colour);
+  color: var(--secondary-text-colour);
   background: none;
   border: none;
   text-align: left;
   font-weight: 500;
-  font-family: inherit;
+  font-family: var(--font-family-base);
   cursor: pointer;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md);
@@ -27,12 +29,34 @@
 }
 
 .app-sidebar button:hover {
-  color: var(--text-colour);
-  background: var(--surface-colour);
+  color: var(--primary-text-colour);
+  background: var(--secondary-colour);
 }
 
 .app-sidebar button.active {
   color: var(--primary-colour);
   font-weight: 600;
-  background: var(--surface-colour);
+  background: var(--secondary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-sidebar {
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-neutral-colour);
+    padding: var(--space-sm);
+  }
+  .app-sidebar nav {
+    flex-direction: row;
+    gap: var(--space-md);
+    width: 100%;
+  }
+  .app-sidebar button {
+    padding: var(--space-xs) var(--space-sm);
+    text-align: center;
+    flex: 1;
+  }
 }

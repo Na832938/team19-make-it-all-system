@@ -5,12 +5,18 @@
   font-family: var(--font-family-base);
   color: var(--primary-text-colour);
   width: 100%;
-  max-width: 25rem;
+  max-width: var(--max-width-form, 25rem);
+}
+
+.progress-label {
+  font-size: var(--font-size-body);
+  color: var(--primary-text-colour);
 }
 
 .progress-track {
   width: 100%;
   height: var(--space-md);
+  min-height: 1.25rem; /* touch-friendly on small screens */
   background-color: var(--secondary-colour);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -27,4 +33,15 @@
 .progress-percent {
   font-size: var(--font-size-caption);
   color: var(--secondary-text-colour);
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .progress-bar-wrapper {
+    max-width: 100%;
+  }
+
+  .progress-percent {
+    font-size: 0.75rem;
+  }
 }

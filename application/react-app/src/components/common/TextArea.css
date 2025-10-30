@@ -4,16 +4,20 @@
   padding: var(--space-sm) var(--space-md);
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
-  border: 1px solid var(--disabled-colour);
+  border: 1px solid var(--border-neutral-colour);
   border-radius: var(--radius-md);
   background-color: var(--secondary-colour);
   color: var(--primary-text-colour);
   box-sizing: border-box;
-  resize: vertical; /* allow vertical resizing */
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+  transition: all 0.2s ease;
 }
 
-.textarea:focus {
+.textarea:hover:not(:disabled) {
+  border-color: var(--primary-colour);
+}
+
+.textarea:focus-visible {
   outline: none;
   border-color: var(--focus-colour);
   background-color: var(--surface-colour);
@@ -28,4 +32,13 @@
 .textarea:disabled {
   background-color: var(--disabled-colour);
   cursor: not-allowed;
+}
+
+@media (
+  max-width: 480px
+) {
+  .textarea {
+    font-size: 0.875rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
 }

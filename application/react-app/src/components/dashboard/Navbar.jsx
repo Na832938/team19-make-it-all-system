@@ -1,3 +1,4 @@
+// Navbar.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Dropdown, Button } from "../common";
@@ -9,7 +10,7 @@ export default function Navbar({ user }) {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -18,9 +19,9 @@ export default function Navbar({ user }) {
         <h1>Make it all</h1>
       </div>
 
-      <div className="app-header-navigation">
+      <nav className="app-header-navigation">
         {/* navigation links */}
-      </div>
+      </nav>
 
       <div className="app-header-actions">
         <Button type="primary" className="user-profile" onClick={() => setOpen(!open)}>

@@ -4,6 +4,7 @@
 @import './variables.css';
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
+/* ===== BODY ===== */
 body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
@@ -15,7 +16,7 @@ body {
   margin: 0;
 }
 
-/* Headings */
+/* ===== HEADINGS ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-base);
   color: var(--primary-text-colour);
@@ -25,31 +26,14 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 {
-  font-size: var(--font-size-heading-lg);
-}
+h1 { font-size: var(--font-size-heading-lg); }
+h2 { font-size: var(--font-size-heading-md); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
 
-h2 {
-  font-size: var(--font-size-heading-md);
-}
-
-h3 {
-  font-size: 1.25rem;
-}
-
-h4 {
-  font-size: 1.125rem;
-}
-
-h5 {
-  font-size: 1rem;
-}
-
-h6 {
-  font-size: 0.875rem;
-}
-
-/* Paragraphs and text elements */
+/* ===== PARAGRAPHS & TEXT ===== */
 p {
   margin-top: 0;
   margin-bottom: var(--space-md);
@@ -61,15 +45,10 @@ small {
   color: var(--secondary-text-colour);
 }
 
-strong {
-  font-weight: 600;
-}
+strong { font-weight: 600; }
+em { font-style: italic; }
 
-em {
-  font-style: italic;
-}
-
-/* Links */
+/* ===== LINKS ===== */
 a {
   color: var(--primary-colour);
   text-decoration: none;
@@ -82,7 +61,7 @@ a:focus {
   text-decoration: underline;
 }
 
-/* Lists */
+/* ===== LISTS ===== */
 ul, ol {
   margin: 0 0 var(--space-md) var(--space-lg);
   padding: 0;
@@ -92,35 +71,24 @@ li {
   margin-bottom: var(--space-xs);
 }
 
-/* Utility text classes */
-.text-center {
-  text-align: center;
-}
+/* ===== UTILITY TEXT CLASSES ===== */
+.text-center { text-align: center; }
+.text-muted { color: var(--secondary-text-colour); }
+.text-success { color: var(--success-colour); }
+.text-error { color: var(--error-colour); }
+.text-danger { color: var(--danger-colour); }
+.text-uppercase { text-transform: uppercase; }
+.text-bold { font-weight: 600; }
+.text-small { font-size: var(--font-size-caption); }
 
-.text-muted {
-  color: var(--secondary-text-colour);
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+@media (max-width: 768px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
 }
-
-.text-success {
-  color: var(--success-colour);
-}
-
-.text-error {
-  color: var(--error-colour);
-}
-
-.text-danger {
-  color: var(--danger-colour);
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.text-bold {
-  font-weight: 600;
-}
-
-.text-small {
-  font-size: var(--font-size-caption);
-}
+@media (max-width: 480px) {   
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.125rem; }
+  h3 { font-size: 1rem; }
+}   

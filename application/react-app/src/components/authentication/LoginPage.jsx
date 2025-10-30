@@ -36,25 +36,29 @@ export default function LoginPage() {
 
   return (
     <div className="vertical-center">
-      <Card useContainer={false}>
+      <Card useContainer={false} className="login-card">
         <h2>Login</h2>
-        <TextInput
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-        <TextInput
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <Button type="primary" onClick={login}>Login</Button>
+        <div className="login-fields">
+          <TextInput
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+          <TextInput
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <Button type="primary" onClick={login}>Login</Button>
+        </div>
         <div className="auth-link">
           Don&apos;t have an account? <Link to="/register">Register here</Link>
         </div>
-        <div className="auth-message" style={{ color: msgColor }}>{message}</div>
+        <div className="auth-message" style={{ color: msgColor }}>
+          {message}
+        </div>
       </Card>
     </div>
   );

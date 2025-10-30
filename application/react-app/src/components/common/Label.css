@@ -1,3 +1,4 @@
+/* Label.css */
 .label {
   display: flex;
   flex-direction: column;
@@ -6,10 +7,19 @@
   font-size: var(--font-size-body);
   color: var(--primary-text-colour);
   width: 100%;
-  max-width: 25rem;
+  max-width: 100%;       /* allow responsiveness */
+  box-sizing: border-box;
 }
 
 .label-text {
   font-weight: 500;
   color: var(--secondary-text-colour);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .label {
+    font-size: 0.95rem;
+    gap: var(--space-xs);
+  }
 }

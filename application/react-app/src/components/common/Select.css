@@ -1,4 +1,6 @@
 .select {
+  width: 100%;
+  max-width: 25rem;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--border-neutral-colour);
   border-radius: var(--radius-md);
@@ -6,16 +8,17 @@
   font-size: var(--font-size-body);
   color: var(--primary-text-colour);
   background-color: var(--surface-colour);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.select:hover {
+.select:hover:not(:disabled) {
   border-color: var(--primary-colour);
 }
 
-.select:focus {
+.select:focus-visible {
   border-color: var(--focus-colour);
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2); /* focus ring using primary-colour */
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
   outline: none;
 }
 
@@ -23,4 +26,11 @@
   background-color: var(--disabled-colour);
   cursor: not-allowed;
   color: var(--secondary-text-colour);
+}
+
+@media (max-width: 480px) {
+  .select {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+  }
 }

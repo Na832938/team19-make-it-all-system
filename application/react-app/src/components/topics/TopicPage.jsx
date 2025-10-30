@@ -19,17 +19,23 @@ export default function TopicPage() {
   };
 
   return (
-    <div className="topic-page">
-      <div className="dashboard-grid">
-        <div>
-          <h2>Create Topic</h2>
-          <TopicForm onCreate={handleCreateTopic} />
-        </div>
+    <div className="topic-page vertical-center" style={{ gap: 'var(--space-lg)', width: '100%' }}>
+      <div className="dashboard-grid" style={{ width: '100%' }}>
 
-        <Card className="card-vertical full-width-card">
-          <h2>Topics</h2>
-          <TopicList topics={topics} onSelect={handleSelectTopic} />
+        <Card>
+          <div>
+            <h2>Create Topic</h2>
+            <TopicForm onCreate={handleCreateTopic} />
+          </div>
         </Card>
+
+        <Card className="full-width-card">
+          <div>
+            <h2>Topics</h2>
+            <TopicList topics={topics} onSelect={handleSelectTopic} />
+          </div>
+        </Card>
+
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
 import './Checkbox.css';
 
-export default function Checkbox({ checked = false, onChange, label = '', disabled = false }) {
+export default function Checkbox
+({ 
+  checked = false, 
+  onChange, 
+  label = '', 
+  disabled = false }) {
   return (
-    <label className={`checkbox-wrapper ${disabled ? 'disabled' : ''}`}>
+    <label 
+    className={`checkbox-wrapper ${disabled ? 'disabled' : ''}`}>
       <input
         type="checkbox"
         className="checkbox-input"

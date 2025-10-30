@@ -1,3 +1,4 @@
+// Sidebar.jsx
 import "./Sidebar.css";
 
 export default function Sidebar({ activeSection, setActiveSection }) {
