@@ -25,7 +25,7 @@ export default function Navbar({ user }) {
 
       <div className="app-header-actions">
         <Button type="primary" className="user-profile" onClick={() => setOpen(!open)}>
-          <span>{user.name}</span>
+          <span>{user.username}</span>
           <span>
             <img src="/avatar-placeholder.png" alt="avatar" />
           </span>
@@ -34,7 +34,9 @@ export default function Navbar({ user }) {
         <Dropdown isOpen={open}>
           <div className="dropdown-user-info">
             <img src="/avatar-placeholder.png" alt="avatar" />
-            <span>{user.name}</span>
+            <span>{user.username}</span>
+            <span>{user.role}</span>
+            <span>{user.email}</span>
           </div>
           <Button onClick={handleLogout}>Logout</Button>
         </Dropdown>

@@ -1,34 +1,79 @@
-/* Navbar.css */
 .app-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
   background: var(--surface-colour);
   border-bottom: 1px solid var(--border-neutral-colour);
+  box-shadow: var(--shadow-sm);
   flex-wrap: wrap;
   gap: var(--space-sm);
+  z-index: 1000;
+}
+
+/* left section: logo + menu toggle */
+.app-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
 }
 
 .app-header-logo h1 {
   font-size: var(--font-size-heading-md);
   color: var(--primary-text-colour);
   margin: 0;
+  white-space: nowrap;
+}
+
+/* menu toggle (hamburger) */
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-text-colour);
+  font-size: 1.75rem;
+  cursor: pointer;
+  display: none;
+  transition: color 0.2s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--primary-hover);
+}
+
+/* navigation links */
+.app-header-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .app-header-navigation a {
-  margin-right: var(--space-lg);
+  margin: 0 var(--space-md);
   text-decoration: none;
   color: var(--primary-text-colour);
   font-weight: 500;
+  white-space: nowrap;
 }
 
+.app-header-navigation a:hover {
+  color: var(--primary-hover);
+}
+
+/* actions (profile, logout, etc.) */
 .app-header-actions {
   display: flex;
   align-items: center;
   position: relative;
   z-index: 10;
   gap: var(--space-sm);
+  flex-shrink: 0;
 }
 
 .user-profile {
@@ -36,6 +81,13 @@
   align-items: center;
   gap: var(--space-xs);
   cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: background 0.2s ease;
+}
+
+.user-profile:hover {
+  background: var(--secondary-hover);
 }
 
 .user-profile img {
@@ -45,19 +97,84 @@
   object-fit: cover;
 }
 
-/* Responsive adjustments */
+/* Dropdown styling */
+.dropdown-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  color: var(--primary-text-colour);
+  white-space: nowrap;
+}
+
+.dropdown-user-info img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xs);
+}
+
+/* =========================================
+   Responsive behavior
+   ========================================= */
+@media (max-width: 1024px) {
+  .app-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .app-header-navigation a {
+    margin: 0 var(--space-sm);
+  }
+}
+
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
   .app-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-sm);
+    align-items: stretch;
   }
-  .app-header-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
+
   .app-header-navigation {
+    flex-direction: column;
     width: 100%;
-    margin-bottom: var(--space-sm);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .app-header-navigation.open {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  .app-header-navigation a {
+    padding: var(--space-sm) 0;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid var(--border-neutral-colour);
+  }
+
+  .app-header-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header-logo h1 {
+    font-size: var(--font-size-heading-md-sm);
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+  }
+
+  .user-profile img {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }

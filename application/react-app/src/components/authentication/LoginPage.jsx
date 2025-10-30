@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, TextInput, Card } from '../common';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const users = [
   { username: "jdoe", password: "pass1234", role: "Employee", email: "jdoe@company.com" },
@@ -20,6 +20,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [msgColor, setMsgColor] = useState("black");
+  const navigate = useNavigate();
 
   const login = () => {
     const foundUser = users.find(
@@ -28,7 +29,9 @@ export default function LoginPage() {
     if (foundUser) {
       setMsgColor("green");
       setMessage(`Login successful! Welcome ${foundUser.role} ${foundUser.username}.`);
-    } else {
+      localStorage.setItem("currentUser", JSON.stringify(foundUser));
+      navigate("/app"); }
+    else {
       setMsgColor("red");
       setMessage("Invalid username or password.");
     }
@@ -36,7 +39,7 @@ export default function LoginPage() {
 
   return (
     <div className="vertical-center">
-      <Card vertical useContainer={false}>
+      <Card vertical>
           <h2>Login</h2>
           <TextInput
             type="text"

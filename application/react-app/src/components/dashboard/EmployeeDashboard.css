@@ -1,60 +1,127 @@
-/* ===============================
-   EMPLOYEE DASHBOARD — CORE GRID
-   =============================== */
 
-/* Root wrapper */
+
 .app {
   display: flex;
   flex-direction: column;
-  background: var(--secondary-colour);
-  color: var(--primary-text-colour);
-  gap: var(--space-md);
-  padding: var(--space-md);
-  min-height: 100vh;
-  box-sizing: border-box;
+  width: 95%;
+  max-width: 1600px;
+  padding: var(--space-xl);
+  background-color: var(--surface-colour);
+  min-height: 80vh;
 }
 
-/* Body grid */
 .app-body {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: var(--space-md);
-  flex: 1;
-  overflow: hidden;
+  grid-template-columns: 175px 1fr 300px;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
 }
 
-/* Main content area */
 .app-body-main-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  overflow-y: auto;
-  width: 100%;
+  gap: var(--space-lg);
 }
 
-/* Dashboard cards grid */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
-  width: 95%;
 }
 
-/* Cards inside dashboard */
-.dashboard-grid > * {
-  width: 98%;
+.tile {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--secondary-colour);
+  box-shadow: var(--shadow-sm);
 }
 
-/* -------------------------------
-   RESPONSIVE LAYOUT
-   ------------------------------- */
-@media (max-width: 1024px) {
+.tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.tile-header h3 {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-md);
+  color: var(--primary-text-colour);
+}
+
+.tile-header span {
+  font-size: var(--font-size-body);
+  color: var(--secondary-text-colour);
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--secondary-colour);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.primary {
+  background-color: var(--primary-colour);
+  color: var(--surface-colour);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.secondary {
+  background-color: var(--secondary-colour);
+  border: 1px solid var(--border-neutral-colour);
+  color: var(--primary-text-colour);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
   .app-body {
     grid-template-columns: 1fr;
   }
-
   .dashboard-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-sm);
+  }
+  .right-panel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tile-header h3 {
+    font-size: 1.25rem;
+  }
+  .tile-header span {
+    font-size: 0.875rem;
+  }
+  .action-buttons {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}
+@media (max-width: 480px) {
+  .app {
+    padding: var(--space-md);
   }
 }

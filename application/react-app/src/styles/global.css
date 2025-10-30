@@ -1,7 +1,6 @@
 /* ===============================
-   GLOBAL BASE STYLES
+   RESET & BASE
    =============================== */
-
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -9,16 +8,16 @@ html, body, #root {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   font-family: var(--font-family-base);
   background: var(--surface-colour);
   color: var(--primary-text-colour);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Main container */
+/* Root flex container */
 #root, main {
   flex: 1;
   display: flex;
@@ -28,7 +27,6 @@ body {
 /* ===============================
    LAYOUT UTILITIES
    =============================== */
-
 .vertical-center {
   display: flex;
   flex-direction: column;
@@ -57,7 +55,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Form / control alignment */
 .controls-row {
   display: flex;
   gap: var(--space-md);
@@ -72,7 +69,6 @@ body {
 /* ===============================
    LINKS
    =============================== */
-
 a {
   color: var(--primary-colour);
   text-decoration: none;
@@ -87,31 +83,39 @@ a:hover {
 /* ===============================
    RESPONSIVE ADJUSTMENTS
    =============================== */
-
-@media (max-width: 768px) {
-  :root {
-    --font-size-heading-lg: 1.75rem;
-    --font-size-heading-md: 1.25rem;
-    --font-size-body: 0.95rem;
-    --space-md: 0.75rem;
-    --space-lg: 1rem;
-  }
-
+@media (max-width: 1200px) {
   .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     padding: var(--space-md);
     gap: var(--space-md);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  :root {
+    --font-size-heading-lg: var(--font-size-heading-lg-sm);
+    --font-size-heading-md: var(--font-size-heading-md-sm);
+    --font-size-body: var(--font-size-body-sm);
+    --space-md: 0.75rem;
+    --space-lg: 1rem;
+  }
+
   .horizontal-center {
     flex-direction: column;
     align-items: stretch;
   }
 }
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: var(--space-sm);
+  }
+}
+
 /* ===============================
    ANIMATIONS
-   =============================== */ 
+   =============================== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -121,4 +125,113 @@ a:hover {
     opacity: 1;
     transform: translateY(0);
   }
-}   
+}
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ===============================
+   FORM ELEMENTS
+   =============================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+input, select, textarea {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border-neutral-colour);
+  border-radius: var(--radius-md);
+  background: var(--surface-colour);
+  color: var(--primary-text-colour);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--focus-colour);
+  box-shadow: 0 0 0 2px var(--focus-colour);
+}
+
+label {
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  color: var(--primary-text-colour);
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-colour);
+  color: var(--surface-colour);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background-color: var(--disabled-colour);
+  cursor: not-allowed;
+}
+
+/* ===============================
+   RESPONSIVE FORM ADJUSTMENTS
+   =============================== */
+
+/* Large screens (1200px+) */
+@media (min-width: 1200px) {
+  form.horizontal {
+    flex-direction: row;
+    gap: var(--space-lg);
+    align-items: flex-end;
+  }
+  form.horizontal .flex-grow {
+    flex-grow: 1;
+  }
+}
+
+/* Medium screens (768px–1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  form.horizontal {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  input, select, textarea {
+    font-size: 0.95rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+  button {
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* Small screens (below 768px) */
+@media (max-width: 767px) {
+  form {
+    gap: var(--space-sm);
+  }
+  input, select, textarea {
+    font-size: 0.9rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+  button {
+    font-size: 0.9rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
