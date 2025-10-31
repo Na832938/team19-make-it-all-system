@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Select from '../common/Select';
 import TextInput from '../common/TextInput';
 import Label from '../common/Label';
@@ -6,8 +6,9 @@ import Label from '../common/Label';
 export default function TaskControls({ filters, onChange }) {
   const [searchValue, setSearchValue] = useState(filters.q);
   const [localFilters, setLocalFilters] = useState(filters);
+  const isFirstRender = useRef(true);
 
-  // Debounce search input (300ms delay) - FIXED
+  // Debounce search input (300ms delay) - PROPERLY FIXED
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue !== localFilters.q) {
@@ -18,7 +19,7 @@ export default function TaskControls({ filters, onChange }) {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchValue, localFilters, onChange]); // ← FIXED: Added missing dependencies
+  }, [searchValue, localFilters, onChange]);
 
   // Handle immediate filter changes (selects)
   const handleFilterChange = (key, value) => {
@@ -29,6 +30,10 @@ export default function TaskControls({ filters, onChange }) {
 
   // Sync with parent filters when they change externally
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     setLocalFilters(filters);
     setSearchValue(filters.q);
   }, [filters]);
