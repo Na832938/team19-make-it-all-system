@@ -1,4 +1,3 @@
-// Form.jsx
 import Button from "./Button.jsx";
 
 export default function Form({
@@ -14,8 +13,7 @@ export default function Form({
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-    // Just prevent default and pass the event - let parent handle React state
+    
     if (!loading && !disabled && onSubmit) {
       onSubmit(e);
     }
@@ -23,14 +21,17 @@ export default function Form({
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-    console.log("Cancel button clicked");
+    
     if (onCancel) {
       onCancel();
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`form-layout ${className}`}>
+    <form 
+      onSubmit={handleSubmit} 
+      className={`form-layout ${className}`}
+    >
       <div className="form-field-group">
         {children}
       </div>
@@ -39,7 +40,7 @@ export default function Form({
         <div className="form-actions">
           {onCancel && (
             <Button
-              type="button" // Important: type="button" to prevent form submission
+              type="button"
               onClick={handleCancelClick}
               disabled={loading || disabled}
               className="flex-1 sm:flex-none"
@@ -47,6 +48,7 @@ export default function Form({
               {cancelText}
             </Button>
           )}
+          
           <Button
             type="submit"
             disabled={loading || disabled}

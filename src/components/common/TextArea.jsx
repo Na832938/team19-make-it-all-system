@@ -8,7 +8,7 @@ export default function TextArea({
 }) {
   return (
     <textarea
-      className={`input-base input-hover input-focus input-disabled responsive-text resize-vertical focus:bg-surface focus:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] ${className}`}
+      className={`textarea-base textarea-hover textarea-focus textarea-disabled responsive-text ${className}`}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
