@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/team19-make-it-all-system/static/css/main.b732a007.css",
-    "main.js": "/team19-make-it-all-system/static/js/main.66d7795e.js",
+    "main.js": "/team19-make-it-all-system/static/js/main.cbf4d6c4.js",
     "static/js/453.95463e7d.chunk.js": "/team19-make-it-all-system/static/js/453.95463e7d.chunk.js",
     "index.html": "/team19-make-it-all-system/index.html",
     "main.b732a007.css.map": "/team19-make-it-all-system/static/css/main.b732a007.css.map",
-    "main.66d7795e.js.map": "/team19-make-it-all-system/static/js/main.66d7795e.js.map",
+    "main.cbf4d6c4.js.map": "/team19-make-it-all-system/static/js/main.cbf4d6c4.js.map",
     "453.95463e7d.chunk.js.map": "/team19-make-it-all-system/static/js/453.95463e7d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b732a007.css",
-    "static/js/main.66d7795e.js"
+    "static/js/main.cbf4d6c4.js"
   ]
 }
