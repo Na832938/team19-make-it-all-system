@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import TaskForm from './TaskForm.jsx';
 import TaskControls from './TaskControls.jsx';
-import TaskList from './TaskList.jsx';
 import Card from '../common/Card.jsx';
 import tasks from '../../data/tasks.json';
+import DataList from '../common/DataList.jsx';
 
 export default function TodoPage() {
   const [tasksState, setTasks] = useState(tasks);
@@ -75,7 +75,7 @@ export default function TodoPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
-            <Card className="p-6 h-fit md:sticky md:top-6">
+            <Card className="p-6">
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-900">Add Task</h2>
                 <TaskForm onSubmit={handleAddTask} />
@@ -84,20 +84,25 @@ export default function TodoPage() {
           </div>
 
           <div className="md:col-span-2">
-            <Card className="p-6">
-              <div className="space-y-6">
+            <div className="space-y-6">
+              <Card className="p-6">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900 mb-4">Task List</h2>
                   <TaskControls filters={filters} onChange={setFilters} />
                 </div>
-                
-                <TaskList
-                  tasks={filteredTasks}
-                  onDelete={deleteTask}
-                  onStatusChange={changeStatus}
-                />
-              </div>
-            </Card>
+              </Card>
+              
+              <DataList
+                type="task"
+                items={filteredTasks}
+                title="Task List"
+                onAction={(action, task) => {
+                  if (action === 'delete') deleteTask(task.id);
+                  if (action === 'status') changeStatus(task.id);
+                }}
+                variant="bordered"
+              />
+            </div>
           </div>
         </div>
       </div>

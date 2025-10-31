@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "./Card.jsx";
 import Button from "./Button.jsx";
 
 export default function ListSection({
@@ -15,7 +14,7 @@ export default function ListSection({
 }) {
   const variantStyles = {
     default: "space-y-3",
-    compact: "space-y-2",
+    compact: "space-y-2", 
     bordered: "divide-y divide-gray-200"
   };
 
@@ -27,25 +26,23 @@ export default function ListSection({
 
   if (loading) {
     return (
-      <Card variant="flat" className={className}>
-        <div className="animate-pulse">
-          <div className="h-6 bg-gray-200 rounded w-1/4 mb-4"></div>
-          {[1, 2, 3].map(i => (
-            <div key={i} className="flex items-center gap-4 p-4 border-b border-gray-200 last:border-b-0">
-              <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
-              <div className="flex-1 space-y-2">
-                <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-              </div>
+      <div className={`animate-pulse ${className}`}>
+        <div className="h-6 bg-gray-200 rounded w-1/4 mb-4"></div>
+        {[1, 2, 3].map(i => (
+          <div key={i} className="flex items-center gap-4 p-4 border-b border-gray-200 last:border-b-0">
+            <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
+            <div className="flex-1 space-y-2">
+              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-3 bg-gray-200 rounded w-1/2"></div>
             </div>
-          ))}
-        </div>
-      </Card>
+          </div>
+        ))}
+      </div>
     );
   }
 
   return (
-    <Card variant="flat" className={className}>
+    <div className={className}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div className="flex items-center gap-3">
@@ -153,6 +150,6 @@ export default function ListSection({
           ))}
         </div>
       )}
-    </Card>
+    </div>
   );
 }

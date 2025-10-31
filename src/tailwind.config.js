@@ -80,7 +80,69 @@ module.exports = {
   plugins: [
     function({ addUtilities }) {
       const newUtilities = {
-        '.input-base': {
+
+        '.accordion-container': {
+        '@apply space-y-4': {},
+      },
+      
+      '.accordion-item': {
+        '@apply border border-gray-300 rounded-md overflow-hidden bg-white transition-all duration-200 hover:shadow-sm': {},
+      },
+      
+      '.accordion-header': {
+        '@apply w-full p-4 text-left flex items-center justify-between bg-white hover:bg-gray-50 transition-colors duration-200': {},
+      },
+      
+      '.accordion-content-container': {
+        '@apply transition-all duration-300 ease-in-out overflow-hidden': {},
+      },
+      
+      '.accordion-content-expanded': {
+        '@apply max-h-96 opacity-100 border-t border-gray-200': {},
+      },
+      
+      '.accordion-content-collapsed': {
+        '@apply max-h-0 opacity-0': {},
+      },
+      
+      '.accordion-content-inner': {
+        '@apply p-4 bg-gray-50': {},
+      },
+      
+      '.accordion-chevron': {
+        '@apply flex-shrink-0 ml-4 transform transition-transform duration-200': {},
+      },
+      
+      '.accordion-chevron-expanded': {
+        '@apply rotate-180': {},
+      },
+      
+      '.accordion-chevron-collapsed': {
+        '@apply rotate-0': {},
+      },
+      // Add to your plugins in tailwind.config.js
+      '.badge': {
+        '@apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium': {},
+      },
+      '.badge-purple': {
+        '@apply bg-purple-100 text-purple-800': {},
+      },
+      '.badge-success': {
+        '@apply bg-green-100 text-green-800': {},
+      },
+      '.badge-warning': {
+        '@apply bg-yellow-100 text-yellow-800': {},
+      },
+      '.badge-error': {
+        '@apply bg-red-100 text-red-800': {},
+      },
+      '.badge-info': {
+        '@apply bg-blue-100 text-blue-800': {},
+      },
+      '.badge-gray': {
+        '@apply bg-gray-100 text-gray-800': {},
+      },
+          '.input-base': {
           '@apply block w-full max-w-[25rem] px-md py-sm border border-gray-300 rounded-full font-ubuntu text-body bg-surface text-text-primary transition-all duration-200 ease-in-out': {},
         },
 

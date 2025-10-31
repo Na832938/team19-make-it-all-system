@@ -1,14 +1,13 @@
 import { useState } from "react";
 import PostForm from "./PostForm";
-import PostList from "./PostList";
 import Card from "../common/Card";
 import posts from "../../data/posts";
+import DataList from "../common/DataList";
 
 export default function PostPage() {
   const [postsState, setPosts] = useState(posts);
 
   const handleCreatePost = async (postData) => {
-    // Simulate API call
     return new Promise((resolve) => {
       setTimeout(() => {
         const newPost = {
@@ -45,7 +44,7 @@ export default function PostPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
-            <Card className="p-6 h-fit md:sticky md:top-6">
+            <Card className="p-6">
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-900">Create New Post</h2>
                 <PostForm onSubmit={handleCreatePost} />
@@ -54,14 +53,17 @@ export default function PostPage() {
           </div>
 
           <div className="md:col-span-2">
-            <Card variant="flat" className="p-0">
-              <PostList 
-                posts={postsState}
-                onView={handleView}
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-              />
-            </Card>
+            <DataList
+              type="post"
+              items={postsState}
+              title="Posts"
+              onAction={(action, post) => {
+                if (action === 'view') handleView(post);
+                if (action === 'edit') handleEdit(post);
+                if (action === 'delete') handleDelete(post);
+              }}
+              variant="default"
+            />
           </div>
         </div>
       </div>

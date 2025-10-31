@@ -1,8 +1,8 @@
 import { useState } from "react";
 import TopicForm from "./TopicForm";
-import TopicList from "./TopicList";
 import Card from "../common/Card";
 import topicsData from "../../data/topics.json";
+import DataList from "../common/DataList";
 
 export default function TopicPage() {
   const [topics, setTopics] = useState(topicsData);
@@ -34,7 +34,7 @@ export default function TopicPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
-            <Card className="p-6 h-fit md:sticky md:top-6">
+            <Card className="p-6">
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-900">Create Topic</h2>
                 <TopicForm onSubmit={handleCreateTopic} />
@@ -43,12 +43,18 @@ export default function TopicPage() {
           </div>
 
           <div className="md:col-span-2">
-            <Card className="p-6">
-              <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-gray-900">Discussion Topics</h2>
-                <TopicList topics={topics} onSelect={handleSelectTopic} />
-              </div>
-            </Card>
+            <div className="space-y-6">
+            
+              <DataList
+                type="topic"
+                items={topics}
+                title="Discussion Topics"
+                onAction={(action, topic) => {
+                  if (action === 'select') handleSelectTopic(topic);
+                }}
+                variant="bordered"
+              />
+            </div>
           </div>
         </div>
       </div>
