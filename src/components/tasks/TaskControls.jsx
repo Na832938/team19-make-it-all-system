@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Select from '../common/Select';
 import TextInput from '../common/TextInput';
 import Label from '../common/Label';
@@ -6,34 +6,34 @@ import Label from '../common/Label';
 export default function TaskControls({ filters, onChange }) {
   const [searchValue, setSearchValue] = useState(filters.q);
   const [localFilters, setLocalFilters] = useState(filters);
-  const isFirstRender = useRef(true);
 
-  // Debounce search input (300ms delay) - PROPERLY FIXED
+  // Wrap onChange in useCallback to stabilize the function
+  const stableOnChange = useCallback((newFilters) => {
+    onChange(newFilters);
+  }, [onChange]);
+
+  // Debounce search input (300ms delay)
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue !== localFilters.q) {
         const newFilters = { ...localFilters, q: searchValue };
         setLocalFilters(newFilters);
-        onChange(newFilters);
+        stableOnChange(newFilters);
       }
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchValue, localFilters, onChange]);
+  }, [searchValue, localFilters, stableOnChange]); // Now all dependencies are stable
 
   // Handle immediate filter changes (selects)
-  const handleFilterChange = (key, value) => {
+  const handleFilterChange = useCallback((key, value) => {
     const newFilters = { ...localFilters, [key]: value };
     setLocalFilters(newFilters);
-    onChange(newFilters);
-  };
+    stableOnChange(newFilters);
+  }, [localFilters, stableOnChange]);
 
   // Sync with parent filters when they change externally
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
     setLocalFilters(filters);
     setSearchValue(filters.q);
   }, [filters]);
