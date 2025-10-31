@@ -5,7 +5,7 @@ import PostPage from "../posts/PostPage.jsx";
 import KnowledgeBase from "../knowledge-base/KnowledgeBase.jsx";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import DashboardTabs from "./MobileHeader.jsx"; // ← NEW IMPORT
+import Sidebar from "./Sidebar.jsx"; // ← ADD SIDEBAR IMPORT
 import Card from "../common/Card.jsx";
 import ProgressBar from "../common/ProgressBar.jsx";
 import Button from "../common/Button.jsx";
@@ -14,6 +14,7 @@ import tasks from "../../data/tasks.json";
 export default function EmployeeDashboard() {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [employee, setEmployee] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // ← ADD SIDEBAR STATE
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -40,16 +41,20 @@ export default function EmployeeDashboard() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Navbar user={employee} />
 
-      {/* Main Content Area - REMOVED SIDEBAR */}
-      <div className="flex-1 pt-16">
-        {/* Main Content */}
-        <main className="p-6">
-          {/* ADD TABS HERE */}
-          <DashboardTabs 
+      {/* Main Content Area WITH SIDEBAR */}
+      <div className="flex flex-1 pt-16">
+        {/* Sidebar */}
+        <div className="w-64 bg-white shadow-lg fixed left-0 top-16 h-[calc(100vh-4rem)] z-40">
+          <Sidebar 
             activeSection={activeSection} 
-            setActiveSection={setActiveSection} 
+            setActiveSection={setActiveSection}
+            isSidebarOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
           />
+        </div>
 
+        {/* Main Content */}
+        <main className="flex-1 ml-64 p-6">
           {activeSection === "dashboard" && (
             <div className="space-y-6">
               {/* Welcome Header */}
