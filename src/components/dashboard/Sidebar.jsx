@@ -16,7 +16,7 @@ export default function Sidebar({ activeSection, setActiveSection }) {
   ];
 
   return (
-    <aside className="w-full h-full bg-white border-r border-gray-200 fixed top-0 left-0">
+    <aside className="w-full h-full bg-white border-r border-gray-200 ">
       <nav className="p-4 space-y-2">
         {sections.map((s) => {
           const IconComponent = s.icon;
