@@ -2,6 +2,7 @@ import { useState } from "react";
 import TopicForm from "./TopicForm";
 import TopicList from "./TopicList";
 import Card from "../common/Card";
+import topics from "../../data/topics.json";
 
 export default function TopicPage() {
   const [topics, setTopics] = useState([

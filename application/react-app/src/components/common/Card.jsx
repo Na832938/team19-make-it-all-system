@@ -1,14 +1,27 @@
 import React from "react";
-import "./Card.css";
 
 export default function Card({
   children,
   vertical = true,
   className = "",
+  fullWidth = false
 }) {
-  const layoutClass = vertical ? "card card-vertical" : "card card-horizontal";
+  const baseClasses = `
+    bg-surface text-text-primary
+    rounded-lg shadow-md
+    p-lg transition-all duration-200 ease-in-out
+    hover:-translate-y-1 hover:shadow-lg
+    box-border
+  `;
+
+  const layoutClasses = vertical 
+    ? "flex flex-col gap-md" 
+    : "flex flex-row flex-wrap justify-center gap-md md:flex-nowrap";
+
+  const widthClass = fullWidth ? "w-full col-span-full" : "";
+
   return (
-    <div className={`${layoutClass} ${className}`.trim()}>
+    <div className={`${baseClasses} ${layoutClasses} ${widthClass} ${className}`.trim()}>
       {children}
     </div>
   );

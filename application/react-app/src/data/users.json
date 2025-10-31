@@ -1,0 +1,62 @@
+[
+  {
+    "username": "jdoe",
+    "password": "pass1234",
+    "role": "Employee",
+    "email": "jdoe@company.com"
+  },
+  {
+    "username": "asmith",
+    "password": "hello2025",
+    "role": "Employee",
+    "email": "asmith@company.com"
+  },
+  {
+    "username": "bwayne",
+    "password": "batman!",
+    "role": "Manager",
+    "email": "bwayne@company.com"
+  },
+  {
+    "username": "ckent",
+    "password": "superman!",
+    "role": "Employee",
+    "email": "ckent@company.com"
+  },
+  {
+    "username": "dprince",
+    "password": "wonder123",
+    "role": "Manager",
+    "email": "dprince@company.com"
+  },
+  {
+    "username": "tstark",
+    "password": "ironman",
+    "role": "Manager",
+    "email": "tstark@company.com"
+  },
+  {
+    "username": "pparker",
+    "password": "spidey",
+    "role": "Employee",
+    "email": "pparker@company.com"
+  },
+  {
+    "username": "nhill",
+    "password": "shield",
+    "role": "Manager",
+    "email": "nhill@company.com"
+  },
+  {
+    "username": "sbarnes",
+    "password": "winter",
+    "role": "Employee",
+    "email": "sbarnes@company.com"
+  },
+  {
+    "username": "rrichards",
+    "password": "fantastic",
+    "role": "Manager",
+    "email": "rrichards@company.com"
+  }
+]

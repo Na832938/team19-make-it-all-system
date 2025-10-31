@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Complete project proposal",
+    "status": "To Do",
+    "priority": "High",
+    "dueDate": "2024-01-15",
+    "projectId": 1,
+    "assigneeId": 101,
+    "description": "Draft and finalize the project proposal document",
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-01-10"
+  },
+  {
+    "id": 2,
+    "title": "Design user interface mockups",
+    "status": "In Progress",
+    "priority": "High",
+    "dueDate": "2024-01-20",
+    "projectId": 1,
+    "assigneeId": 102,
+    "description": "Create wireframes and mockups for the main dashboard",
+    "createdAt": "2024-01-08",
+    "updatedAt": "2024-01-12"
+  },
+  {
+    "id": 3,
+    "title": "Set up development environment",
+    "status": "Completed",
+    "priority": "Medium",
+    "dueDate": "2024-01-05",
+    "projectId": 1,
+    "assigneeId": 103,
+    "description": "Configure local development environment and dependencies",
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-01-05"
+  },
+  {
+    "id": 4,
+    "title": "Research competitor products",
+    "status": "To Do",
+    "priority": "Medium",
+    "dueDate": "2024-01-25",
+    "projectId": 2,
+    "assigneeId": 101,
+    "description": "Analyze competing products and identify key features",
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-01-10"
+  },
+  {
+    "id": 5,
+    "title": "Write unit tests for authentication",
+    "status": "In Progress",
+    "priority": "Low",
+    "dueDate": "2024-01-18",
+    "projectId": 1,
+    "assigneeId": 104,
+    "description": "Create comprehensive unit tests for auth components",
+    "createdAt": "2024-01-09",
+    "updatedAt": "2024-01-11"
+  },
+  {
+    "id": 6,
+    "title": "Update documentation",
+    "status": "To Do",
+    "priority": "Low",
+    "dueDate": "2024-01-30",
+    "projectId": 3,
+    "assigneeId": 102,
+    "description": "Update API documentation with new endpoints",
+    "createdAt": "2024-01-12",
+    "updatedAt": "2024-01-12"
+  },
+  {
+    "id": 7,
+    "title": "Fix login page styling issues",
+    "status": "Completed",
+    "priority": "Medium",
+    "dueDate": "2024-01-08",
+    "projectId": 1,
+    "assigneeId": 103,
+    "description": "Resolve CSS conflicts on mobile login page",
+    "createdAt": "2024-01-05",
+    "updatedAt": "2024-01-07"
+  },
+  {
+    "id": 8,
+    "title": "Prepare quarterly report",
+    "status": "In Progress",
+    "priority": "High",
+    "dueDate": "2024-01-22",
+    "projectId": 2,
+    "assigneeId": 104,
+    "description": "Compile data and create quarterly performance report",
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-01-14"
+  },
+  {
+    "id": 9,
+    "title": "Optimize database queries",
+    "status": "To Do",
+    "priority": "High",
+    "dueDate": "2024-01-28",
+    "projectId": 1,
+    "assigneeId": 101,
+    "description": "Improve performance of slow database queries",
+    "createdAt": "2024-01-13",
+    "updatedAt": "2024-01-13"
+  },
+  {
+    "id": 10,
+    "title": "Team training session",
+    "status": "Completed",
+    "priority": "Low",
+    "dueDate": "2024-01-06",
+    "projectId": 3,
+    "assigneeId": 102,
+    "description": "Conduct training on new development tools",
+    "createdAt": "2024-01-02",
+    "updatedAt": "2024-01-06"
+  }
+]

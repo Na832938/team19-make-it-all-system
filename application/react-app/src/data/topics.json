@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Software Development",
+    "description": "This topic gives you Software Development tips"
+  },
+  {
+    "id": 2,
+    "title": "Software Issues",
+    "description": "This topic contains common software issues and solutions"
+  },
+  {
+    "id": 3,
+    "title": "Printing",
+    "description": "This topic helps you with anything related to printing"
+  }
+]
