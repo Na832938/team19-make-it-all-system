@@ -7,7 +7,7 @@ export default function TaskControls({ filters, onChange }) {
   const [searchValue, setSearchValue] = useState(filters.q);
   const [localFilters, setLocalFilters] = useState(filters);
 
-  // Debounce search input (300ms delay)
+  // Debounce search input (300ms delay) - FIXED
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue !== localFilters.q) {
@@ -18,7 +18,7 @@ export default function TaskControls({ filters, onChange }) {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchValue, localFilters, onChange]); // ← Add missing dependencies here
+  }, [searchValue, localFilters, onChange]); // ← FIXED: Added missing dependencies
 
   // Handle immediate filter changes (selects)
   const handleFilterChange = (key, value) => {
@@ -32,7 +32,6 @@ export default function TaskControls({ filters, onChange }) {
     setLocalFilters(filters);
     setSearchValue(filters.q);
   }, [filters]);
-}
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -90,3 +89,4 @@ export default function TaskControls({ filters, onChange }) {
       </Label>
     </div>
   );
+}
