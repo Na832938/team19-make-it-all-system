@@ -1,7 +1,7 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./components/authentication/LoginPage";
-import RegisterPage from "./components/authentication/RegisterPage";
-import EmployeeDashboard from "./components/dashboard/EmployeeDashboard";
+import LoginPage from "./components/authentication/LoginPage.jsx";
+import RegisterPage from "./components/authentication/RegisterPage.jsx";
+import EmployeeDashboard from "./components/dashboard/EmployeeDashboard.jsx";
 
 function App() {
   return (
