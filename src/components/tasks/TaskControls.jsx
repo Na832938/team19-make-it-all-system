@@ -18,7 +18,7 @@ export default function TaskControls({ filters, onChange }) {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchValue]);
+  }, [searchValue, localFilters, onChange]); // ← Add missing dependencies here
 
   // Handle immediate filter changes (selects)
   const handleFilterChange = (key, value) => {
@@ -32,6 +32,7 @@ export default function TaskControls({ filters, onChange }) {
     setLocalFilters(filters);
     setSearchValue(filters.q);
   }, [filters]);
+}
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -89,4 +90,3 @@ export default function TaskControls({ filters, onChange }) {
       </Label>
     </div>
   );
-}
