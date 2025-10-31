@@ -1,15 +1,45 @@
+import { useState, useEffect } from 'react';
 import Select from '../common/Select';
 import TextInput from '../common/TextInput';
 import Label from '../common/Label';
 
 export default function TaskControls({ filters, onChange }) {
+  const [searchValue, setSearchValue] = useState(filters.q);
+  const [localFilters, setLocalFilters] = useState(filters);
+
+  // Debounce search input (300ms delay)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchValue !== localFilters.q) {
+        const newFilters = { ...localFilters, q: searchValue };
+        setLocalFilters(newFilters);
+        onChange(newFilters);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchValue]);
+
+  // Handle immediate filter changes (selects)
+  const handleFilterChange = (key, value) => {
+    const newFilters = { ...localFilters, [key]: value };
+    setLocalFilters(newFilters);
+    onChange(newFilters);
+  };
+
+  // Sync with parent filters when they change externally
+  useEffect(() => {
+    setLocalFilters(filters);
+    setSearchValue(filters.q);
+  }, [filters]);
+
   return (
-    <section className="task-controls">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <Label text="Status:">
         <Select
           name="status"
-          value={filters.status}
-          onChange={e => onChange({ ...filters, status: e.target.value })}
+          value={localFilters.status}
+          onChange={e => handleFilterChange('status', e.target.value)}
           options={[
             { value: 'All', label: 'All' },
             { value: 'To Do', label: 'To Do' },
@@ -22,8 +52,8 @@ export default function TaskControls({ filters, onChange }) {
       <Label text="Priority:">
         <Select
           name="priority"
-          value={filters.priority}
-          onChange={e => onChange({ ...filters, priority: e.target.value })}
+          value={localFilters.priority}
+          onChange={e => handleFilterChange('priority', e.target.value)}
           options={[
             { value: 'All', label: 'All' },
             { value: 'Low', label: 'Low' },
@@ -37,8 +67,8 @@ export default function TaskControls({ filters, onChange }) {
         <TextInput
           name="search"
           type="text"
-          value={filters.q}
-          onChange={e => onChange({ ...filters, q: e.target.value })}
+          value={searchValue}
+          onChange={e => setSearchValue(e.target.value)}
           placeholder="Search title..."
         />
       </Label>
@@ -46,8 +76,8 @@ export default function TaskControls({ filters, onChange }) {
       <Label text="Sort by:">
         <Select
           name="sort"
-          value={filters.sort}
-          onChange={e => onChange({ ...filters, sort: e.target.value })}
+          value={localFilters.sort}
+          onChange={e => handleFilterChange('sort', e.target.value)}
           options={[
             { value: 'none', label: 'None' },
             { value: 'dueAsc', label: 'Due date ↑' },
@@ -57,6 +87,6 @@ export default function TaskControls({ filters, onChange }) {
           ]}
         />
       </Label>
-    </section>
+    </div>
   );
 }

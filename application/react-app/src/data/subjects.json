@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "Question": "How to order printing paper?",
+    "description": "Just send an email to HR with the quantity and type of paper needed."
+  },
+  {
+    "id": 2,
+    "Question": "How to configure my microsoft account?",
+    "description": "Contact IT if issues arise during the initial setup process."
+  },
+  {
+    "id": 3,
+    "Question": "When are salaries paid out?",
+    "description": "On the 25th of each month. If it falls on a weekend, payment is made on the preceding Friday."
+  },
+  {
+    "id": 4,
+    "Question": "How to request vacation days?",
+    "description": "Submit a request through the HR portal at least 2 weeks in advance."
+  },
+  {
+    "id": 5,
+    "Question": "What is the Wi-Fi password?",
+    "description": "The guest Wi-Fi password changes monthly. Check the IT bulletin board for current credentials."
+  },
+  {
+    "id": 6,
+    "Question": "How to book a meeting room?",
+    "description": "Use the company calendar system to check availability and reserve meeting rooms."
+  },
+  {
+    "id": 7,
+    "Question": "Where can I find company policies?",
+    "description": "All company policies are available in the shared drive under 'Company Documents'."
+  },
+  {
+    "id": 8,
+    "Question": "How to report technical issues?",
+    "description": "Submit a ticket through the IT helpdesk portal or email helpdesk@company.com."
+  },
+  {
+    "id": 9,
+    "Question": "What are the working hours?",
+    "description": "Standard working hours are 9 AM to 5 PM, with flexible start times between 8-10 AM."
+  },
+  {
+    "id": 10,
+    "Question": "How to access the company VPN?",
+    "description": "Download the VPN client from the IT portal and use your company credentials to connect."
+  }
+]

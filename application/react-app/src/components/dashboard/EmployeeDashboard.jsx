@@ -5,8 +5,12 @@ import PostPage from "../posts/PostPage.jsx";
 import KnowledgeBase from "../knowledge-base/KnowledgeBase.jsx";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import Sidebar from "./Sidebar.jsx"; // ← ADD SIDEBAR IMPORT
+import Sidebar from "./Sidebar.jsx";
+import MobileSidebar from "./MobileSidebar.jsx";
 import Card from "../common/Card.jsx";
+import StatCard from "./StatCard.jsx";
+import ActivityItem from "./ActivityItem.jsx";
+import LoadingScreen from "./LoadingScreen.jsx";
 import ProgressBar from "../common/ProgressBar.jsx";
 import Button from "../common/Button.jsx";
 import tasks from "../../data/tasks.json";
@@ -14,7 +18,7 @@ import tasks from "../../data/tasks.json";
 export default function EmployeeDashboard() {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [employee, setEmployee] = useState(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // ← ADD SIDEBAR STATE
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -26,38 +30,46 @@ export default function EmployeeDashboard() {
   }, []);
 
   if (!employee) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="text-lg text-gray-600">Loading...</div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter(t => t.status === "Completed").length;
   const progress = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
+  const employeeIcon = (
+    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+      <span className="text-blue-600 font-semibold text-sm">
+        {employee.role.charAt(0)}
+      </span>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Navbar user={employee} />
+      <Navbar 
+        user={employee} 
+        onMobileMenuToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+      />
 
-      {/* Main Content Area WITH SIDEBAR */}
-      <div className="flex flex-1 pt-16">
-        {/* Sidebar */}
-        <div className="w-64 bg-white shadow-lg fixed left-0 top-16 h-[calc(100vh-4rem)] z-40">
+      <div className="flex flex-1">
+        <div className="hidden lg:block w-64 bg-white border-r border-gray-200">
           <Sidebar 
             activeSection={activeSection} 
             setActiveSection={setActiveSection}
-            isSidebarOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
           />
         </div>
 
-        {/* Main Content */}
-        <main className="flex-1 ml-64 p-6">
+        <MobileSidebar 
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          isOpen={isMobileSidebarOpen}
+          onClose={() => setIsMobileSidebarOpen(false)}
+        />
+
+        <main className="flex-1 lg:ml-64 p-4 lg:p-6 min-h-[calc(100vh-5rem)]">
           {activeSection === "dashboard" && (
-            <div className="space-y-6">
-              {/* Welcome Header */}
+            <div className="space-y-6 pb-8">
               <Card className="p-6">
                 <h1 className="text-2xl font-bold text-gray-900 mb-2">
                   Welcome back, {employee.username}!
@@ -67,18 +79,9 @@ export default function EmployeeDashboard() {
                 </p>
               </Card>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Employee Info Card */}
-                <Card className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Employee Info</h3>
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <span className="text-blue-600 font-semibold text-sm">
-                        {employee.role.charAt(0)}
-                      </span>
-                    </div>
-                  </div>
+              {/* Stats Grid - Keep the original responsive layout */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <StatCard title="Employee Info" icon={employeeIcon}>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600 font-medium">Name:</span>
@@ -95,14 +98,12 @@ export default function EmployeeDashboard() {
                       <span className="text-gray-900">{employee.email}</span>
                     </div>
                   </div>
-                </Card>
+                </StatCard>
 
-                {/* Task Overview Card */}
-                <Card className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Task Overview</h3>
-                    <span className="text-sm text-gray-500">{tasks.length} tasks</span>
-                  </div>
+                <StatCard 
+                  title="Task Overview" 
+                  icon={<span className="text-sm text-gray-500">{tasks.length} tasks</span>}
+                >
                   <div className="space-y-3">
                     {tasks.map((task, idx) => (
                       <div key={idx} className="flex items-center justify-between">
@@ -119,15 +120,12 @@ export default function EmployeeDashboard() {
                       </div>
                     ))}
                   </div>
-                </Card>
+                </StatCard>
 
-                {/* Progress Card */}
-                <Card className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Task Completion</h3>
-                    <span className="text-2xl font-bold text-blue-600">{progress}%</span>
-                  </div>
-                  
+                <StatCard 
+                  title="Task Completion" 
+                  icon={<span className="text-2xl font-bold text-blue-600">{progress}%</span>}
+                >
                   <ProgressBar value={progress} />
                   
                   <div className="grid grid-cols-2 gap-4 text-center mt-4">
@@ -140,36 +138,58 @@ export default function EmployeeDashboard() {
                       <p className="text-sm text-gray-600">Pending</p>
                     </div>
                   </div>
-                </Card>
+                </StatCard>
               </div>
 
-              {/* Quick Actions Row */}
               <Card className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Button type="primary" className="flex items-center justify-center gap-2 py-3">
+                  <Button type="green">
                     <span>➕</span>
                     Add Task
                   </Button>
-                  <Button type="secondary" className="flex items-center justify-center gap-2 py-3">
+                  <Button type="gray">
                     <span>📊</span>
                     View Reports
                   </Button>
-                  <Button type="primary" className="flex items-center justify-center gap-2 py-3 bg-purple-600 hover:bg-purple-700">
+                  <Button type="purple">
                     <span>💬</span>
                     New Topic
                   </Button>
-                  <Button type="primary" className="flex items-center justify-center gap-2 py-3 bg-orange-600 hover:bg-orange-700">
+                  <Button type="orange">
                     <span>📚</span>
                     Knowledge Base
                   </Button>
                 </div>
               </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <div className="space-y-4">
+                  <ActivityItem 
+                    icon="✓"
+                    iconBg="bg-green-100"
+                    title="Completed project proposal"
+                    time="2 hours ago"
+                  />
+                  <ActivityItem 
+                    icon="+"
+                    iconBg="bg-blue-100"
+                    title="Added new task"
+                    time="4 hours ago"
+                  />
+                  <ActivityItem 
+                    icon="⚡"
+                    iconBg="bg-yellow-100"
+                    title="Started design mockups"
+                    time="1 day ago"
+                  />
+                </div>
+              </Card>
             </div>
           )}
 
-          {/* Page Content */}
-          <div className="mt-6">
+          <div className="mt-6 pb-24">
             {activeSection === "todo" && <TodoPage />}
             {activeSection === "topics" && <TopicPage />}
             {activeSection === "posts" && <PostPage />}

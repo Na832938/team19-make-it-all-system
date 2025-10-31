@@ -6,12 +6,47 @@
   },
   {
     "id": 2,
-    "title": "Software Issues",
+    "title": "Software Issues", 
     "description": "This topic contains common software issues and solutions"
   },
   {
     "id": 3,
     "title": "Printing",
     "description": "This topic helps you with anything related to printing"
+  },
+  {
+    "id": 4,
+    "title": "Human Resources",
+    "description": "HR policies, benefits, and employee resources"
+  },
+  {
+    "id": 5,
+    "title": "IT Support",
+    "description": "Technical support and IT-related questions"
+  },
+  {
+    "id": 6,
+    "title": "Office Management",
+    "description": "Facilities, supplies, and office operations"
+  },
+  {
+    "id": 7,
+    "title": "Project Management",
+    "description": "Project planning, tracking, and methodologies"
+  },
+  {
+    "id": 8,
+    "title": "Team Collaboration",
+    "description": "Tools and best practices for team cooperation"
+  },
+  {
+    "id": 9,
+    "title": "Company Policies",
+    "description": "Official company rules and procedures"
+  },
+  {
+    "id": 10,
+    "title": "Training & Development",
+    "description": "Learning resources and skill development"
   }
 ]

@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 // CSS imports relative to this file
-import './styles/variables.css';
 import './styles/global.css';
-import './styles/typography.css';
 
 // optional, if you have global resets
 import reportWebVitals from './reportWebVitals';

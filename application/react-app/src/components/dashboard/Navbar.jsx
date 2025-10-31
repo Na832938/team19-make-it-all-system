@@ -2,136 +2,89 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../common/Button.jsx";
 
-export default function Navbar({ user }) {
+export default function Navbar({ user, onMobileMenuToggle }) {
   const [open, setOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("currentUser");
     navigate("/");
   };
 
   return (
-    <header className="
-      sticky top-0 left-0 w-full
-      flex justify-between items-center
-      p-md lg:plg
-      bg-surface border-b border-border-neutral
-      shadow-sm
-      flex-wrap gap-sm
-      z-50
-      lg:flex-nowrap
-    ">
-      {/* Left section: logo + menu toggle */}
-      <div className="flex items-center gap-md flex-shrink-0">
-        <div className="app-header-logo">
-          <h1 className="text-heading-md text-text-primary m-0 whitespace-nowrap sm:text-heading-md-sm">
-            Make it all
-          </h1>
-        </div>
-        
-        {/* Hamburger menu for mobile */}
-        <Button 
-          type="secondary"
-          className="
-            lg:hidden
-            sm:text-xl p-2
-          "
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </Button>
-      </div>
-
-      {/* Navigation links */}
-      <nav className={`
-        flex items-center justify-center flex-1
-        transition-all duration-300 ease-in-out
-        lg:flex lg:max-h-none lg:opacity-100
-        ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 lg:max-h-none lg:opacity-100'}
-        w-full lg:w-auto
-        flex-col lg:flex-row
-        overflow-hidden
-      `}>
-        <a href="/dashboard" className="
-          mx-md lg:mx-sm
-          no-underline text-text-primary font-medium
-          whitespace-nowrap
-          hover:text-primary-hover
-          py-sm lg:py-0 w-full lg:w-auto
-          border-b border-border-neutral lg:border-none
-          lg:text-left text-left
-        ">
-          Dashboard
-        </a>
-        <a href="/projects" className="
-          mx-md lg:mx-sm
-          no-underline text-text-primary font-medium
-          whitespace-nowrap
-          hover:text-primary-hover
-          py-sm lg:py-0 w-full lg:w-auto
-          border-b border-border-neutral lg:border-none
-          lg:text-left text-left
-        ">
-          Projects
-        </a>
-        <a href="/tasks" className="
-          mx-md lg:mx-sm
-          no-underline text-text-primary font-medium
-          whitespace-nowrap
-          hover:text-primary-hover
-          py-sm lg:py-0 w-full lg:w-auto
-          border-b border-border-neutral lg:border-none
-          lg:text-left text-left
-        ">
-          Tasks
-        </a>
-      </nav>
-
-      {/* User actions */}
-      <div className="flex items-center relative z-10 gap-sm flex-shrink-0 lg:w-auto w-full justify-between lg:justify-start">
-        <Button 
-          type="secondary"
-          onClick={() => setOpen(!open)}
-          className="flex items-center gap-xs"
-        >
-          <span className="text-text-primary">{user.username}</span>
-          <img 
-            src="/avatar-placeholder.png" 
-            alt="avatar" 
-            className="w-8 h-8 rounded-lg object-cover sm:w-7 sm:h-7"
-          />
-        </Button>
-
-        {/* Dropdown */}
-        {open && (
-          <div className="
-            absolute top-full right-0 mt-1
-            flex flex-col
-            bg-surface border border-border-neutral rounded-md shadow-md
-            p-md min-w-48 z-20
-            font-ubuntu text-body
-          ">
-            <div className="flex flex-col items-start gap-xs p-sm text-text-primary whitespace-nowrap">
-              <img 
-                src="/avatar-placeholder.png" 
-                alt="avatar" 
-                className="w-12 h-12 rounded-lg mb-xs"
-              />
-              <span className="font-medium">{user.username}</span>
-              <span className="text-text-secondary text-sm">{user.role}</span>
-              <span className="text-text-secondary text-sm">{user.email}</span>
-            </div>
-            <Button 
-              onClick={handleLogout}
-              type="primary"
-              className="mt-2"
+    <header className="sticky top-0 left-0 w-full bg-white border-b border-gray-300 shadow-lg z-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center px-6 py-3"> {/* Reduced py-4 to py-3 */}
+          {/* Logo + Mobile Menu */}
+          <div className="flex items-center gap-4">
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={onMobileMenuToggle}
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
-              Logout
-            </Button>
+              <span className="text-xl">☰</span>
+            </button>
+            
+            {/* Logo */}
+            <h1 className="text-xl font-bold text-gray-900 tracking-tight"> {/* Reduced from text-2xl */}
+              Make It All
+            </h1>
           </div>
-        )}
+
+          {/* User Menu */}
+          <div className="flex items-center relative">
+            <button 
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all duration-200" // Reduced padding
+            >
+              <div className="flex items-center gap-2"> {/* Reduced gap */}
+                <img 
+                  src="/avatar-placeholder.png" 
+                  alt="avatar" 
+                  className="w-8 h-8 rounded-lg object-cover border border-white shadow-sm" // Slightly smaller
+                />
+                <div className="text-left hidden sm:block">
+                  <p className="font-semibold text-gray-900 text-sm">{user.username}</p> {/* Smaller text */}
+                  <p className="text-xs text-gray-600 capitalize">{user.role.toLowerCase()}</p>
+                </div>
+              </div>
+              <svg 
+                className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} // Smaller arrow
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {/* Dropdown */}
+            {open && (
+              <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl p-4 min-w-56 z-50"> {/* Slightly smaller */}
+                <div className="flex items-center gap-3 mb-3 pb-3 border-b border-gray-100">
+                  <img 
+                    src="/avatar-placeholder.png" 
+                    alt="avatar" 
+                    className="w-10 h-10 rounded-lg object-cover border border-gray-100" // Smaller
+                  />
+                  <div>
+                    <p className="font-bold text-gray-900">{user.username}</p>
+                    <p className="text-gray-600 text-sm capitalize">{user.role.toLowerCase()}</p>
+                  </div>
+                </div>
+                
+                <Button 
+                  onClick={handleLogout}
+                  type="primary"
+                  className="w-full justify-center py-2 text-sm font-semibold" // Smaller
+                >
+                  Sign Out
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </header>
   );

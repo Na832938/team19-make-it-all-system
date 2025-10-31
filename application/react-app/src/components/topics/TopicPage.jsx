@@ -2,41 +2,55 @@ import { useState } from "react";
 import TopicForm from "./TopicForm";
 import TopicList from "./TopicList";
 import Card from "../common/Card";
-import topics from "../../data/topics.json";
+import topicsData from "../../data/topics.json";
 
 export default function TopicPage() {
-  const [topics, setTopics] = useState([
-    { id: 1, title: "Software Development", description: "This topic gives you Software Development tips" },
-    { id: 2, title: "Software Issues", description: "This topic contains common software issues and solutions" },
-    { id: 3, title: "Printing", description: "This topic helps you with anything related to printing" }
-  ]);
+  const [topics, setTopics] = useState(topicsData);
 
-  const handleCreateTopic = (topic) => {
-    setTopics((prev) => [...prev, topic]);
+  const handleCreateTopic = async (topicData) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const newTopic = {
+          ...topicData,
+          id: Date.now()
+        };
+        setTopics(prev => [...prev, newTopic]);
+        resolve(newTopic);
+      }, 500);
+    });
   };
 
-  const handleSelectTopic = (title) => {
-    alert(`Selected topic: ${title}`);
+  const handleSelectTopic = (topic) => {
+    alert(`Selected topic: ${topic.title}`);
   };
 
   return (
-    <div className="topic-page vertical-center" style={{ gap: 'var(--space-lg)', width: '100%' }}>
-      <div className="dashboard-grid" style={{ width: '100%' }}>
+    <div className="min-h-screen bg-gray-50 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Topics</h1>
+          <p className="text-gray-600 mt-2">Discuss and explore various topics with your team</p>
+        </div>
 
-        <Card>
-          <div>
-            <h2>Create Topic</h2>
-            <TopicForm onCreate={handleCreateTopic} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-1">
+            <Card className="p-6 h-fit md:sticky md:top-6">
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-900">Create Topic</h2>
+                <TopicForm onSubmit={handleCreateTopic} />
+              </div>
+            </Card>
           </div>
-        </Card>
 
-        <Card className="full-width-card">
-          <div>
-            <h2>Topics</h2>
-            <TopicList topics={topics} onSelect={handleSelectTopic} />
+          <div className="md:col-span-2">
+            <Card className="p-6">
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold text-gray-900">Discussion Topics</h2>
+                <TopicList topics={topics} onSelect={handleSelectTopic} />
+              </div>
+            </Card>
           </div>
-        </Card>
-
+        </div>
       </div>
     </div>
   );

@@ -2,19 +2,61 @@
   {
     "id": 1,
     "topic": "Software Development",
-    "title": "AGILE",
-    "content": "In our company we use the agile methodology to deliver great projects !"
+    "title": "AGILE Methodology",
+    "content": "In our company we use the agile methodology to deliver great projects!"
   },
   {
     "id": 2,
-    "topic": "Software Issues", 
+    "topic": "Software Issues",
     "title": "Update Issues",
-    "content": "I have been having issues lately after the new update on the HR software. Anyone having the same issue ?"
+    "content": "I have been having issues lately after the new update on the HR software. Anyone having the same issue?"
   },
   {
     "id": 3,
     "topic": "Printing",
-    "title": "PRINTING PAPER", 
-    "content": "PLEASE REFILL PRINTER WHEN YOU USE THE LAST SHEETS OF PAPER !!!!"
+    "title": "PRINTING PAPER",
+    "content": "PLEASE REFILL PRINTER WHEN YOU USE THE LAST SHEETS OF PAPER!!!!"
+  },
+  {
+    "id": 4,
+    "topic": "Software Development",
+    "title": "New React Best Practices",
+    "content": "Sharing some new React patterns we should adopt in our projects. Let me know your thoughts!"
+  },
+  {
+    "id": 5,
+    "topic": "Software Issues",
+    "title": "VPN Connection Problems",
+    "content": "Is anyone else experiencing slow VPN connections when working remotely?"
+  },
+  {
+    "id": 6,
+    "topic": "Printing",
+    "title": "Color Printer Maintenance",
+    "content": "The color printer on floor 3 will be undergoing maintenance tomorrow from 2-4 PM."
+  },
+  {
+    "id": 7,
+    "topic": "Software Development",
+    "title": "Code Review Guidelines",
+    "content": "Updated code review guidelines have been posted. Please review and provide feedback."
+  },
+  {
+    "id": 8,
+    "topic": "Software Issues",
+    "title": "Email Sync Issues",
+    "content": "Some team members reported email sync issues on mobile devices. IT is investigating."
+  },
+  {
+    "id": 9,
+    "topic": "Printing",
+    "title": "Double-Sided Printing",
+    "content": "Reminder: Please use double-sided printing for internal documents to save paper."
+  },
+  {
+    "id": 10,
+    "topic": "Software Development",
+    "title": "Upcoming Training Session",
+    "content": "There will be a TypeScript training session next Friday. Please RSVP if interested."
   }
 ]

@@ -1,38 +1,74 @@
 import { useState } from 'react';
+import Form from '../common/Form';
 import TextInput from '../common/TextInput';
 import TextArea from '../common/TextArea';
-import Button from '../common/Button';
 import Label from '../common/Label';
 
-export default function TopicForm({ onCreate }) {
+export default function TopicForm({ 
+  onSubmit, 
+  onCancel,
+  submitText = "Create Topic",
+  cancelText = "Clear"
+}) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim() || !description.trim()) {
-      setMessage('All fields are required.');
+    setLoading(true);
+    
+    if (!title.trim()) {
+      setMessage("Topic title is required");
+      setLoading(false);
+      return;
+    }
+    
+    if (!description.trim()) {
+      setMessage("Topic description is required");
+      setLoading(false);
       return;
     }
 
-    onCreate({
-      id: Date.now(),
-      title: title.trim(),
-      description: description.trim(),
-    });
+    try {
+      const topicData = {
+        title: title.trim(),
+        description: description.trim(),
+      };
 
+      await onSubmit(topicData);
+      
+      // Reset form on success
+      setTitle('');
+      setDescription('');
+      setMessage("Topic created successfully!");
+      
+      setTimeout(() => setMessage(""), 1500);
+    } catch (error) {
+      setMessage("Failed to create topic");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCancel = () => {
     setTitle('');
     setDescription('');
-    setMessage('Topic created successfully!');
-    setTimeout(() => setMessage(''), 1500);
+    setMessage('');
+    if (onCancel) onCancel();
   };
 
   return (
-    <form className="card-vertical" onSubmit={handleSubmit} autoComplete="off">
-      <Label text="Topic title:">
+    <Form 
+      onSubmit={handleSubmit}
+      onCancel={handleCancel}
+      submitText={submitText}
+      cancelText={cancelText}
+      loading={loading}
+    >
+      <Label text="Topic title:" required>
         <TextInput
-          name="topicTitle"
           type="text"
           placeholder="Enter topic title"
           value={title}
@@ -41,9 +77,8 @@ export default function TopicForm({ onCreate }) {
         />
       </Label>
 
-      <Label text="Topic description:">
+      <Label text="Topic description:" required>
         <TextArea
-          name="topicDescription"
           placeholder="Enter topic description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -52,9 +87,15 @@ export default function TopicForm({ onCreate }) {
         />
       </Label>
 
-      <Button type="primary">Create Topic</Button>
-
-      {message && <p className="form-message">{message}</p>}
-    </form>
+      {message && (
+        <div className={`p-3 rounded-md ${
+          message.includes("success") 
+            ? "bg-green-100 text-green-800 border border-green-200" 
+            : "bg-red-100 text-red-800 border border-red-200"
+        }`}>
+          {message}
+        </div>
+      )}
+    </Form>
   );
 }

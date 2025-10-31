@@ -1,16 +1,12 @@
 export default function Label({ 
   text, 
   children, 
-  htmlFor 
+  htmlFor,
+  className = ''
 }) {
   return (
     <label 
-      className="
-        flex flex-col gap-xs
-        font-ubuntu text-body text-text-primary
-        w-full max-w-full box-border
-        md:text-[0.95rem] md:gap-xs
-      "
+      className={`label-base text-responsive ${className}`}
       htmlFor={htmlFor}
     >
       {text && <span className="font-medium text-text-secondary">{text}</span>}
