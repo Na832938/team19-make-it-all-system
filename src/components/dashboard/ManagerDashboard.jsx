@@ -25,6 +25,8 @@ export default function ManagerDashboard() {
     } else if (user.role !== 'Manager') {
       window.location.href = "/app"; // Redirect employees to their dashboard
     }
+    const userData = JSON.parse(storedUser);
+    document.title = `Manager - ` + `${userData.username}`;
   }, [user]);
 
   if (!user || user.role !== 'Manager') {

@@ -31,9 +31,11 @@ export default function EmployeeDashboard() {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
       setEmployee(JSON.parse(storedUser));
-    } else {
+      } else {
       window.location.href = "/";
     }
+    const userData = JSON.parse(storedUser);
+    document.title = `Employee - ` + `${userData.username}`;
   }, []);
 
   if (!employee) {
