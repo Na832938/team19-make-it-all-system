@@ -3,11 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 3000,
-  },
+  base: ' https://github.com/Na832938/team19-make-it-all-system', // replace with your repository name
   build: {
     outDir: 'dist',
   },
-
 })
