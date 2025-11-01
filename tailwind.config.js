@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -17,7 +19,7 @@ module.exports = {
         danger: "var(--danger-colour)",
         dangerHover: "var(--danger-hover)",
         focus: "var(--focus-colour)",
-        disabled: "var(--disabled-colour)"
+        disabled: "var(--disabled-colour)",
       },
       fontFamily: { ubuntu: ['Ubuntu', 'sans-serif'] },
       spacing: {
@@ -46,12 +48,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    function ({ addUtilities }) {
-      const newUtilities = {
-        /* Copy all your .accordion-*, .badge-*, .btn-*, .input-*, etc plugin utilities here */
-      };
-      addUtilities(newUtilities);
-    },
-  ],
+  plugins: [],
 };

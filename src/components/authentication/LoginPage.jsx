@@ -48,7 +48,10 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <Card className="w-full max-w-md p-6">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Login
+        </h2>
         
         <Form 
           onSubmit={handleSubmit}
@@ -57,7 +60,6 @@ export default function LoginPage() {
           layout="vertical"
           variant="comfortable"
           actions={false}
-          // Remove className prop here
         >
           <TextInput
             name="username"
@@ -83,7 +85,8 @@ export default function LoginPage() {
           
           <Button 
             type="primary" 
-            className="w-full"
+            size="medium"
+            width="full"
             disabled={loading}
             buttonType="submit"
           >
@@ -118,6 +121,7 @@ export default function LoginPage() {
           <p>jdoe / pass1234</p>
           <p>asmith / hello2025</p>
         </div>
+
       </Card>
     </div>
   );

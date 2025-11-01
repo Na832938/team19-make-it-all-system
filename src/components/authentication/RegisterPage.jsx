@@ -27,35 +27,21 @@ export default function RegisterPage() {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     try {
-      const employee = users.find(user => user.username === username.trim());
+      const employee = users.find(u => u.username === username.trim());
       
-      if (!employee) {
-        throw new Error("Username does not match any employee.");
-      }
-
-      if (email.toLowerCase() !== employee.email.toLowerCase()) {
-        throw new Error("Email must match the employee's registered email.");
-      }
-
-      if (!validatePassword(password)) {
-        throw new Error("Password must be 8+ characters, include 1 capital letter and 1 special character.");
-      }
-
-      if (employee.password && employee.password !== "") {
-        throw new Error("This account is already registered.");
-      }
+      if (!employee) throw new Error("Username does not match any employee.");
+      if (email.toLowerCase() !== employee.email.toLowerCase()) throw new Error("Email must match the employee's registered email.");
+      if (!validatePassword(password)) throw new Error("Password must be 8+ chars, include 1 uppercase and 1 special char.");
+      if (employee.password && employee.password !== "") throw new Error("This account is already registered.");
 
       setMessage(`Registration successful for ${employee.username}. You can now login.`);
       setShowAlert(true);
-      
+
       setUsername("");
       setEmail("");
       setPassword("");
-      
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
 
+      setTimeout(() => navigate("/"), 2000);
     } catch (err) {
       setMessage(err.message);
       setShowAlert(true);
@@ -70,59 +56,56 @@ export default function RegisterPage() {
   };
 
   const handleChange = (field, value) => {
-    switch (field) {
-      case 'username':
-        setUsername(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-    }
     if (showAlert) {
       setShowAlert(false);
       setMessage("");
+    }
+    switch (field) {
+      case 'username': setUsername(value); break;
+      case 'email': setEmail(value); break;
+      case 'password': setPassword(value); break;
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <Card className="w-full max-w-md p-6">
-        <h2 className="text-2xl font-bold text-center mb-6">Register Account</h2>
+
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Register Account
+        </h2>
         
-        <Form 
+        <Form
           onSubmit={handleSubmit}
           loading={loading}
           disabled={loading}
           layout="vertical"
           spacing="normal"
-          actions={false} // Set to false to disable automatic button
+          actions={false}
           className="space-y-4"
         >
-          <TextInput 
-            type="text" 
-            placeholder="Username (must match employee)" 
-            value={username} 
+          <TextInput
+            type="text"
+            placeholder="Username (must match employee)"
+            value={username}
             onChange={e => handleChange('username', e.target.value)}
             required
             disabled={loading}
           />
-          
-          <TextInput 
-            type="email" 
-            placeholder="Email" 
-            value={email} 
+
+          <TextInput
+            type="email"
+            placeholder="Email"
+            value={email}
             onChange={e => handleChange('email', e.target.value)}
             required
             disabled={loading}
           />
-          
-          <TextInput 
-            type="password" 
-            placeholder="Password" 
-            value={password} 
+
+          <TextInput
+            type="password"
+            placeholder="Password"
+            value={password}
             onChange={e => handleChange('password', e.target.value)}
             required
             disabled={loading}
@@ -136,17 +119,17 @@ export default function RegisterPage() {
               <li>One special character (!@#$% etc.)</li>
             </ul>
           </div>
-          
-          {/* Add the Button back manually */}
-          <Button 
-            type="primary" 
-            className="w-full"
+
+          <Button
+            type="primary"
+            size="medium"
+            width="full"
             disabled={loading}
             buttonType="submit"
           >
             {loading ? "Registering..." : "Register"}
           </Button>
-          
+
           {showAlert && (
             <Alert
               type={message.includes("successful") ? "success" : "error"}
@@ -155,9 +138,15 @@ export default function RegisterPage() {
             />
           )}
         </Form>
-        
+
         <div className="text-center text-sm text-gray-600 mt-4">
-          Already have an account? <Link to="/" className="text-blue-600 hover:underline font-medium">Login here</Link>
+          Already have an account?{" "}
+          <Link
+            to="/"
+            className="text-blue-600 hover:underline font-medium"
+          >
+            Login here
+          </Link>
         </div>
 
         <div className="text-xs text-gray-500 text-center mt-4">
@@ -168,6 +157,7 @@ export default function RegisterPage() {
           <p>pparker - pparker@company.com</p>
           <p>sbarnes - sbarnes@company.com</p>
         </div>
+
       </Card>
     </div>
   );
