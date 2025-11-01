@@ -1,0 +1,41 @@
+:root {
+  /* COLORS */
+  --primary-colour: #0b5ed7;
+  --primary-hover: #094bb5;
+  --secondary-colour: #f8f9fa;
+  --secondary-hover: #e9ecef;
+  --surface-colour: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --border-neutral: #dee2e6;
+  --success-colour: #198754;
+  --error-colour: #dc3545;
+  --danger-colour: #c82333;
+  --danger-hover: #a71d2a;
+  --focus-colour: #0b5ed7;
+  --disabled-colour: #ced4da;
+
+  /* TYPOGRAPHY */
+  --font-family-base: 'Ubuntu', sans-serif;
+  --font-size-heading-lg: 1.75rem;
+  --font-size-heading-md: 1.25rem;
+  --font-size-body: 0.95rem;
+  --font-size-caption: 0.8125rem;
+
+  /* SPACING */
+  --space-xs: 0.2rem;
+  --space-sm: 0.4rem;
+  --space-md: 0.85rem;
+  --space-lg: 1.25rem;
+  --space-xl: 1.75rem;
+
+  /* RADII */
+  --radius-sm: 0.2rem;
+  --radius-md: 0.4rem;
+  --radius-lg: 0.6rem;
+
+  /* SHADOWS */
+  --shadow-sm: 0 1px 1.5px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 5px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.12);
+}

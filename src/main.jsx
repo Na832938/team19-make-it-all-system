@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css'; // Import the CSS file
 import App from './App.jsx';
+import './index.css';
 import { AuthProvider } from './lib/AuthContext.jsx';
 import reportWebVitals from './reportWebVitals';
 

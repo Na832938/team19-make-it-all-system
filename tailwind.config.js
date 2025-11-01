@@ -1,41 +1,57 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: '#0b5ed7',
-        'primary-hover': '#094bb5',
-        'primary-light': '#dbeafe',
-        secondary: '#f8f9fa',
-        'secondary-hover': '#e9ecef',
-        surface: '#ffffff',
-        'text-primary': '#212529',
-        'text-secondary': '#495057',
-        'border-neutral': '#dee2e6',
-        'border-focus': '#0b5ed7',
-        'status-success': '#198754',
-        'status-error': '#dc3545',
-        'status-danger': '#c82333',
-        'status-danger-hover': '#a71d2a',
-        disabled: '#ced4da',
+        primary: "var(--primary-colour)",
+        primaryHover: "var(--primary-hover)",
+        secondary: "var(--secondary-colour)",
+        secondaryHover: "var(--secondary-hover)",
+        surface: "var(--surface-colour)",
+        textPrimary: "var(--text-primary)",
+        textSecondary: "var(--text-secondary)",
+        borderNeutral: "var(--border-neutral)",
+        success: "var(--success-colour)",
+        error: "var(--error-colour)",
+        danger: "var(--danger-colour)",
+        dangerHover: "var(--danger-hover)",
+        focus: "var(--focus-colour)",
+        disabled: "var(--disabled-colour)"
       },
+      fontFamily: { ubuntu: ['Ubuntu', 'sans-serif'] },
       spacing: {
-        'xs': '0.2rem',
-        'sm': '0.4rem',
-        'md': '0.85rem',
-        'lg': '1.25rem',
-        'xl': '1.75rem',
+        xs: "var(--space-xs)",
+        sm: "var(--space-sm)",
+        md: "var(--space-md)",
+        lg: "var(--space-lg)",
+        xl: "var(--space-xl)",
       },
       borderRadius: {
-        'sm': '0.3rem',
-        'md': '0.5rem',
-        'lg': '0.75rem',
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
       },
-      fontFamily: {
-        ubuntu: ['Ubuntu', 'sans-serif'],
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+      },
+      animation: { fadeIn: "fadeIn 0.5s ease forwards" },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(15px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        /* Copy all your .accordion-*, .badge-*, .btn-*, .input-*, etc plugin utilities here */
+      };
+      addUtilities(newUtilities);
+    },
+  ],
+};

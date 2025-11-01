@@ -5,6 +5,8 @@
   "homepage": "https://na832938.github.io/team19-make-it-all-system",
   "type": "module",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "@tailwindcss/vite": "^4.1.16",
     "chart.js": "^4.5.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
