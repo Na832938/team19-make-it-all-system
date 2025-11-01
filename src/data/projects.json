@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Project Alpha",
+    "completed": 73,
+    "incomplete": 27,
+    "teamMembers": [
+      { "name": "John", "tasks": ["Task 1", "Task 4"] },
+      { "name": "David", "tasks": ["Task 2", "Task 3"] },
+      { "name": "Alice", "tasks": ["Task 5", "Task 8"] },
+      { "name": "Susan", "tasks": ["Task 7", "Task 6"] }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Project Beta",
+    "completed": 12,
+    "incomplete": 88,
+    "teamMembers": [
+      { "name": "Paula", "tasks": ["Task 5", "Task 2"] },
+      { "name": "Jason", "tasks": ["Task 3"] },
+      { "name": "Linda", "tasks": ["Task 1", "Task 4"] },
+      { "name": "Samuel", "tasks": ["Task 6", "Task 7"] }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Project Gamma",
+    "completed": 98,
+    "incomplete": 2,
+    "teamMembers": [
+      { "name": "Bryce", "tasks": ["Task 4", "Task 3"] },
+      { "name": "Anderson", "tasks": ["Task 2", "Task 6"] },
+      { "name": "Imogen", "tasks": ["Task 5", "Task 1"] },
+      { "name": "Jamal", "tasks": ["Task 7"] }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Project Delta",
+    "completed": 45,
+    "incomplete": 55,
+    "teamMembers": [
+      { "name": "Michael", "tasks": ["Frontend Development", "UI Testing"] },
+      { "name": "Sarah", "tasks": ["Backend API", "Database Design"] },
+      { "name": "Robert", "tasks": ["Mobile App", "User Testing"] },
+      { "name": "Emma", "tasks": ["Documentation", "Deployment"] }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Project Epsilon",
+    "completed": 67,
+    "incomplete": 33,
+    "teamMembers": [
+      { "name": "Daniel", "tasks": ["Market Research", "Competitor Analysis"] },
+      { "name": "Olivia", "tasks": ["Product Design", "User Stories"] },
+      { "name": "James", "tasks": ["Budget Planning", "Resource Allocation"] },
+      { "name": "Sophia", "tasks": ["Timeline Management", "Progress Tracking"] }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Project Zeta",
+    "completed": 23,
+    "incomplete": 77,
+    "teamMembers": [
+      { "name": "William", "tasks": ["System Architecture", "Technical Specs"] },
+      { "name": "Charlotte", "tasks": ["Quality Assurance", "Test Cases"] },
+      { "name": "Benjamin", "tasks": ["Security Audit", "Performance Testing"] },
+      { "name": "Amelia", "tasks": ["User Training", "Support Documentation"] }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Project Eta",
+    "completed": 89,
+    "incomplete": 11,
+    "teamMembers": [
+      { "name": "Lucas", "tasks": ["Data Migration", "ETL Processes"] },
+      { "name": "Mia", "tasks": ["Analytics Setup", "Dashboard Creation"] },
+      { "name": "Henry", "tasks": ["Server Configuration", "Cloud Deployment"] },
+      { "name": "Evelyn", "tasks": ["Backup Systems", "Disaster Recovery"] }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Project Theta",
+    "completed": 34,
+    "incomplete": 66,
+    "teamMembers": [
+      { "name": "Alexander", "tasks": ["Content Strategy", "SEO Optimization"] },
+      { "name": "Harper", "tasks": ["Social Media", "Email Campaigns"] },
+      { "name": "Jack", "tasks": ["Ad Campaigns", "Conversion Tracking"] },
+      { "name": "Luna", "tasks": ["Brand Guidelines", "Visual Identity"] }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Project Iota",
+    "completed": 56,
+    "incomplete": 44,
+    "teamMembers": [
+      { "name": "Owen", "tasks": ["Feature Development", "Code Review"] },
+      { "name": "Aria", "tasks": ["Bug Fixing", "Performance Optimization"] },
+      { "name": "Leo", "tasks": ["Integration Testing", "API Documentation"] },
+      { "name": "Lily", "tasks": ["User Feedback", "Feature Requests"] }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Project Kappa",
+    "completed": 78,
+    "incomplete": 22,
+    "teamMembers": [
+      { "name": "Caleb", "tasks": ["Final Testing", "User Acceptance"] },
+      { "name": "Grace", "tasks": ["Launch Preparation", "Go-Live Checklist"] },
+      { "name": "Julian", "tasks": ["Post-Launch Support", "Monitoring"] },
+      { "name": "Chloe", "tasks": ["Project Retrospective", "Lessons Learned"] }
+    ]
+  }
+]

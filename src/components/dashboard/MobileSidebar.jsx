@@ -4,17 +4,25 @@ import {
   FaComments, 
   FaFileAlt, 
   FaBook,
+  FaChartLine,
   FaTimes 
 } from 'react-icons/fa';
 
-export default function MobileSidebar({ activeSection, setActiveSection, isOpen, onClose }) {
-  const sections = [
+export default function MobileSidebar({ activeSection, setActiveSection, isOpen, onClose, isManager = false }) {
+  const employeeSections = [
     { key: "dashboard", label: "Dashboard", icon: FaHome },
     { key: "todo", label: "Tasks", icon: FaTasks },
     { key: "topics", label: "Topics", icon: FaComments },
     { key: "posts", label: "Posts", icon: FaFileAlt },
     { key: "KnowledgeBase", label: "Knowledge Base", icon: FaBook }
   ];
+
+  const managerSections = [
+    { key: "dashboard", label: "Dashboard", icon: FaHome },
+    { key: "graphs", label: "Analytics", icon: FaChartLine }
+  ];
+
+  const sections = isManager ? managerSections : employeeSections;
 
   if (!isOpen) return null;
 

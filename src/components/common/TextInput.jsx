@@ -4,7 +4,8 @@ export default function TextInput({
   onChange, 
   placeholder,
   disabled = false,
-  className = ''
+  className = '',
+  ...props // Capture all other props
 }) {
   return (
     <input 
@@ -14,6 +15,7 @@ export default function TextInput({
       onChange={onChange} 
       placeholder={placeholder}
       disabled={disabled}
+      {...props} // Pass all other props
     />
   );
 }

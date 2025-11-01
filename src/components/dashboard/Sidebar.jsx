@@ -3,11 +3,13 @@ import {
   FaTasks, 
   FaComments, 
   FaFileAlt, 
-  FaBook 
+  FaBook,
+  FaChartLine
 } from 'react-icons/fa';
 
-export default function Sidebar({ activeSection, setActiveSection }) {
-  const sections = [
+import Button from '../common/Button.jsx';
+
+const employeeSections = [
     { key: "dashboard", label: "Dashboard", icon: FaHome },
     { key: "todo", label: "Tasks", icon: FaTasks },
     { key: "topics", label: "Topics", icon: FaComments },
@@ -15,13 +17,24 @@ export default function Sidebar({ activeSection, setActiveSection }) {
     { key: "KnowledgeBase", label: "Knowledge Base", icon: FaBook }
   ];
 
+  const managerSections = [
+     { key: "dashboard", label: "Dashboard", icon: FaHome },
+    { key: "graphs", label: "Analytics", icon: FaChartLine }
+  ];
+
+export default function Sidebar({ activeSection, setActiveSection, sections = employeeSections, isManager = false }) {
+
+  if (isManager) {
+    sections = managerSections;
+  }
+
   return (
     <aside className="w-full h-full bg-white border-r border-gray-200 ">
       <nav className="p-4 space-y-2">
         {sections.map((s) => {
           const IconComponent = s.icon;
           return (
-            <button
+            <Button
               key={s.key}
               onClick={() => setActiveSection(s.key)}
               className={`
@@ -38,7 +51,7 @@ export default function Sidebar({ activeSection, setActiveSection }) {
                 activeSection === s.key ? 'text-blue-600' : 'text-gray-500'
               }`} />
               <span className="font-medium">{s.label}</span>
-            </button>
+            </Button>
           );
         })}
       </nav>

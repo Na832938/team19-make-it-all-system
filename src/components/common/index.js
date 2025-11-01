@@ -1,6 +1,7 @@
 export { default as Alert } from './Alert.jsx';
 export { default as Button } from './Button.jsx';
 export { default as Card } from './Card.jsx';
+export { default as StatsChart } from './StatsChart.jsx';
 export { default as Checkbox } from './Checkbox.jsx';
 export { default as Dropdown } from './Dropdown.jsx';
 export {default as Form } from './Form.jsx';    

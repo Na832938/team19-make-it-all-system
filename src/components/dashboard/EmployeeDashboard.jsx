@@ -10,10 +10,17 @@ import MobileSidebar from "./MobileSidebar.jsx";
 import Card from "../common/Card.jsx";
 import StatCard from "./StatCard.jsx";
 import ActivityItem from "./ActivityItem.jsx";
-import LoadingScreen from "./LoadingScreen.jsx";
+import LoadingScreen from "../common/LoadingScreen.jsx";
 import ProgressBar from "../common/ProgressBar.jsx";
 import Button from "../common/Button.jsx";
 import tasks from "../../data/tasks.json";
+
+import {
+  FaComments,
+  FaBook,
+  FaPlus,
+  FaChartBar
+} from 'react-icons/fa';
 
 export default function EmployeeDashboard() {
   const [activeSection, setActiveSection] = useState("dashboard");
@@ -67,7 +74,7 @@ export default function EmployeeDashboard() {
           onClose={() => setIsMobileSidebarOpen(false)}
         />
 
-        <main className="flex-1 lg:ml-64 p-4 lg:p-6 min-h-[calc(100vh-5rem)]">
+        <main className="flex-1 lg:ml-2 p-4 lg:p-6 min-h-[calc(100vh-5rem)]">
           {activeSection === "dashboard" && (
             <div className="space-y-6 pb-8">
               <Card className="p-6">
@@ -144,20 +151,20 @@ export default function EmployeeDashboard() {
               <Card className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Button type="green">
-                    <span>➕</span>
+                  <Button type="green" className="flex items-center justify-center gap-2">
+                    <FaPlus className="w-4 h-4" />
                     Add Task
                   </Button>
-                  <Button type="gray">
-                    <span>📊</span>
+                  <Button type="gray" className="flex items-center justify-center gap-2">
+                    <FaChartBar className="w-4 h-4" />
                     View Reports
                   </Button>
-                  <Button type="purple">
-                    <span>💬</span>
+                  <Button type="purple" className="flex items-center justify-center gap-2">
+                    <FaComments className="w-4 h-4" />
                     New Topic
                   </Button>
-                  <Button type="orange">
-                    <span>📚</span>
+                  <Button type="orange" className="flex items-center justify-center gap-2">
+                    <FaBook className="w-4 h-4" />
                     Knowledge Base
                   </Button>
                 </div>
