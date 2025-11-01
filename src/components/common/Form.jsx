@@ -16,29 +16,33 @@ export default function Form({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!loading && !disabled && onSubmit) {
-      onSubmit(e);
-    }
+    if (!loading && !disabled && onSubmit) onSubmit(e);
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-
-    if (onCancel) {
-      onCancel();
-    }
+    if (onCancel) onCancel();
   };
 
   const layoutClasses = {
-    vertical: "flex flex-col gap-4",
-    horizontal: "flex flex-row gap-4 items-center"
+    vertical: "flex flex-col gap-6",
+    horizontal: "flex flex-col gap-6" // main container still vertical for content
+  };
+
+  const actionClasses = {
+    vertical: "mt-4 flex flex-col gap-2",
+    horizontal: "mt-6 flex flex-row gap-4 justify-end items-center"
+  };
+
+  const widthClasses = {
+    vertical: "full",
+    horizontal: "default"
   };
 
   const variantClasses = {
-    default: "p-4",
-    compact: "p-2",
-    comfortable: "p-6"
+    default: "p-6",
+    compact: "p-4",
+    comfortable: "p-8"
   };
 
   return (
@@ -46,20 +50,18 @@ export default function Form({
       onSubmit={handleSubmit}
       className={`w-full ${layoutClasses[layout]} ${variantClasses[variant]} ${className}`}
     >
-
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-4 w-full">
         {children}
       </div>
 
       {actions && (
-        <div className={`mt-4 flex ${layout === 'vertical' ? 'flex-col gap-2' : 'flex-row gap-2'}`}>
-
+        <div className={actionClasses[layout]}>
           {onCancel && (
             <Button
               type="secondary"
               onClick={handleCancelClick}
               disabled={loading || disabled}
-              width={layout === 'vertical' ? 'full' : 'default'}
+              width={widthClasses[layout]}
             >
               {cancelText}
             </Button>
@@ -68,16 +70,14 @@ export default function Form({
           <Button
             type="primary"
             size="medium"
-            width={layout === 'vertical' ? 'full' : 'default'}
+            width={widthClasses[layout]}
             disabled={loading || disabled}
             buttonType="submit"
           >
             {loading ? "Loading..." : submitText}
           </Button>
-
         </div>
       )}
-
     </form>
   );
 }

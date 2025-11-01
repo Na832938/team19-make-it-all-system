@@ -12,9 +12,12 @@ export default function TaskForm({
 }) {
   const [taskName, setTaskName] = useState('');
   const [priority, setPriority] = useState('Medium');
-  const [dueDate, setDueDate] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const today = new Date();
+  const formattedToday = today.toISOString().split("T")[0];
+  const [dueDate, setDueDate] = useState(formattedToday);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +61,7 @@ export default function TaskForm({
     if (onCancel) onCancel();
   };
 
+  
   return (
     <Form 
       onSubmit={handleSubmit}
@@ -88,7 +92,9 @@ export default function TaskForm({
         />
       </Label>
 
+          
       <Label text="Due date:">
+        
         <TextInput 
           type="date" 
           value={dueDate}
