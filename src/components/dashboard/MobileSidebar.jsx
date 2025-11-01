@@ -41,8 +41,8 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
             <h3 className="text-lg font-semibold text-gray-900">Navigation</h3>
             <Button
               onClick={onClose}
-              width="full"
-              variant="subtle"
+              width="sidebar"
+              variant="sidebar"
             >
               <FaTimes className="w-5 h-5 text-gray-600" />
             </Button>
