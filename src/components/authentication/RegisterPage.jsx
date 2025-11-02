@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, TextInput, Card, Alert, Form } from '../common';
 import { Link, useNavigate } from 'react-router-dom';
-import users from '../../data/users.json';
+import usersData from '../../data/users.json';
 
 function validatePassword(password) {
   const minLength = /.{8,}/;
@@ -17,22 +17,44 @@ export default function RegisterPage() {
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("registeredUsers"));
+    if (stored && Array.isArray(stored)) setUsers(stored);
+    else setUsers(usersData);
+  }, []);
+
+  const persistUsers = (updated) => {
+    setUsers(updated);
+    localStorage.setItem("registeredUsers", JSON.stringify(updated));
+  };
 
   const register = async () => {
     setLoading(true);
     setMessage("");
     setShowAlert(false);
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000)); // fake delay kept
 
     try {
-      const employee = users.find(u => u.username === username.trim());
-      
+      const employee = users.find(u => u.username.trim().toLowerCase() === username.trim().toLowerCase());
       if (!employee) throw new Error("Username does not match any employee.");
-      if (email.toLowerCase() !== employee.email.toLowerCase()) throw new Error("Email must match the employee's registered email.");
-      if (!validatePassword(password)) throw new Error("Password must be 8+ chars, include 1 uppercase and 1 special char.");
-      if (employee.password && employee.password !== "") throw new Error("This account is already registered.");
+      if (email.toLowerCase() !== employee.email.toLowerCase())
+        throw new Error("Email must match the employee's registered email.");
+      if (!validatePassword(password))
+        throw new Error("Password must be 8+ chars, include 1 uppercase and 1 special char.");
+      if (employee.registered)
+        throw new Error("This account is already registered.");
+
+      const updatedUsers = users.map(u =>
+        u.username === employee.username
+          ? { ...u, registered: true, password }
+          : u
+      );
+
+      persistUsers(updatedUsers);
 
       setMessage(`Registration successful for ${employee.username}. You can now login.`);
       setShowAlert(true);
@@ -74,7 +96,7 @@ export default function RegisterPage() {
         <h2 className="text-2xl font-bold text-center mb-6 text-textPrimary dark:text-textPrimary">
           Register Account
         </h2>
-        
+
         <Form
           onSubmit={handleSubmit}
           loading={loading}
@@ -154,11 +176,11 @@ export default function RegisterPage() {
 
         <div className="text-xs text-textSecondary dark:text-textSecondary text-center mt-4">
           <p className="font-semibold">Available Employees for Registration:</p>
-          <p>jdoe - jdoe@company.com</p>
-          <p>asmith - asmith@company.com</p>
-          <p>ckent - ckent@company.com</p>
-          <p>pparker - pparker@company.com</p>
-          <p>sbarnes - sbarnes@company.com</p>
+          {users.map(u => (
+            <p key={u.username}>
+              {u.username} - {u.email}
+            </p>
+          ))}
         </div>
 
       </Card>
