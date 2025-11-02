@@ -3,7 +3,7 @@ import TodoPage from "../tasks/TodoPage.jsx";
 import TopicPage from "../topics/TopicPage.jsx";
 import PostPage from "../posts/PostPage.jsx";
 import KnowledgeBase from "../knowledge-base/KnowledgeBase.jsx";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Sidebar from "./Sidebar.jsx";
 import MobileSidebar from "./MobileSidebar.jsx";

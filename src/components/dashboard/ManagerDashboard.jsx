@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../lib/AuthContext';
-import Navbar from './Navbar.jsx';
+import Navbar from './Header.jsx';
 import Footer from './Footer.jsx';
 import Sidebar from './Sidebar.jsx';
 import MobileSidebar from './MobileSidebar.jsx';

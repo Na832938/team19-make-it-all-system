@@ -68,14 +68,14 @@ export default function TodoPage() {
   const sharedCardClass = 'bg-surface dark:bg-surface border border-border-neutral dark:border-border-neutral rounded-md shadow-sm dark:shadow-sm transition-all duration-200';
 
   return (
-    <div className="min-h-screen bg-surface dark:bg-surface py-6">
+    <div className="bg-surface dark:bg-surface py-6">
       <div className="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-text-primary dark:text-text-primary">Tasks</h1>
           <p className="text-text-secondary dark:text-text-secondary mt-2">Manage your tasks and track progress</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           <Card className={`md:col-span-1 p-6 ${sharedCardClass}`}>
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-text-primary dark:text-text-primary">Add Task</h2>
@@ -86,7 +86,7 @@ export default function TodoPage() {
           <div className="md:col-span-2 space-y-6">
             <Card className={`p-6 ${sharedCardClass}`}>
               <div>
-                <h2 className="text-xl font-semibold text-text-primary dark:text-text-primary mb-4">Task List</h2>
+                <h3 className="text-xl font-semibold text-text-primary dark:text-text-primary mb-4">filter by:</h3>
                 <TaskControls filters={filters} onChange={setFilters} />
               </div>
             </Card>

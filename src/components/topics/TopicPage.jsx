@@ -25,11 +25,13 @@ export default function TopicPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-6">
+    <div className="min-h-screen bg-[var(--surface-colour)] dark:bg-[var(--surface-colour)] py-6">
       <div className="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Topics</h1>
-          <p className="text-gray-600 mt-2">Discuss and explore various topics with your team</p>
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] dark:text-[var(--text-primary)]">Topics</h1>
+          <p className="text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mt-2">
+            Discuss and explore various topics with your team
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

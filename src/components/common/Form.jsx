@@ -26,7 +26,7 @@ export default function Form({
 
   const layoutClasses = {
     vertical: "flex flex-col gap-6",
-    horizontal: "flex flex-col gap-6" // main container still vertical for content
+    horizontal: "flex flex-col gap-6"
   };
 
   const actionClasses = {
@@ -52,10 +52,6 @@ export default function Form({
         w-full 
         ${layoutClasses[layout]} 
         ${variantClasses[variant]} 
-        bg-[var(--surface-colour)] dark:bg-[var(--surface-colour)]
-        text-[var(--text-primary)] dark:text-[var(--text-primary)]
-        border border-[var(--border-neutral)] dark:border-[var(--border-neutral)]
-        rounded-md shadow-sm dark:shadow-sm
         ${className}
       `}
     >

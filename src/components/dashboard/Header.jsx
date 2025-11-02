@@ -26,7 +26,7 @@ export default function Navbar({ user, onMobileMenuToggle }) {
               onClick={onMobileMenuToggle}
               size="small"
               width="default"
-              className="lg:hidden p-2 rounded-lg hover:bg-[var(--surface-alt)] transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-[var(--surface-colour)] transition-colors"
               variant="default"
             >
               <span className="text-xl text-[var(--text-primary)]">☰</span>
@@ -42,14 +42,9 @@ export default function Navbar({ user, onMobileMenuToggle }) {
               size="medium"
               width="default"
               variant="sidebar"
-              className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--surface-alt)] hover:bg-[var(--surface-alt-hover)] border border-[var(--border-neutral)] transition-all duration-200"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--surface-colour)] hover:bg-[var(--surface-colour-hover)] border border-[var(--border-neutral)] transition-all duration-200"
             >
               <div className="flex items-center gap-2">
-                <img
-                  src="/avatar-placeholder.png"
-                  alt="avatar"
-                  className="w-8 h-8 rounded-lg object-cover border border-white shadow-sm"
-                />
                 <div className="text-left hidden sm:block">
                   <p className="font-semibold text-[var(--text-primary)] text-sm">{user.username}</p>
                   <p className="text-xs text-[var(--text-secondary)] capitalize">{user.role.toLowerCase()}</p>
@@ -67,13 +62,9 @@ export default function Navbar({ user, onMobileMenuToggle }) {
             </Button>
 
             {open && (
-              <div className="absolute top-full right-0 mt-2 bg-[var(--surface-alt)] border border-[var(--border-neutral)] rounded-lg shadow-xl p-4 min-w-56 z-50 text-[var(--text-primary)]">
+              <div className="absolute top-full right-0 mt-2 bg-[var(--surface-colour)] border border-[var(--border-neutral)] rounded-lg shadow-xl p-4 min-w-56 z-50 text-[var(--text-primary)]">
                 <div className="flex items-center gap-3 mb-3 pb-3 border-b border-[var(--border-neutral)]">
-                  <img
-                    src="/avatar-placeholder.png"
-                    alt="avatar"
-                    className="w-10 h-10 rounded-lg object-cover border border-[var(--border-neutral)]"
-                  />
+                  
                   <div>
                     <p className="font-bold text-[var(--text-primary)]">{user.username}</p>
                     <p className="text-[var(--text-secondary)] text-sm capitalize">{user.role.toLowerCase()}</p>
@@ -85,7 +76,7 @@ export default function Navbar({ user, onMobileMenuToggle }) {
                   type="secondary"
                   size="medium"
                   width="full"
-                  className="justify-center py-2 text-sm font-semibold mb-3 bg-[var(--surface-alt)] hover:bg-[var(--surface-alt-hover)] text-[var(--text-primary)]"
+                  className="justify-center py-2 text-sm font-semibold mb-3 bg-[var(--surface-colour)] hover:bg-[var(--surface-colour-hover)] text-[var(--text-primary)]"
                 >
                   Toggle Theme
                 </Button>
