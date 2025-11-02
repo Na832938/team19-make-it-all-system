@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Team19 Make-It-All System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern helpdesk and issue-tracking system developed for the COB290 Team Projects module. This React.js application provides an efficient platform for managing support tickets and team collaboration.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+**Live Application**: https://na832938.github.io/team19-make-it-all-system
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend Framework**: React.js
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Language**: JavaScript
+- **Package Manager**: npm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Overview
 
-### `npm test`
+This project was developed as part of the COB290 Team Projects module, focusing on creating a comprehensive ticketing system for technical support teams. The application enables efficient issue tracking, assignment, and resolution workflow management.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Key Features
+- Ticket Management: Create, view, and update support tickets
+- Team Collaboration: Assign tickets to team members and track progress
+- Responsive Design: Mobile-first approach with Tailwind CSS
+- Real-time Updates: Dynamic UI with React state management
+- User-friendly Interface: Intuitive navigation and clean design
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- COB290 Module Objectives
+This project demonstrates:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Team collaboration and agile development practices
 
-### `npm run eject`
+Modern web development with React.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Responsive UI design principles
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Version control and project management
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Software development lifecycle understanding
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Team Contribution
+Developed by Team 19 as part of the COB290 Team Projects module requirements, showcasing collaborative software development skills and industry-standard practices.
