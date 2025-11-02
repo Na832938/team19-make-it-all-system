@@ -68,10 +68,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <Card className="w-full max-w-md p-6">
+    <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-surface transition-colors p-4">
+      <Card className="w-full max-w-md p-6 bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral transition-colors">
 
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-2xl font-bold text-center mb-6 text-textPrimary dark:text-textPrimary">
           Register Account
         </h2>
         
@@ -91,6 +91,7 @@ export default function RegisterPage() {
             onChange={e => handleChange('username', e.target.value)}
             required
             disabled={loading}
+            className="bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral text-textPrimary dark:text-textPrimary placeholder:text-textSecondary dark:placeholder:text-textSecondary focus:border-focus dark:focus:border-focus"
           />
 
           <TextInput
@@ -100,6 +101,7 @@ export default function RegisterPage() {
             onChange={e => handleChange('email', e.target.value)}
             required
             disabled={loading}
+            className="bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral text-textPrimary dark:text-textPrimary placeholder:text-textSecondary dark:placeholder:text-textSecondary focus:border-focus dark:focus:border-focus"
           />
 
           <TextInput
@@ -109,9 +111,10 @@ export default function RegisterPage() {
             onChange={e => handleChange('password', e.target.value)}
             required
             disabled={loading}
+            className="bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral text-textPrimary dark:text-textPrimary placeholder:text-textSecondary dark:placeholder:text-textSecondary focus:border-focus dark:focus:border-focus"
           />
 
-          <div className="text-xs text-gray-500 bg-gray-50 p-3 rounded">
+          <div className="text-xs text-textSecondary dark:text-textSecondary bg-surface dark:bg-surface p-3 rounded border border-borderNeutral dark:border-borderNeutral">
             <p className="font-semibold mb-1">Password Requirements:</p>
             <ul className="list-disc list-inside space-y-1">
               <li>At least 8 characters</li>
@@ -139,17 +142,17 @@ export default function RegisterPage() {
           )}
         </Form>
 
-        <div className="text-center text-sm text-gray-600 mt-4">
+        <div className="text-center text-sm text-textSecondary dark:text-textSecondary mt-4">
           Already have an account?{" "}
           <Link
             to="/"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-primary hover:text-primaryHover font-medium"
           >
             Login here
           </Link>
         </div>
 
-        <div className="text-xs text-gray-500 text-center mt-4">
+        <div className="text-xs text-textSecondary dark:text-textSecondary text-center mt-4">
           <p className="font-semibold">Available Employees for Registration:</p>
           <p>jdoe - jdoe@company.com</p>
           <p>asmith - asmith@company.com</p>

@@ -31,7 +31,7 @@ export default function EmployeeDashboard() {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
       setEmployee(JSON.parse(storedUser));
-      } else {
+    } else {
       window.location.href = "/";
     }
     const userData = JSON.parse(storedUser);
@@ -47,22 +47,22 @@ export default function EmployeeDashboard() {
   const progress = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   const employeeIcon = (
-    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-      <span className="text-blue-600 font-semibold text-sm">
+    <div className="w-10 h-10 bg-[var(--secondary-colour)] rounded-lg flex items-center justify-center">
+      <span className="text-[var(--primary-colour)] font-semibold text-sm">
         {employee.role.charAt(0)}
       </span>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[var(--surface-colour)] flex flex-col text-[var(--text-primary)]">
       <Navbar 
         user={employee} 
         onMobileMenuToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       />
 
       <div className="flex flex-1">
-        <div className="hidden lg:block w-64 bg-white border-r border-gray-200">
+        <div className="hidden lg:block w-64 bg-[var(--secondary-colour)] border-r border-[var(--border-neutral)]">
           <Sidebar 
             activeSection={activeSection} 
             setActiveSection={setActiveSection}
@@ -80,49 +80,48 @@ export default function EmployeeDashboard() {
           {activeSection === "dashboard" && (
             <div className="space-y-6 pb-8">
               <Card className="p-6">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                <h1 className="text-2xl font-bold mb-2">
                   Welcome back, {employee.username}!
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-[var(--text-secondary)]">
                   Here's your overview for today.
                 </p>
               </Card>
 
-              {/* Stats Grid - Keep the original responsive layout */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <StatCard title="Employee Info" icon={employeeIcon}>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Name:</span>
-                      <span className="text-gray-900 font-semibold">{employee.username}</span>
+                      <span className="font-medium text-[var(--text-secondary)]">Name:</span>
+                      <span className="font-semibold">{employee.username}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Role:</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-sm rounded-full font-medium">
+                      <span className="font-medium text-[var(--text-secondary)]">Role:</span>
+                      <span className="px-2 py-1 bg-[var(--primary-colour)] text-[var(--surface-colour)] text-sm rounded-full font-medium">
                         {employee.role}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Email:</span>
-                      <span className="text-gray-900">{employee.email}</span>
+                      <span className="font-medium text-[var(--text-secondary)]">Email:</span>
+                      <span>{employee.email}</span>
                     </div>
                   </div>
                 </StatCard>
 
                 <StatCard 
                   title="Task Overview" 
-                  icon={<span className="text-sm text-gray-500">{tasks.length} tasks</span>}
+                  icon={<span className="text-sm text-[var(--text-secondary)]">{tasks.length} tasks</span>}
                 >
                   <div className="space-y-3">
                     {tasks.map((task, idx) => (
                       <div key={idx} className="flex items-center justify-between">
-                        <span className={`flex-1 ${task.status === "Completed" ? 'line-through text-gray-400' : 'text-gray-700'}`}>
+                        <span className={`flex-1 ${task.status === "Completed" ? 'line-through text-[var(--text-secondary)]' : ''}`}>
                           {task.title}
                         </span>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           task.status === "Completed" 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
+                            ? 'bg-green-600 text-[var(--surface-colour)]' 
+                            : 'bg-yellow-600 text-[var(--surface-colour)]'
                         }`}>
                           {task.status === "Completed" ? "Done" : task.status}
                         </span>
@@ -133,25 +132,25 @@ export default function EmployeeDashboard() {
 
                 <StatCard 
                   title="Task Completion" 
-                  icon={<span className="text-2xl font-bold text-blue-600">{progress}%</span>}
+                  icon={<span className="text-2xl font-bold text-[var(--primary-colour)]">{progress}%</span>}
                 >
                   <ProgressBar value={progress} />
                   
                   <div className="grid grid-cols-2 gap-4 text-center mt-4">
                     <div>
                       <p className="text-2xl font-bold text-green-600">{completedTasks}</p>
-                      <p className="text-sm text-gray-600">Completed</p>
+                      <p className="text-sm text-[var(--text-secondary)]">Completed</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-orange-600">{totalTasks - completedTasks}</p>
-                      <p className="text-sm text-gray-600">Pending</p>
+                      <p className="text-sm text-[var(--text-secondary)]">Pending</p>
                     </div>
                   </div>
                 </StatCard>
               </div>
 
               <Card className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   <Button type="green" className="flex items-center justify-center gap-2">
                     <FaPlus className="w-4 h-4" />
@@ -173,23 +172,23 @@ export default function EmployeeDashboard() {
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
                 <div className="space-y-4">
                   <ActivityItem 
                     icon="✓"
-                    iconBg="bg-green-100"
+                    iconBg="bg-green-600"
                     title="Completed project proposal"
                     time="2 hours ago"
                   />
                   <ActivityItem 
                     icon="+"
-                    iconBg="bg-blue-100"
+                    iconBg="bg-[var(--primary-colour)]"
                     title="Added new task"
                     time="4 hours ago"
                   />
                   <ActivityItem 
                     icon="⚡"
-                    iconBg="bg-yellow-100"
+                    iconBg="bg-yellow-600"
                     title="Started design mockups"
                     time="1 day ago"
                   />

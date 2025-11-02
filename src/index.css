@@ -4,5 +4,3 @@
 @import './styles/typography.css';
 @import './styles/global.css';
 
-/* must come after imports */
-@custom-variant dark (&:where(.dark, .dark *));

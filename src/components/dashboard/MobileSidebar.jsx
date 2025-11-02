@@ -35,16 +35,16 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
         onClick={onClose}
       />
 
-      <div className="lg:hidden fixed top-20 left-0 right-0 bg-white border-b border-gray-200 shadow-xl z-50">
+      <div className="lg:hidden fixed top-20 left-0 right-0 bg-[var(--surface-colour)] border-b border-[var(--border-neutral)] shadow-xl z-50 text-[var(--text-primary)]">
         <div className="p-4">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Navigation</h3>
+            <h3 className="text-lg font-semibold">Navigation</h3>
             <Button
               onClick={onClose}
               width="sidebar"
               variant="sidebar"
             >
-              <FaTimes className="w-5 h-5 text-gray-600" />
+              <FaTimes className="w-5 h-5 text-[var(--text-secondary)]" />
             </Button>
           </div>
 
@@ -63,12 +63,12 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
                   width="sidebar"
                   variant="sidebar"
                   className={isActive
-                    ? 'bg-blue-50 text-blue-700 border-blue-200'
-                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                    ? 'bg-[var(--primary-colour)] text-white border-[var(--primary-colour)]'
+                    : 'bg-[var(--surface-alt)] text-[var(--text-primary)] border-[var(--border-neutral)] hover:bg-[var(--surface-alt-hover)]'
                   }
                 >
                   <IconComponent
-                    className={`w-5 h-5 ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
+                    className={`w-5 h-5 ${isActive ? 'text-white' : 'text-[var(--text-secondary)]'}`}
                   />
                   <span className="font-medium text-sm">{section.label}</span>
                 </Button>

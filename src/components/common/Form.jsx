@@ -54,6 +54,8 @@ export default function Form({
         ${variantClasses[variant]} 
         bg-[var(--surface-colour)] dark:bg-[var(--surface-colour)]
         text-[var(--text-primary)] dark:text-[var(--text-primary)]
+        border border-[var(--border-neutral)] dark:border-[var(--border-neutral)]
+        rounded-md shadow-sm dark:shadow-sm
         ${className}
       `}
     >

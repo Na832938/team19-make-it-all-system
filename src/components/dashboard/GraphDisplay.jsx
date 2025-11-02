@@ -8,16 +8,16 @@ export default function GraphDisplay() {
     <div className="p-6 space-y-6">
       {/* Simple Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Project Analytics</h1>
-        <p className="text-gray-600">Project progress and performance metrics</p>
+        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Project Analytics</h1>
+        <p className="text-[var(--text-secondary)]">Project progress and performance metrics</p>
       </div>
 
       {/* Main Grid Layout */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         
         {/* Project Progress Overview */}
-        <Card className="p-6 border-2 border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Progress Overview</h3>
+        <Card className="p-6 border-2 border-[var(--border-neutral)]">
+          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Project Progress Overview</h3>
           <div className="space-y-4">
             {projects.map(project => (
               <StatsChart key={project.id} project={project} compact={true} />
@@ -26,13 +26,13 @@ export default function GraphDisplay() {
         </Card>
 
         {/* Project Status Summary */}
-        <Card className="p-6 border-2 border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Status</h3>
+        <Card className="p-6 border-2 border-[var(--border-neutral)]">
+          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Project Status</h3>
           <div className="space-y-3">
             {projects.map(project => (
-              <div key={project.id} className="flex items-center justify-between p-3 border-b border-gray-100">
+              <div key={project.id} className="flex items-center justify-between p-3 border-b border-[var(--border-neutral)]">
                 <div className="flex-1">
-                  <div className="font-medium text-sm text-gray-900">{project.title}</div>
+                  <div className="font-medium text-sm text-[var(--text-primary)]">{project.title}</div>
                 </div>
                 <div className={`px-3 py-1 rounded text-sm font-medium ${
                   project.completed >= 80 ? 'bg-green-100 text-green-800' :
@@ -48,8 +48,8 @@ export default function GraphDisplay() {
       </div>
 
       {/* Detailed Charts */}
-      <Card className="p-6 border-2 border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Detailed Progress Analysis</h3>
+      <Card className="p-6 border-2 border-[var(--border-neutral)]">
+        <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Detailed Progress Analysis</h3>
         <div className="space-y-4">
           {projects.slice(0, 3).map(project => (
             <StatsChart key={project.id} project={project} showDetails={true} />

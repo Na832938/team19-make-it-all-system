@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../lib/AuthContext'; // Add this import
+import { useAuth } from '../../lib/AuthContext';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 import Sidebar from './Sidebar.jsx';
@@ -16,17 +16,17 @@ import GraphDisplay from './GraphDisplay';
 export default function ManagerDashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("dashboard");
-  const { user, logout } = useAuth(); // Use AuthContext instead of localStorage
+  const { user, logout } = useAuth();
 
-  // Redirect if not authenticated or not a manager
   useEffect(() => {
     if (!user) {
       window.location.href = "/";
     } else if (user.role !== 'Manager') {
-      window.location.href = "/app"; // Redirect employees to their dashboard
+      window.location.href = "/app";
     }
-    const userData = JSON.parse(storedUser);
-    document.title = `Manager - ` + `${userData.username}`;
+    if (user) {
+      document.title = `Manager - ${user.username}`;
+    }
   }, [user]);
 
   if (!user || user.role !== 'Manager') {
@@ -46,19 +46,19 @@ export default function ManagerDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[var(--surface-colour)] flex flex-col text-[var(--text-primary)]">
       <Navbar 
         user={user} 
         onMobileMenuToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-        onLogout={logout} // Pass logout function
+        onLogout={logout}
       />
 
       <div className="flex flex-1">
-        <div className="hidden lg:block w-64 bg-white border-r border-gray-200">
+        <div className="hidden lg:block w-64 bg-[var(--surface-colour)] border-r border-[var(--border-neutral)]">
           <Sidebar 
             activeSection={activeSection} 
             setActiveSection={setActiveSection}
-            isManager={true} // Indicate this is manager sidebar
+            isManager={true}
           />
         </div>
 
@@ -67,45 +67,42 @@ export default function ManagerDashboard() {
           setActiveSection={setActiveSection}
           isOpen={isMobileSidebarOpen}
           onClose={() => setIsMobileSidebarOpen(false)}
-          isManager={true} // Indicate this is manager sidebar
+          isManager={true}
         />
 
         <main className="flex-1 lg:ml-2 p-4 lg:p-6 min-h-[calc(100vh-5rem)]">
           {activeSection === "dashboard" && (
             <div className="space-y-6 pb-8">
-              {/* Header - Consider making this more prominent */}
               <div className="mb-8 relative">
-                <h1 className="text-3xl font-bold text-gray-900">Manager Dashboard</h1>
-                <p className="text-gray-600 mt-2">Track project progress and team workload</p>
+                <h1 className="text-3xl font-bold text-[var(--text-primary)]">Manager Dashboard</h1>
+                <p className="text-[var(--text-secondary)] mt-2">Track project progress and team workload</p>
               </div>
 
-              {/* Welcome Card */}
-              <Card className="p-6 bg-gradient-to-r from-purple-50 to-blue-50 border-l-4 border-l-purple-500">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              <Card className="p-6 bg-[var(--surface-colour)] border-l-4 border-l-purple-500">
+                <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
                   Welcome back, {user.username}!
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-[var(--text-secondary)]">
                   Here's your management overview for today.
                 </p>
               </Card>
 
-              {/* Manager Stats Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <StatCard title="Manager Info" icon={managerIcon}>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Name:</span>
-                      <span className="text-gray-900 font-semibold">{user.username}</span>
+                      <span className="text-[var(--text-secondary)] font-medium">Name:</span>
+                      <span className="text-[var(--text-primary)] font-semibold">{user.username}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Role:</span>
+                      <span className="text-[var(--text-secondary)] font-medium">Role:</span>
                       <span className="px-2 py-1 bg-purple-100 text-purple-700 text-sm rounded-full font-medium">
                         {user.role}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Email:</span>
-                      <span className="text-gray-900">{user.email}</span>
+                      <span className="text-[var(--text-secondary)] font-medium">Email:</span>
+                      <span className="text-[var(--text-primary)]">{user.email}</span>
                     </div>
                   </div>
                 </StatCard>
@@ -114,10 +111,10 @@ export default function ManagerDashboard() {
                   title="Project Overview" 
                   icon={<span className="text-sm text-purple-600 font-semibold">{totalProjects} projects</span>}
                 >
-                  <div className="space-y-3 max-h-40 overflow-y-auto"> {/* Added scroll for many projects */}
+                  <div className="space-y-3 max-h-40 overflow-y-auto">
                     {projects.map((project, idx) => (
                       <div key={project.id || idx} className="flex items-center justify-between py-1">
-                        <span className="flex-1 text-gray-700 font-medium text-sm truncate mr-2">
+                        <span className="flex-1 text-[var(--text-primary)] font-medium text-sm truncate mr-2">
                           {project.title}
                         </span>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium min-w-12 text-center ${
@@ -140,28 +137,27 @@ export default function ManagerDashboard() {
                 >
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Team Members:</span>
+                      <span className="text-[var(--text-secondary)] text-sm">Team Members:</span>
                       <span className="font-semibold">{totalTeamMembers}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Active Projects:</span>
+                      <span className="text-[var(--text-secondary)] text-sm">Active Projects:</span>
                       <span className="font-semibold">{totalProjects}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">On Track:</span>
+                      <span className="text-[var(--text-secondary)] text-sm">On Track:</span>
                       <span className="font-semibold text-green-600">{completedProjects}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Needs Attention:</span>
+                      <span className="text-[var(--text-secondary)] text-sm">Needs Attention:</span>
                       <span className="font-semibold text-red-600">{totalProjects - completedProjects}</span>
                     </div>
                   </div>
                 </StatCard>
               </div>
 
-              {/* Quick Actions */}
               <Card className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Manager Quick Actions</h3>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Manager Quick Actions</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   <Button type="green" className="flex items-center justify-center gap-2">
                     <span>📊</span>
@@ -182,9 +178,8 @@ export default function ManagerDashboard() {
                 </div>
               </Card>
 
-              {/* Recent Activity */}
               <Card className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Management Activity</h3>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Recent Management Activity</h3>
                 <div className="space-y-4">
                   <ActivityItem 
                     icon="📊"
@@ -205,13 +200,11 @@ export default function ManagerDashboard() {
                     time="2 days ago"
                   />
                 </div>
-
               </Card>
             </div>
           )}
 
           {activeSection === "graphs" && <GraphDisplay />}          
-          
         </main>
       </div>
 

@@ -7,14 +7,33 @@ export default function RadioButton({
   className = ''
 }) {
   return (
-    <label className={`flex items-center gap-sm font-ubuntu text-body text-text-primary cursor-pointer ${disabled ? 'cursor-not-allowed text-text-secondary' : ''} ${className}`}>
+    <label
+      className={`
+        flex items-center gap-sm
+        font-ubuntu text-body
+        text-[var(--text-primary)]
+        cursor-pointer
+        ${disabled ? 'cursor-not-allowed text-[var(--text-secondary)]' : ''}
+        ${className}
+      `}
+    >
       <input
         type="radio"
-        className={`w-4 h-4 border border-border-neutral rounded-full bg-surface accent-primary transition-all duration-200 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 ${!disabled && 'hover:border-primary hover:shadow-[0_0_0_2px_rgba(26,115,232,0.15)]'} ${disabled ? 'bg-disabled' : ''}`}
+        name={name}
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        name={name}
+        className={`
+          w-4 h-4
+          border border-[var(--border-neutral)]
+          rounded-full
+          bg-[var(--surface-colour)]
+          accent-[var(--primary-colour)]
+          transition-all duration-200
+          focus-visible:outline-2 focus-visible:outline-[var(--focus-colour)] focus-visible:outline-offset-2
+          ${!disabled ? 'hover:border-[var(--primary-colour)] hover:shadow-[0_0_0_2px_rgba(11,94,215,0.15)]' : ''}
+          ${disabled ? 'bg-[var(--disabled-colour)]' : ''}
+        `}
       />
       {label && <span className="select-none">{label}</span>}
     </label>

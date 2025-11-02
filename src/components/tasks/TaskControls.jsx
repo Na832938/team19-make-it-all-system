@@ -7,12 +7,10 @@ export default function TaskControls({ filters, onChange }) {
   const [searchValue, setSearchValue] = useState(filters.q);
   const [localFilters, setLocalFilters] = useState(filters);
 
-  // Wrap onChange in useCallback to stabilize the function
   const stableOnChange = useCallback((newFilters) => {
     onChange(newFilters);
   }, [onChange]);
 
-  // Debounce search input (300ms delay)
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue !== localFilters.q) {
@@ -21,22 +19,21 @@ export default function TaskControls({ filters, onChange }) {
         stableOnChange(newFilters);
       }
     }, 300);
-
     return () => clearTimeout(timer);
-  }, [searchValue, localFilters, stableOnChange]); // Now all dependencies are stable
+  }, [searchValue, localFilters, stableOnChange]);
 
-  // Handle immediate filter changes (selects)
   const handleFilterChange = useCallback((key, value) => {
     const newFilters = { ...localFilters, [key]: value };
     setLocalFilters(newFilters);
     stableOnChange(newFilters);
   }, [localFilters, stableOnChange]);
 
-  // Sync with parent filters when they change externally
   useEffect(() => {
     setLocalFilters(filters);
     setSearchValue(filters.q);
   }, [filters]);
+
+  const sharedClass = 'bg-surface text-textPrimary border border-borderColor rounded-md transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-60 disabled:cursor-not-allowed';
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -51,6 +48,7 @@ export default function TaskControls({ filters, onChange }) {
             { value: 'In Progress', label: 'In Progress' },
             { value: 'Done', label: 'Done' },
           ]}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
 
@@ -65,6 +63,7 @@ export default function TaskControls({ filters, onChange }) {
             { value: 'Medium', label: 'Medium' },
             { value: 'High', label: 'High' },
           ]}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
 
@@ -75,6 +74,7 @@ export default function TaskControls({ filters, onChange }) {
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
           placeholder="Search title..."
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
 
@@ -90,6 +90,7 @@ export default function TaskControls({ filters, onChange }) {
             { value: 'prioAsc', label: 'Priority (Low→High)' },
             { value: 'prioDesc', label: 'Priority (High→Low)' },
           ]}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
     </div>

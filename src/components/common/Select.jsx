@@ -16,28 +16,28 @@ export default function Select({
     px-3
     py-2
     rounded-md
-    text-textPrimary
+    text-[var(--text-primary)]
     font-sans
     text-base
     transition
     duration-200
     ease-in-out
     shadow-sm
-    focus:outline-none
-    focus:ring-2
-    focus:ring-primary/30
+    focus:outline-2
+    focus:outline-[var(--focus-colour)]
+    focus:outline-offset-2
     disabled:opacity-60
     disabled:cursor-not-allowed
     cursor-pointer
   `;
 
   const variantClasses = {
-    default: 'bg-surface border border-gray-300',
-    outlined: 'bg-white border border-gray-400',
-    filled: 'bg-gray-100 border border-gray-200'
+    default: 'bg-[var(--surface-colour)] border border-[var(--border-neutral)]',
+    outlined: 'bg-[var(--surface-colour)] border border-[var(--border-neutral)]',
+    filled: 'bg-[var(--secondary-colour)] border border-[var(--border-neutral)]'
   };
 
-  const hoverClasses = disabled ? '' : 'hover:border-primary';
+  const hoverClasses = disabled ? '' : 'hover:border-[var(--primary-colour)]';
 
   return (
     <select

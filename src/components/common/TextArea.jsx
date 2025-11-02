@@ -13,16 +13,16 @@ export default function TextArea({
         rounded-md 
         p-2 
         border 
-        border-gray-300 
-        text-gray-900 
-        bg-white 
+        border-[var(--border-neutral)] 
+        text-[var(--text-primary)] 
+        bg-[var(--surface-colour)] 
         shadow-sm 
         focus:outline-none 
         focus:ring-2 
-        focus:ring-blue-500 
-        disabled:bg-gray-100 
+        focus:ring-[var(--focus-colour)] 
+        disabled:bg-[var(--disabled-colour)] 
         disabled:cursor-not-allowed 
-        disabled:text-gray-500 
+        disabled:text-[var(--text-secondary)] 
         transition-all 
         duration-200 
         ease-in-out

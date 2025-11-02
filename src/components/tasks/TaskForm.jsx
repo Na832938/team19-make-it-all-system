@@ -19,6 +19,8 @@ export default function TaskForm({
   const formattedToday = today.toISOString().split("T")[0];
   const [dueDate, setDueDate] = useState(formattedToday);
 
+  const sharedClass = 'bg-surface text-textPrimary border border-borderColor rounded-md transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-60 disabled:cursor-not-allowed';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -39,7 +41,6 @@ export default function TaskForm({
 
       await onSubmit(taskData);
       
-      // Reset form on success
       setTaskName('');
       setPriority('Medium');
       setDueDate('');
@@ -61,7 +62,9 @@ export default function TaskForm({
     if (onCancel) onCancel();
   };
 
-  
+  const successClass = 'bg-green-100 text-green-800 border border-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-700';
+  const errorClass = 'bg-red-100 text-red-800 border border-red-200 dark:bg-red-900 dark:text-red-300 dark:border-red-700';
+
   return (
     <Form 
       onSubmit={handleSubmit}
@@ -76,6 +79,7 @@ export default function TaskForm({
           placeholder="Enter task name" 
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
           required 
         />
       </Label>
@@ -89,25 +93,21 @@ export default function TaskForm({
             { value: 'Medium', label: 'Medium' },
             { value: 'High', label: 'High' },
           ]}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
 
-          
       <Label text="Due date:">
-        
         <TextInput 
           type="date" 
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
+          className={`${sharedClass} dark:bg-surface-dark dark:text-textPrimary-dark dark:border-borderColor-dark`}
         />
       </Label>
 
       {message && (
-        <div className={`p-3 rounded-md ${
-          message.includes("success") 
-            ? "bg-green-100 text-green-800 border border-green-200" 
-            : "bg-red-100 text-red-800 border border-red-200"
-        }`}>
+        <div className={`p-3 rounded-md ${message.includes("success") ? successClass : errorClass}`}>
           {message}
         </div>
       )}

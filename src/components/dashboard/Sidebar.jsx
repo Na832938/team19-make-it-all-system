@@ -26,7 +26,7 @@ export default function Sidebar({ activeSection, setActiveSection, sections = em
   const navSections = isManager ? managerSections : sections;
 
   return (
-    <aside className="w-full h-full bg-white border-r border-gray-200">
+    <aside className="w-full h-full bg-[var(--surface-colour)] border-r border-[var(--border-neutral)] text-[var(--text-primary)]">
       <nav className="p-4 space-y-2">
         {navSections.map((section) => {
           const IconComponent = section.icon;
@@ -39,12 +39,12 @@ export default function Sidebar({ activeSection, setActiveSection, sections = em
               width="sidebar"
               variant="sidebar"
               className={isActive
-                ? 'bg-blue-50 text-blue-700 border-blue-200'
-                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                ? 'bg-[var(--surface-alt)] text-[var(--text-primary)] border-[var(--border-neutral)]'
+                : 'bg-[var(--surface-colour)] text-[var(--text-secondary)] border-[var(--border-neutral)] hover:bg-[var(--surface-alt)]'
               }
             >
               <IconComponent
-                className={`w-5 h-5 ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
+                className={`w-5 h-5 ${isActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'}`}
               />
               <span className="font-medium text-sm">{section.label}</span>
             </Button>

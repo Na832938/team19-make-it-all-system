@@ -18,14 +18,24 @@ export default function StatsChart({ project }) {
           labels: ['Completed', 'Incomplete'],
           datasets: [{
             data: [project.completed, project.incomplete],
-            backgroundColor: ['#36A2EB', '#FF6384'],
+            backgroundColor: ['var(--success-colour)', 'var(--danger-colour)'],
             hoverOffset: 10
           }]
         },
         options: {
           plugins: {
-            legend: { position: 'bottom' },
-            title: { display: true, text: project.title }
+            legend: { 
+              position: 'bottom',
+              labels: {
+                color: 'var(--text-primary)'
+              }
+            },
+            title: { 
+              display: true, 
+              text: project.title,
+              color: 'var(--text-primary)',
+              font: { weight: '600', size: 16 }
+            }
           }
         }
       });
@@ -39,19 +49,19 @@ export default function StatsChart({ project }) {
   }, [project]);
 
   return (
-    <Card className="p-6">
+    <Card className="p-6 bg-[var(--surface-colour)] text-[var(--text-primary)] border-[var(--border-neutral)]">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="w-full md:w-2/5 min-w-[200px]">
           <canvas ref={chartRef} />
         </div>
 
-        <div className="w-full md:w-3/5 bg-gray-50 border border-gray-200 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="w-full md:w-3/5 bg-[var(--secondary-colour)] border border-[var(--border-neutral)] rounded-lg p-4">
+          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
             Team member workload for {project.title}
           </h3>
           <ul className="space-y-2">
             {project.teamMembers.map((member, index) => (
-              <li key={index} className="text-gray-700">
+              <li key={index} className="text-[var(--text-primary)]">
                 <span className="font-medium">{member.name}:</span>{' '}
                 {member.tasks.join(', ')}
               </li>
