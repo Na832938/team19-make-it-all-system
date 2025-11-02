@@ -9,6 +9,14 @@ import StatCard from './StatCard.jsx';
 import ActivityItem from './ActivityItem.jsx';
 import LoadingScreen from '../common/LoadingScreen.jsx';
 import Button from '../common/Button.jsx';
+import Badge from '../common/Badge.jsx';
+
+import {
+  FaChartBar,
+  FaUsers,
+  FaBullseye,
+  FaChartLine
+} from "react-icons/fa";
 
 import projects from '../../data/projects.json';
 import GraphDisplay from './GraphDisplay';
@@ -96,9 +104,7 @@ export default function ManagerDashboard() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-[var(--text-secondary)] font-medium">Role:</span>
-                      <span className="px-2 py-1 bg-purple-100 text-purple-700 text-sm rounded-full font-medium">
-                        {user.role}
-                      </span>
+                      <Badge text={user.role} bg="var(--primary-colour)" color="var(--surface-colour)" />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-[var(--text-secondary)] font-medium">Email:</span>
@@ -117,15 +123,23 @@ export default function ManagerDashboard() {
                         <span className="flex-1 text-[var(--text-primary)] font-medium text-sm truncate mr-2">
                           {project.title}
                         </span>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium min-w-12 text-center ${
-                          project.completed >= 80 
-                            ? 'bg-green-100 text-green-800' 
-                            : project.completed >= 50
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                          {project.completed}%
-                        </span>
+                        <Badge 
+                          text={`${project.completed}%`} 
+                          bg={
+                            project.completed >= 80 
+                              ? 'rgb(220 252 231)' 
+                              : project.completed >= 50
+                              ? 'rgb(254 249 195)' 
+                              : 'rgb(254 226 226)'
+                          } 
+                          color={
+                            project.completed >= 80 
+                              ? 'rgb(22 101 52)' 
+                              : project.completed >= 50
+                              ? 'rgb(133 77 14)' 
+                              : 'rgb(153 27 27)'
+                          } 
+                        />
                       </div>
                     ))}
                   </div>
@@ -157,44 +171,44 @@ export default function ManagerDashboard() {
               </div>
 
               <Card className="p-6">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Manager Quick Actions</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <Button type="green" className="flex items-center justify-center gap-2">
-                    <span>📊</span>
-                    Generate Report
-                  </Button>
-                  <Button type="blue" className="flex items-center justify-center gap-2">
-                    <span>👥</span>
-                    Team Management
-                  </Button>
-                  <Button type="purple" className="flex items-center justify-center gap-2">
-                    <span>🎯</span>
-                    Set Goals
-                  </Button>
-                  <Button type="orange" className="flex items-center justify-center gap-2">
-                    <span>📈</span>
-                    Performance
-                  </Button>
-                </div>
-              </Card>
+                    <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4 text-center">Manager Quick Actions</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center text-center">
+                      <Button type="green" className="flex flex-col items-center justify-center gap-2 w-full h-32">
+                        <FaChartBar className="w-6 h-6" />
+                        Generate Report
+                      </Button>
+                      <Button type="blue" className="flex flex-col items-center justify-center gap-2 w-full h-32">
+                        <FaUsers className="w-6 h-6" />
+                        Team Management
+                      </Button>
+                      <Button type="purple" className="flex flex-col items-center justify-center gap-2 w-full h-32">
+                        <FaBullseye className="w-6 h-6" />
+                        Set Goals
+                      </Button>
+                      <Button type="orange" className="flex flex-col items-center justify-center gap-2 w-full h-32">
+                        <FaChartLine className="w-6 h-6" />
+                        Performance
+                      </Button>
+                    </div>
+                  </Card>
 
               <Card className="p-6">
                 <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Recent Management Activity</h3>
                 <div className="space-y-4">
                   <ActivityItem 
-                    icon="📊"
+                    icon={<ChartBarIcon className="w-5 h-5 text-blue-600" />}
                     iconBg="bg-blue-100"
                     title="Generated quarterly performance report"
                     time="2 hours ago"
                   />
                   <ActivityItem 
-                    icon="👥"
+                    icon={<UsersIcon className="w-5 h-5 text-green-600" />}
                     iconBg="bg-green-100"
                     title="Conducted team performance review"
                     time="1 day ago"
                   />
                   <ActivityItem 
-                    icon="🎯"
+                    icon={<FlagIcon className="w-5 h-5 text-purple-600" />}
                     iconBg="bg-purple-100"
                     title="Set new project milestones"
                     time="2 days ago"

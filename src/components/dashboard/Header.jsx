@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../common/Button.jsx";
 import useLogout from "../scripts/login.jsx";
+import logo from "../../assets/logo.png";
 
 export default function Navbar({ user, onMobileMenuToggle }) {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
@@ -31,6 +32,7 @@ export default function Navbar({ user, onMobileMenuToggle }) {
             >
               <span className="text-xl text-[var(--text-primary)]">☰</span>
             </Button>
+            
             <h1 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
               Make It All
             </h1>

@@ -13,6 +13,7 @@ import ActivityItem from "./ActivityItem.jsx";
 import LoadingScreen from "../common/LoadingScreen.jsx";
 import ProgressBar from "../common/ProgressBar.jsx";
 import Button from "../common/Button.jsx";
+import Badge from "../common/Badge.jsx";
 import tasks from "../../data/tasks.json";
 
 import {
@@ -88,7 +89,8 @@ export default function EmployeeDashboard() {
                 </p>
               </Card>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-4 md:gap-6 lg:[&>*:nth-child(1)]:row-span-2 lg:[&>*:nth-child(3)]:col-start-2 lg:[&>*:nth-child(3)]:row-start-1">
+
                 <StatCard title="Employee Info" icon={employeeIcon}>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
@@ -97,9 +99,7 @@ export default function EmployeeDashboard() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-[var(--text-secondary)]">Role:</span>
-                      <span className="px-2 py-1 bg-[var(--primary-colour)] text-[var(--surface-colour)] text-sm rounded-full font-medium">
-                        {employee.role}
-                      </span>
+                      <Badge text={employee.role} />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-[var(--text-secondary)]">Email:</span>
@@ -118,13 +118,11 @@ export default function EmployeeDashboard() {
                         <span className={`flex-1 ${task.status === "Completed" ? 'line-through text-[var(--text-secondary)]' : ''}`}>
                           {task.title}
                         </span>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          task.status === "Completed" 
-                            ? 'bg-green-600 text-[var(--surface-colour)]' 
-                            : 'bg-yellow-600 text-[var(--surface-colour)]'
-                        }`}>
-                          {task.status === "Completed" ? "Done" : task.status}
-                        </span>
+                        <Badge 
+                          text={task.status === "Completed" ? "Done" : task.status}
+                          bg={task.status === "Completed" ? "green" : "orange"}
+                          color="var(--surface-colour)"
+                        />
                       </div>
                     ))}
                   </div>
@@ -171,29 +169,6 @@ export default function EmployeeDashboard() {
                 </div>
               </Card>
 
-              <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
-                <div className="space-y-4">
-                  <ActivityItem 
-                    icon="✓"
-                    iconBg="bg-green-600"
-                    title="Completed project proposal"
-                    time="2 hours ago"
-                  />
-                  <ActivityItem 
-                    icon="+"
-                    iconBg="bg-[var(--primary-colour)]"
-                    title="Added new task"
-                    time="4 hours ago"
-                  />
-                  <ActivityItem 
-                    icon="⚡"
-                    iconBg="bg-yellow-600"
-                    title="Started design mockups"
-                    time="1 day ago"
-                  />
-                </div>
-              </Card>
             </div>
           )}
 
