@@ -6,10 +6,30 @@ export default function Checkbox({
   className = ''
 }) {
   return (
-    <label className={`flex items-center gap-sm font-ubuntu text-body text-text-primary cursor-pointer ${disabled ? 'cursor-not-allowed text-text-secondary' : ''} ${className}`}>
+    <label
+      className={`
+        flex items-center gap-sm
+        font-ubuntu text-body
+        text-[var(--text-primary)]
+        cursor-pointer
+        ${disabled ? 'cursor-not-allowed text-[var(--text-secondary)]' : ''}
+        ${className}
+      `}
+    >
       <input
         type="checkbox"
-        className={`w-5 h-5 border border-border-neutral rounded-sm bg-surface cursor-pointer transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 accent-primary ${!disabled && 'hover:border-primary'} ${disabled ? 'bg-disabled cursor-not-allowed' : ''}`}
+        className={`
+          w-5 h-5
+          border border-[var(--border-neutral)]
+          rounded-sm
+          bg-[var(--surface-colour)]
+          cursor-pointer
+          transition-colors duration-200
+          focus-visible:outline-2 focus-visible:outline-[var(--focus-colour)] focus-visible:outline-offset-2
+          accent-[var(--primary-colour)]
+          ${!disabled ? 'hover:border-[var(--primary-colour)]' : ''}
+          ${disabled ? 'bg-[var(--disabled-colour)] cursor-not-allowed' : ''}
+        `}
         checked={checked}
         onChange={onChange}
         disabled={disabled}
@@ -18,4 +38,3 @@ export default function Checkbox({
     </label>
   );
 }
-

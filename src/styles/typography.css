@@ -105,3 +105,21 @@ li { margin-bottom: var(--space-xs); }
   h2 { font-size: 1.125rem; }
   h3 { font-size: 1rem; }
 }
+
+.dark {
+  --primary-text-colour: #f8f9fa;
+  --secondary-text-colour: #ced4da;
+  --surface-colour: #121212;
+  --secondary-colour: #1e1e1e;
+  --border-neutral-colour: #2c2c2c;
+}
+.dark body {
+  background-color: var(--surface-colour);
+  color: var(--primary-text-colour);
+}
+.dark a {
+  color: var(--primary-colour);
+}
+.dark a:hover, .dark a:focus {
+  color: var(--primary-hover);
+} 

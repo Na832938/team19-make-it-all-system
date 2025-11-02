@@ -48,7 +48,14 @@ export default function Form({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`w-full ${layoutClasses[layout]} ${variantClasses[variant]} ${className}`}
+      className={`
+        w-full 
+        ${layoutClasses[layout]} 
+        ${variantClasses[variant]} 
+        bg-[var(--surface-colour)] dark:bg-[var(--surface-colour)]
+        text-[var(--text-primary)] dark:text-[var(--text-primary)]
+        ${className}
+      `}
     >
       <div className="flex flex-col gap-4 w-full">
         {children}

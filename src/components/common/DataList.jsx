@@ -15,24 +15,24 @@ export default function DataList({
   const renderDetails = {
     task: (item) => (
       <div className="space-y-2">
-        <h3 className="text-base font-medium text-gray-900">{item.title}</h3>
-        <div className="flex items-center gap-4 text-sm text-gray-600">
+        <h3 className="text-base font-medium text-[var(--text-primary)]">{item.title}</h3>
+        <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-            item.priority === 'High' ? 'bg-red-100 text-red-800' :
-            item.priority === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
-            'bg-green-100 text-green-800'
+            item.priority === 'High' ? 'bg-[var(--error-colour)] text-white' :
+            item.priority === 'Medium' ? 'bg-[var(--danger-colour)] text-white' :
+            'bg-[var(--success-colour)] text-white'
           }`}>
             {item.priority}
           </span>
           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-            item.status === 'Done' ? 'bg-green-100 text-green-800' :
-            item.status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
-            'bg-gray-100 text-gray-800'
+            item.status === 'Done' ? 'bg-[var(--success-colour)] text-white' :
+            item.status === 'In Progress' ? 'bg-[var(--primary-colour)] text-white' :
+            'bg-[var(--border-neutral)] text-[var(--text-primary)]'
           }`}>
             {item.status}
           </span>
           {item.dueDate && (
-            <span className="text-gray-500">
+            <span className="text-[var(--text-secondary)]">
               Due: {new Date(item.dueDate).toLocaleDateString()}
             </span>
           )}
@@ -42,9 +42,9 @@ export default function DataList({
     
     post: (item) => (
       <div className="space-y-2">
-        <h3 className="text-base font-medium text-gray-900">{item.title}</h3>
-        <p className="text-sm text-gray-600 line-clamp-2">{item.content}</p>
-        <div className="flex items-center gap-4 text-xs text-gray-500">
+        <h3 className="text-base font-medium text-[var(--text-primary)]">{item.title}</h3>
+        <p className="text-sm text-[var(--text-secondary)] line-clamp-2">{item.content}</p>
+        <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)]">
           <span>By {item.author}</span>
           <span>{new Date(item.date).toLocaleDateString()}</span>
           {item.tags && item.tags.length > 0 && (
@@ -56,18 +56,18 @@ export default function DataList({
     
     topic: (item) => (
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-        <p className="text-gray-600">{item.description}</p>
+        <h3 className="text-lg font-semibold text-[var(--text-primary)]">{item.title}</h3>
+        <p className="text-[var(--text-secondary)]">{item.description}</p>
       </div>
     ),
     
     default: (item) => (
       <div>
-        <h3 className="text-base font-medium text-gray-900 truncate">
+        <h3 className="text-base font-medium text-[var(--text-primary)] truncate">
           {item.title || item.name}
         </h3>
         {item.description && (
-          <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+          <p className="text-sm text-[var(--text-secondary)] mt-1 line-clamp-2">
             {item.description}
           </p>
         )}
@@ -80,14 +80,14 @@ export default function DataList({
       <>
         <button
           onClick={() => onAction?.('status', item)}
-          className="px-3 py-2 text-sm bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
           {item.status === 'To Do' ? 'Start' : 
            item.status === 'In Progress' ? 'Complete' : 'Reopen'}
         </button>
         <button
           onClick={() => onAction?.('delete', item)}
-          className="px-3 py-2 text-sm bg-red-100 text-red-800 rounded-md hover:bg-red-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] text-white hover:brightness-90"
         >
           Delete
         </button>
@@ -98,19 +98,19 @@ export default function DataList({
       <>
         <button
           onClick={() => onAction?.('view', item)}
-          className="px-3 py-2 text-sm bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] text-[var(--text-primary)] hover:brightness-95"
         >
           View
         </button>
         <button
           onClick={() => onAction?.('edit', item)}
-          className="px-3 py-2 text-sm bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
           Edit
         </button>
         <button
           onClick={() => onAction?.('delete', item)}
-          className="px-3 py-2 text-sm bg-red-100 text-red-800 rounded-md hover:bg-red-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] text-white hover:brightness-90"
         >
           Delete
         </button>
@@ -120,7 +120,7 @@ export default function DataList({
     topic: (item) => (
       <button
         onClick={() => onAction?.('select', item)}
-        className="px-4 py-2 text-sm bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+        className="px-4 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] text-white hover:brightness-90"
       >
         Open
       </button>
@@ -130,13 +130,13 @@ export default function DataList({
       <>
         <button
           onClick={() => onAction?.('view', item)}
-          className="px-3 py-2 text-sm bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] text-[var(--text-primary)] hover:brightness-95"
         >
           View
         </button>
         <button
           onClick={() => onAction?.('edit', item)}
-          className="px-3 py-2 text-sm bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+          className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
           Edit
         </button>

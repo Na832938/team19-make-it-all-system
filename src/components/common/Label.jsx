@@ -9,7 +9,7 @@ export default function Label({
       className={`label-base text-responsive ${className}`}
       htmlFor={htmlFor}
     >
-      {text && <span className="font-medium text-text-secondary">{text}</span>}
+      {text && <span className="font-medium text-[var(--text-secondary)]">{text}</span>}
       {children}
     </label>
   );
