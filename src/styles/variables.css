@@ -1,64 +1,62 @@
 :root {
-  /* COLORS */
-  --primary-colour: #0b5ed7;
-  --primary-hover: #094bb5;
-  --secondary-colour: #f8f9fa;
-  --secondary-hover: #e9ecef;
-  --surface-colour: #ffffff;
-  --text-primary: #212529;
-  --text-secondary: #495057;
-  --border-neutral: #dee2e6;
-  --success-colour: #198754;
-  --error-colour: #dc3545;
-  --danger-colour: #c82333;
-  --danger-hover: #a71d2a;
-  --focus-colour: #0b5ed7;
-  --disabled-colour: #ced4da;
+  --primary-colour: #005f73;
+  --primary-hover: #0a9396;
+  --focus-colour: #94d2bd;
 
-  /* TYPOGRAPHY */
-  --font-family-base: 'Ubuntu', sans-serif;
+  --secondary-colour: #f0f4f8;
+  --secondary-hover: #e0e7ef;
+  --surface-colour: #ffffff;
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #5c6670;
+
+  --border-neutral: #cbd5e1;
+
+  --success-colour: #2a9d8f;
+  --warning-colour: #e9c46a;
+  --error-colour: #e76f51;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+  --font-family-base: 'Roboto', sans-serif;
+  --font-family-heading: 'IBM Plex Sans', sans-serif;
   --font-size-heading-lg: 1.75rem;
   --font-size-heading-md: 1.25rem;
   --font-size-body: 0.95rem;
   --font-size-caption: 0.8125rem;
 
-  /* SPACING */
-  --space-xs: 0.2rem;
-  --space-sm: 0.4rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
   --space-md: 0.85rem;
   --space-lg: 1.25rem;
   --space-xl: 1.75rem;
 
-  /* RADII */
   --radius-sm: 0.2rem;
   --radius-md: 0.4rem;
   --radius-lg: 0.6rem;
-
-  /* SHADOWS */
-  --shadow-sm: 0 1px 1.5px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 2px 5px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 
 .dark {
-  /* COLORS */
-  --primary-colour: #3b82f6;
-  --primary-hover: #2563eb;
-  --secondary-colour: #1f2937;
-  --secondary-hover: #374151;
-  --surface-colour: #111827;
-  --text-primary: #f3f4f6;
-  --text-secondary: #d1d5db;
-  --border-neutral: #374151;
-  --success-colour: #22c55e;
-  --error-colour: #ef4444;
-  --danger-colour: #b91c1c;
-  --danger-hover: #991b1b;
-  --focus-colour: #60a5fa;
-  --disabled-colour: #4b5563;
+  --primary-colour: #0a9396;
+  --primary-hover: #94d2bd;
+  --focus-colour: #005f73;
 
-  /* SHADOWS */
-  --shadow-sm: 0 1px 1.5px rgba(255, 255, 255, 0.05);
-  --shadow-md: 0 2px 5px rgba(255, 255, 255, 0.08);
-  --shadow-lg: 0 3px 10px rgba(255, 255, 255, 0.12);
+  --secondary-colour: #1c1f24;
+  --secondary-hover: #2a2e35;
+  --surface-colour: #111418;
+
+  --text-primary: #f0f4f8;
+  --text-secondary: #a0a8b8;
+
+  --border-neutral: #2f363e;
+
+  --success-colour: #2a9d8f;
+  --warning-colour: #e9c46a;
+  --error-colour: #e76f51;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.35);
 }

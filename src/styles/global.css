@@ -1,22 +1,10 @@
 @import './variables.css';
 @import './typography.css';
 
-/* Base layout, mobile fixes, accessibility */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-body);
-  color: var(--text-primary);
-  background-color: var(--surface-colour);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  flex-direction: column;
 }
 
 #root, main {
@@ -27,16 +15,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Mobile input fix */
 input, select, textarea { font-size: 16px; }
 
-/* Touch targets */
 button, a, input[type="button"], input[type="submit"] {
   min-height: 44px;
   min-width: 44px;
 }
 
-/* Screen reader helper */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -49,7 +34,6 @@ button, a, input[type="button"], input[type="submit"] {
   border: 0;
 }
 
-/* Custom scrollbars */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--secondary-colour); }
 ::-webkit-scrollbar-thumb {
@@ -57,3 +41,10 @@ button, a, input[type="button"], input[type="submit"] {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+.dark body {
+  background-color: var(--surface-colour);
+  color: var(--text-primary);
+}
+.dark a { color: var(--primary-colour); }
+.dark a:hover, .dark a:focus { color: var(--primary-hover); }
