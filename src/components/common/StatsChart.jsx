@@ -7,61 +7,76 @@ export default function StatsChart({ project }) {
   const chartInstance = useRef(null);
 
   useEffect(() => {
-    if (chartRef.current) {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
+    if (!chartRef.current) return;
 
-      chartInstance.current = new Chart(chartRef.current, {
-        type: 'doughnut',
-        data: {
-          labels: ['Completed', 'Incomplete'],
-          datasets: [{
+    const ctx = chartRef.current.getContext('2d');
+    const rootStyles = getComputedStyle(document.documentElement);
+    const isDark = document.body.classList.contains('dark') ||
+                  window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const textColour = isDark
+      ? rootStyles.getPropertyValue('--text-primary').trim()
+      : rootStyles.getPropertyValue('--text-primary').trim();
+
+    chartInstance.current = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'Incomplete'],
+        datasets: [
+          {
             data: [project.completed, project.incomplete],
-            backgroundColor: ['var(--success-colour)', 'var(--danger-colour)'],
-            hoverOffset: 10
-          }]
+            backgroundColor: ['#198754', '#dc3545'],
+            hoverBackgroundColor: ['#22c55e', '#b91c1c'],
+            borderWidth: 1,
+            hoverOffset: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '65%',
+        animation: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: textColour, font: { size: 12 } },
+          },
+          title: {
+            display: true,
+            text: project.title,
+            color: textColour,
+            font: { weight: 600, size: 14 },
+          },
         },
-        options: {
-          plugins: {
-            legend: { 
-              position: 'bottom',
-              labels: {
-                color: 'var(--text-primary)'
-              }
-            },
-            title: { 
-              display: true, 
-              text: project.title,
-              color: 'var(--text-primary)',
-              font: { weight: '600', size: 16 }
-            }
-          }
-        }
-      });
-    }
+      },
+    });
 
     return () => {
       if (chartInstance.current) {
         chartInstance.current.destroy();
+        chartInstance.current = null;
       }
     };
   }, [project]);
 
   return (
-    <Card className="p-6 bg-[var(--surface-colour)] text-[var(--text-primary)] border-[var(--border-neutral)]">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="w-full md:w-2/5 min-w-[200px]">
-          <canvas ref={chartRef} />
-        </div>
-
-        <div className="w-full md:w-3/5 bg-[var(--secondary-colour)] border border-[var(--border-neutral)] rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+    
+      <div className="relative w-full md:w-2/5 flex-shrink-0">
+          <div className="w-full h-64 md:h-80"> {/* adjust height as needed */}
+            <canvas ref={chartRef} className="w-full h-full" />
+          </div>
+       
+        <div className="w-full bg-[var(--secondary-colour)] rounded-lg p-4">
+          <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3">
             Team member workload for {project.title}
           </h3>
-          <ul className="space-y-2">
+          <ul className="space-y-1.5">
             {project.teamMembers.map((member, index) => (
-              <li key={index} className="text-[var(--text-primary)]">
+              <li
+                key={index}
+                className="text-[var(--text-primary)] text-sm leading-snug"
+              >
                 <span className="font-medium">{member.name}:</span>{' '}
                 {member.tasks.join(', ')}
               </li>
@@ -69,6 +84,6 @@ export default function StatsChart({ project }) {
           </ul>
         </div>
       </div>
-    </Card>
+ 
   );
 }

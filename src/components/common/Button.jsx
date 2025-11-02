@@ -10,7 +10,12 @@ export default function Button({
   buttonType = 'button',
   active = false,
   ...props
-}) {
+}) {carousel: `
+  absolute z-10 rounded-full p-2 shadow
+  bg-[var(--surface-colour)] text-[var(--text-primary)]
+  hover:brightness-110 transition
+  dark:bg-[var(--surface-colour)] dark:text-[var(--text-primary)]
+`
 const typeClasses = {
   primary: `
     bg-[var(--primary-colour)] text-[var(--surface-colour)] border-none
@@ -73,12 +78,21 @@ const typeClasses = {
   const widthClasses = {
     default: 'w-full max-w-[20rem] min-w-[6rem]',
     full: 'w-full',
-    sidebar: 'w-full'
+    sidebar: 'w-full',
+    carousel: 'w-auto h-auto min-w-0 min-h-0'
   };
 
   const variantClasses = {
     default: 'rounded-md shadow-sm transition-all duration-200 ease-in-out hover:brightness-95 cursor-pointer',
-    sidebar: 'flex items-center gap-3 p-3 rounded-lg border-2 transition-all duration-200 text-left hover:brightness-95 cursor-pointer'
+    sidebar: 'flex items-center gap-3 p-3 rounded-lg border-2 transition-all duration-200 text-left hover:brightness-95 cursor-pointer',
+    carousel: `
+  absolute z-10 rounded-full p-2 shadow
+  w-auto h-auto
+  bg-[var(--surface-colour)] text-[var(--text-primary)]
+  hover:brightness-110 transition
+  dark:bg-[var(--surface-colour)] dark:text-[var(--text-primary)]
+`,
+
   };
 
   const typeClass =
@@ -88,11 +102,13 @@ const typeClasses = {
         : typeClasses.sidebarDefault
       : typeClasses[type];
 
+  const widthClass = variant === 'carousel' ? '' : widthClasses[width];
+
   return (
     <button
       type={buttonType}
       className={`
-        ${widthClasses[width]}
+        ${widthClasses[variant] || widthClasses[width]}
         ${variantClasses[variant]}
         ${sizeClasses[size]}
         ${typeClass}
