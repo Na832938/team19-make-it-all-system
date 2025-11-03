@@ -15,7 +15,8 @@ import {
   FaChartBar,
   FaUsers,
   FaBullseye,
-  FaChartLine
+  FaChartLine,
+  FaFlag
 } from "react-icons/fa";
 
 import projects from '../../data/projects.json';
