@@ -1,5 +1,6 @@
 import { FaInfoCircle, FaCheckCircle, FaExclamationTriangle, FaTimesCircle, FaTimes } from 'react-icons/fa';
-import Button from './Button';
+import Card from './Card.jsx';
+import Button from './Button.jsx';
 
 export default function Alert({
   type = 'info',
@@ -15,25 +16,21 @@ export default function Alert({
       icon: <FaInfoCircle className="w-5 h-5" />,
       defaultTitle: 'Info',
       buttonType: 'secondary',
-      base: 'bg-primary/10 text-textPrimary border-borderNeutral dark:bg-primary/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     success: { 
       icon: <FaCheckCircle className="w-5 h-5" />,
       defaultTitle: 'Success',
       buttonType: 'green',
-      base: 'bg-success/10 text-textPrimary border-borderNeutral dark:bg-success/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     warning: { 
       icon: <FaExclamationTriangle className="w-5 h-5" />,
       defaultTitle: 'Warning',
       buttonType: 'orange',
-      base: 'bg-danger/10 text-textPrimary border-borderNeutral dark:bg-danger/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     error: { 
       icon: <FaTimesCircle className="w-5 h-5" />,
       defaultTitle: 'Error',
       buttonType: 'danger',
-      base: 'bg-error/10 text-textPrimary border-borderNeutral dark:bg-error/20 dark:text-textPrimary dark:border-borderNeutral'
     }
   };
 
@@ -41,7 +38,7 @@ export default function Alert({
   const displayTitle = title || config.defaultTitle;
 
   return (
-    <div className={`border rounded-md p-4 ${config.base} ${className}`}>
+    <Card className={`border rounded-md p-4 ${className}`}>
       <div className="flex items-start">
         {showIcon && (
           <div className="flex-shrink-0 mr-3">
@@ -82,6 +79,6 @@ export default function Alert({
           </div>
         )}
       </div>
-    </div>
+    </Card>
   );
 }
