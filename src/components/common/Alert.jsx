@@ -1,35 +1,36 @@
+import { FaInfoCircle, FaCheckCircle, FaExclamationTriangle, FaTimesCircle, FaTimes } from 'react-icons/fa';
 import Button from './Button';
 
 export default function Alert({
-  type = 'info', // 'info' | 'success' | 'warning' | 'error'
+  type = 'info',
   title,
   message,
   onClose,
   className = '',
   showIcon = true,
-  actions // Optional action buttons
+  actions
 }) {
   const alertConfig = {
     info: { 
-      icon: 'ℹ️', 
+      icon: <FaInfoCircle className="w-5 h-5" />,
       defaultTitle: 'Info',
       buttonType: 'secondary',
       base: 'bg-primary/10 text-textPrimary border-borderNeutral dark:bg-primary/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     success: { 
-      icon: '✅', 
+      icon: <FaCheckCircle className="w-5 h-5" />,
       defaultTitle: 'Success',
       buttonType: 'green',
       base: 'bg-success/10 text-textPrimary border-borderNeutral dark:bg-success/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     warning: { 
-      icon: '⚠️', 
-      defaultTitle: 'Warning', 
+      icon: <FaExclamationTriangle className="w-5 h-5" />,
+      defaultTitle: 'Warning',
       buttonType: 'orange',
       base: 'bg-danger/10 text-textPrimary border-borderNeutral dark:bg-danger/20 dark:text-textPrimary dark:border-borderNeutral'
     },
     error: { 
-      icon: '❌', 
+      icon: <FaTimesCircle className="w-5 h-5" />,
       defaultTitle: 'Error',
       buttonType: 'danger',
       base: 'bg-error/10 text-textPrimary border-borderNeutral dark:bg-error/20 dark:text-textPrimary dark:border-borderNeutral'
@@ -44,7 +45,7 @@ export default function Alert({
       <div className="flex items-start">
         {showIcon && (
           <div className="flex-shrink-0 mr-3">
-            <span className="text-lg">{config.icon}</span>
+            {config.icon}
           </div>
         )}
 
@@ -76,7 +77,7 @@ export default function Alert({
               onClick={onClose}
               className="!min-w-0 !px-2 !py-1 bg-surface text-textPrimary hover:bg-secondaryHover dark:bg-surface dark:text-textPrimary dark:hover:bg-secondaryHover"
             >
-              ×
+              <FaTimes className="w-4 h-4" />
             </Button>
           </div>
         )}
