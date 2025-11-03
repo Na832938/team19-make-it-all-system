@@ -1,162 +1,244 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang='en'>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" context="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-        </script>
-        <title>Manager Dashboard</title>
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    </script>
+    <title>Manager Dashboard</title>
 
-            .filter {
-                position: absolute; top: 10px; right: 10px;
-            }
-            
+    <style>
+        .back,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            border-color: #000;
+            user-select: none;
+        }
 
-            .test-chart {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                border-radius: 10px;
-                padding: 20px;
-                margin-bottom: 30px;
-                box-shadow: 0 2px 6px rgba (0, 0, 0, 0.1);
-                
-            }
+        .test-chart {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba (0, 0, 0, 0.1);
 
-         
+        }
 
-            .chart-container {
-                width: 40%;
-                min-width: 200px;
-                border: 1px solid #000;
-                background: #FAF9F6;
-                
 
-            }
 
-            .team-member-info {
-                background: #FAF9F6;
-                border: 1px solid #000;
-            }
+        .chart-container {
+            width: 40%;
+            min-width: 200px;
+            border: 1px solid #000;
+            background: #FAF9F6;
 
-  
 
-        </style>
-    </head>
-    <body>
+        }
 
-        <button class="filter">Filer Search</button>
+        .team-member-info {
+            background: #FAF9F6;
+            border: 1px solid #000;
+        }
 
-        <div class="test-chart">
-            <div class="chart-container">
-                <canvas id="chart1"></canvas>
+        .back {
+            left: 16px;
+        }
+
+        .next {
+            right: 16px;
+        }
+
+        .back:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .filter-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="filter-button">Filter Search</button>
+
+    <div class="slideshow-container">
+
+        <div class="slides">
+            <div class="slide-number">1/3</div>
+            <div class="test-chart">
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="team-member-info">
+                    <h3>Team member workload for project 1</h3>
+                    <ul>
+                        <li>John: Task 1, Task 4</li>
+                        <li>David: Task 2, Task 3</li>
+                        <li>Alice: Task 5, Task 8</li>
+                        <li>Susan: Task 7, Task 6</li>
+                    </ul>
+                </div>
             </div>
-            <div class="team-member-info">
-                <h3>Team member workload for project 1</h3>
-                <ul>
-                    <li>John: Task 1, Task 4</li>
-                    <li>David: Task 2, Task 3</li>
-                    <li>Alice: Task 5, Task 8</li>
-                    <li>Susan: Task 7, Task 6</li>
-                </ul>
-            </div>
+            <div class="text">caption 1</div>
         </div>
 
-        <div class="test-chart">
-            <div class="chart-container">
-                <canvas id="chart2"></canvas>
+        <div class="slides">
+            <div class="slide-number">2/3</div>
+            <div class="test-chart">
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="team-member-info">
+                    <h3>Team member workload for project 2</h3>
+                    <ul>
+                        <li>Paula: Task 5, Task 2</li>
+                        <li>Jason: Task 3</li>
+                        <li>Linda: Task 1, Task 4</li>
+                        <li>Samuel: Task 6, Task 7</li>
+                    </ul>
+                </div>
             </div>
-            <div class="team-member-info">
-                <h3>Team member workload for project 2</h3>
-                <ul>
-                    <li>Paula: Task 5, Task 2</li>
-                    <li>Jason: Task 3</li>
-                    <li>Linda: Task 1, Task 4</li>
-                    <li>Samuel: Task 6, Task 7</li>
-                </ul>
-            </div>
+            <div class="text">caption 2</div>
         </div>
 
-        <div class="test-chart">
-            <div class="chart-container">
-                <canvas id="chart3"></canvas>
+        <div class="slides">
+            <div class="slide-number">3/3</div>
+            <div class="test-chart">
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+                <div class="team-member-info">
+                    <h3>Team member workload for project 3</h3>
+                    <ul>
+                        <li>Bryce: Task 4, Task 3</li>
+                        <li>Anderson: Task 2, Task 6</li>
+                        <li>Imogen: Task 5, Task 1</li>
+                        <li>Jamal: Task 7</li>
+                    </ul>
+                </div>
             </div>
-            <div class="team-member-info">
-                <h3>Team member workload for project 3</h3>
-                <ul>
-                    <li>Bryce: Task 4, Task 3</li>
-                    <li>Anderson: Task 2, Task 6</li>
-                    <li>Imogen: Task 5, Task 1</li>
-                    <li>Jamal: Task 7</li>
-                </ul>
-            </div>
+            <div class="text">caption 3</div>
         </div>
+    </div>
+
+    <a class="back" onclick="plusSlides(-1)">◄</a>
+    <a class="next" onclick="plusSlides(1)">►</a>
 
 
-        <script>
-            new Chart(document.getElementById('chart1'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Completed', 'Incomplete'],
-                    datasets: [{
-                        data: [73, 27],
-                        backgroundColor: ['#36A2EB', '#FF6384'],
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { position: 'bottom' },
-                        title: { display: true, text: 'Project 1' }
-                    
-                    }
+    <script>
+        new Chart(document.getElementById('chart1'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Incomplete'],
+                datasets: [{
+                    data: [73, 27],
+                    backgroundColor: ['#36A2EB', '#FF6384'],
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: true, text: 'Project 1' }
+
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 
-                <script>
-            new Chart(document.getElementById('chart2'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Completed', 'Incomplete'],
-                    datasets: [{
-                        data: [12, 88],
-                        backgroundColor: ['#36A2EB', '#FF6384'],
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { position: 'bottom' },
-                        title: { display: true, text: 'Project 2' }
-                    
-                    }
-                }
-            });
-        </script>
+    <script>
+        new Chart(document.getElementById('chart2'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Incomplete'],
+                datasets: [{
+                    data: [12, 88],
+                    backgroundColor: ['#36A2EB', '#FF6384'],
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: true, text: 'Project 2' }
 
-                <script>
-            new Chart(document.getElementById('chart3'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Completed', 'Incomplete'],
-                    datasets: [{
-                        data: [98, 2],
-                        backgroundColor: ['#36A2EB', '#FF6384'],
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { position: 'bottom' },
-                        title: { display: true, text: 'Project 3' }
-                    
-                    }
                 }
-            });
-        </script>
-    </body>
+            }
+        });
+    </script>
+
+    <script>
+        new Chart(document.getElementById('chart3'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Incomplete'],
+                datasets: [{
+                    data: [98, 2],
+                    backgroundColor: ['#36A2EB', '#FF6384'],
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: true, text: 'Project 3' }
+
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            if (n > slides.length) {
+                slideIndex = 1;
+
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+</body>
+
 </html>
