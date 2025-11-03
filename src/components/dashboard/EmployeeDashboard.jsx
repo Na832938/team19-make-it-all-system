@@ -121,7 +121,6 @@ export default function EmployeeDashboard() {
                         <Badge 
                           text={task.status === "Completed" ? "Done" : task.status}
                           bg={task.status === "Completed" ? "green" : "orange"}
-                          color="var(--surface-colour)"
                         />
                       </div>
                     ))}
