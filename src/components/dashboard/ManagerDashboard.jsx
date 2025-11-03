@@ -196,19 +196,19 @@ export default function ManagerDashboard() {
                 <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Recent Management Activity</h3>
                 <div className="space-y-4">
                   <ActivityItem 
-                    icon={<ChartBarIcon className="w-5 h-5 text-blue-600" />}
+                    icon={<FaChartBar className="w-5 h-5 text-blue-600" />}
                     iconBg="bg-blue-100"
                     title="Generated quarterly performance report"
                     time="2 hours ago"
                   />
                   <ActivityItem 
-                    icon={<UsersIcon className="w-5 h-5 text-green-600" />}
+                    icon={<FaUsers className="w-5 h-5 text-green-600" />}
                     iconBg="bg-green-100"
                     title="Conducted team performance review"
                     time="1 day ago"
                   />
                   <ActivityItem 
-                    icon={<FlagIcon className="w-5 h-5 text-purple-600" />}
+                    icon={<FaFlag className="w-5 h-5 text-purple-600" />}
                     iconBg="bg-purple-100"
                     title="Set new project milestones"
                     time="2 days ago"
