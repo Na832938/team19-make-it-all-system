@@ -1,20 +1,20 @@
 :root {
-  --primary-colour: #005f73;
-  --primary-hover: #0a9396;
-  --focus-colour: #94d2bd;
+  --primary-colour: #005f74;
+  --primary-hover: #0a9397;
+  --focus-colour: #94d2be;
 
-  --secondary-colour: #f0f4f8;
-  --secondary-hover: #e0e7ef;
-  --surface-colour: #ffffff;
+  --secondary-colour: #f1f4f8;
+  --secondary-hover: #e1e7ef;
+  --surface-colour: #fffffe;
 
-  --text-primary: #0a0a0a;
-  --text-secondary: #5c6670;
+  --text-primary: #0b0a0a;
+  --text-secondary: #5d6670;
 
-  --border-neutral: #cbd5e1;
+  --border-neutral: #ccd5e1;
 
-  --success-colour: #2a9d8f;
-  --warning-colour: #e9c46a;
-  --error-colour: #e76f51;
+  --success-colour: #2a9d90;
+  --warning-colour: #e9c46b;
+  --error-colour: #e76f52;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.08);
@@ -39,22 +39,22 @@
 }
 
 .dark {
-  --primary-colour: #0a9396;
-  --primary-hover: #94d2bd;
-  --focus-colour: #005f73;
+  --primary-colour: #0a9397;
+  --primary-hover: #94d2be;
+  --focus-colour: #005f74;
 
-  --secondary-colour: #1c1f24;
-  --secondary-hover: #2a2e35;
-  --surface-colour: #111418;
+  --secondary-colour: #1d1f24;
+  --secondary-hover: #2b2e35;
+  --surface-colour: #121418;
 
-  --text-primary: #f0f4f8;
-  --text-secondary: #a0a8b8;
+  --text-primary: #f1f4f8;
+  --text-secondary: #a1a8b8;
 
-  --border-neutral: #2f363e;
+  --border-neutral: #2f363f;
 
-  --success-colour: #2a9d8f;
-  --warning-colour: #e9c46a;
-  --error-colour: #e76f51;
+  --success-colour: #2a9d90;
+  --warning-colour: #e9c46b;
+  --error-colour: #e76f52;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.3);
