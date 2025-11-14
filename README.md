@@ -4,7 +4,7 @@ A modern helpdesk and issue-tracking system developed for the COB290 Team Projec
 
 ## Live Demo
 
-**Live Application**: https://na832938.github.io/team19-make-it-all-system
+**Live Application**: https://nanda-kumudhan.github.io/team19-make-it-all-system
 
 ## Technology Stack
 
