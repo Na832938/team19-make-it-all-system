@@ -1,11 +1,23 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
+/**
+ * A card component for displaying content.
+ *
+ * @param {object} props - The component's props.
+ * @param {React.ReactNode} props.children - The content of the card.
+ * @param {boolean} [props.vertical=true] - Whether to display the content vertically.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the card.
+ * @param {boolean} [props.fullWidth=false] - Whether the card should take up the full width.
+ * @returns {JSX.Element} The card component.
+ */
 export default function Card({
   children,
   vertical = true,
   className = "",
   fullWidth = false
 }) {
+  console.log("Rendering Card component");
   return (
     <div
       className={`
@@ -29,3 +41,10 @@ export default function Card({
     </div>
   );
 }
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  vertical: PropTypes.bool,
+  className: PropTypes.string,
+  fullWidth: PropTypes.bool,
+};

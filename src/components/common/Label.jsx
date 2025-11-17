@@ -1,11 +1,24 @@
-export default function Label({ 
-  text, 
-  children, 
+import PropTypes from 'prop-types';
+
+/**
+ * A label component for form elements.
+ *
+ * @param {object} props - The component's props.
+ * @param {string} props.text - The text to display in the label.
+ * @param {React.ReactNode} props.children - The content of the label.
+ * @param {string} props.htmlFor - The ID of the element the label is associated with.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the label.
+ * @returns {JSX.Element} The label component.
+ */
+export default function Label({
+  text,
+  children,
   htmlFor,
   className = ''
 }) {
+  console.log(`Rendering Label for "${htmlFor}"`);
   return (
-    <label 
+    <label
       className={`
         label-base text-responsive
         text-[var(--text-secondary)] dark:text-[var(--text-secondary)]
@@ -18,3 +31,10 @@ export default function Label({
     </label>
   );
 }
+
+Label.propTypes = {
+  text: PropTypes.string,
+  children: PropTypes.node,
+  htmlFor: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};

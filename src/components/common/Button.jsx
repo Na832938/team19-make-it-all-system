@@ -1,3 +1,21 @@
+import PropTypes from 'prop-types';
+
+/**
+ * A customizable button component.
+ *
+ * @param {object} props - The component's props.
+ * @param {'primary' | 'secondary' | 'danger' | 'green' | 'gray' | 'orange' | 'purple' | 'sidebarDefault' | 'sidebarActive'} [props.type='primary'] - The type of the button.
+ * @param {'small' | 'medium' | 'large'} [props.size='medium'] - The size of the button.
+ * @param {'default' | 'full' | 'sidebar' | 'carousel'} [props.width='default'] - The width of the button.
+ * @param {'default' | 'sidebar' | 'carousel'} [props.variant='default'] - The variant of the button.
+ * @param {React.ReactNode} props.children - The content of the button.
+ * @param {Function} props.onClick - The function to call when the button is clicked.
+ * @param {boolean} [props.disabled=false] - Whether the button is disabled.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the button.
+ * @param {'button' | 'submit' | 'reset'} [props.buttonType='button'] - The type of the button element.
+ * @param {boolean} [props.active=false] - Whether the button is active (for sidebar variant).
+ * @returns {JSX.Element} The button component.
+ */
 export default function Button({
   type = 'primary',
   size = 'medium',
@@ -10,13 +28,14 @@ export default function Button({
   buttonType = 'button',
   active = false,
   ...props
-}) {carousel: `
-  absolute z-10 rounded-full p-2 shadow
-  bg-[var(--surface-colour)] text-[var(--text-primary)]
-  hover:brightness-110 transition
-  dark:bg-[var(--surface-colour)] dark:text-[var(--text-primary)]
-`
-const typeClasses = {
+}) {
+  const handleOnClick = (e) => {
+    console.log(`Button clicked: ${children}`);
+    if (onClick) {
+      onClick(e);
+    }
+  };
+  const typeClasses = {
   primary: `
     bg-[var(--primary-colour)] text-[var(--surface-colour)] border-none
     hover:bg-[var(--primary-hover)] active:bg-[var(--focus-colour)]
@@ -115,7 +134,7 @@ const typeClasses = {
         ${disabled ? 'opacity-60 cursor-not-allowed' : ''}
         ${className}
       `}
-      onClick={onClick}
+      onClick={handleOnClick}
       disabled={disabled}
       {...props}
     >
@@ -123,3 +142,16 @@ const typeClasses = {
     </button>
   );
 }
+
+Button.propTypes = {
+  type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'green', 'gray', 'orange', 'purple', 'sidebarDefault', 'sidebarActive']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  width: PropTypes.oneOf(['default', 'full', 'sidebar', 'carousel']),
+  variant: PropTypes.oneOf(['default', 'sidebar', 'carousel']),
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  buttonType: PropTypes.oneOf(['button', 'submit', 'reset']),
+  active: PropTypes.bool,
+};

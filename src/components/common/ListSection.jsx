@@ -1,6 +1,22 @@
 import React from "react";
 import Button from "./Button.jsx";
+import PropTypes from 'prop-types';
 
+/**
+ * A component to display a section of a list.
+ *
+ * @param {object} props - The component's props.
+ * @param {string} props.title - The title of the list section.
+ * @param {Array<object>} [props.items=[]] - The items to display in the list section.
+ * @param {string} props.iconUrl - The URL of the icon to display for each item.
+ * @param {Function} props.renderDetails - A function to render the details of each item.
+ * @param {Function} props.renderActions - A function to render the actions for each item.
+ * @param {string} [props.emptyMessage="No items available."] - A message to display when there are no items.
+ * @param {'default' | 'compact' | 'bordered'} [props.variant='default'] - The variant of the list section.
+ * @param {boolean} [props.loading=false] - Whether the list section is in a loading state.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the list section.
+ * @returns {JSX.Element} The list section component.
+ */
 export default function ListSection({
   title,
   items = [],
@@ -12,6 +28,7 @@ export default function ListSection({
   loading = false,
   className = ""
 }) {
+  console.log(`Rendering ListSection "${title}" with ${items.length} items.`);
   const variantStyles = {
     default: "space-y-3",
     compact: "space-y-2", 
@@ -123,7 +140,9 @@ export default function ListSection({
                       type="secondary"
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
-                      onClick={() => console.log('View', item)}
+                      onClick={() => {
+                        console.log('Default view action on item:', item);
+                      }}
                     >
                       👁️
                     </Button>
@@ -131,7 +150,9 @@ export default function ListSection({
                       type="secondary"
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
-                      onClick={() => console.log('Edit', item)}
+                      onClick={() => {
+                        console.log('Default edit action on item:', item);
+                      }}
                     >
                       ✏️
                     </Button>
@@ -139,7 +160,9 @@ export default function ListSection({
                       type="danger"
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
-                      onClick={() => console.log('Delete', item)}
+                      onClick={() => {
+                        console.log('Default delete action on item:', item);
+                      }}
                     >
                       🗑️
                     </Button>
@@ -153,3 +176,15 @@ export default function ListSection({
     </div>
   );
 }
+
+ListSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array,
+  iconUrl: PropTypes.string,
+  renderDetails: PropTypes.func,
+  renderActions: PropTypes.func,
+  emptyMessage: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'compact', 'bordered']),
+  loading: PropTypes.bool,
+  className: PropTypes.string,
+};

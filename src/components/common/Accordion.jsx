@@ -1,11 +1,22 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
+/**
+ * An accordion component that allows users to show and hide sections of content.
+ *
+ * @param {object} props - The component's props.
+ * @param {Array<object>} props.items - An array of items to display in the accordion.
+ * @param {boolean} [props.allowMultiple=false] - Whether multiple items can be expanded at once.
+ * @param {Array<string|number>} [props.defaultExpanded=[]] - An array of item IDs that should be expanded by default.
+ * @returns {JSX.Element} The accordion component.
+ */
 export default function Accordion({ items, allowMultiple = false, defaultExpanded = [] }) {
   const [expandedIds, setExpandedIds] = useState(
     defaultExpanded.reduce((acc, id) => ({ ...acc, [id]: true }), {})
   );
 
   const toggleItem = (id) => {
+    console.log(`Toggling accordion item: ${id}`);
     setExpandedIds(prev => {
       if (allowMultiple) return { ...prev, [id]: !prev[id] };
       return { [id]: !prev[id] };
@@ -74,3 +85,13 @@ export default function Accordion({ items, allowMultiple = false, defaultExpande
     </div>
   );
 }
+
+Accordion.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    header: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+    content: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  })).isRequired,
+  allowMultiple: PropTypes.bool,
+  defaultExpanded: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+};

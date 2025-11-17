@@ -1,6 +1,21 @@
 // src/components/common/DataList.jsx
 import ListSection from "./ListSection";
+import PropTypes from 'prop-types';
 
+/**
+ * A component to display a list of data.
+ *
+ * @param {object} props - The component's props.
+ * @param {Array<object>} props.items - The items to display in the list.
+ * @param {'task' | 'post' | 'topic' | 'default'} [props.type='default'] - The type of data being displayed.
+ * @param {Function} props.onAction - A function to handle actions on list items.
+ * @param {string} props.title - The title of the list.
+ * @param {string} props.emptyMessage - A message to display when there are no items.
+ * @param {string} [props.variant='default'] - The variant of the list.
+ * @param {boolean} [props.loading=false] - Whether the list is in a loading state.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the list.
+ * @returns {JSX.Element} The data list component.
+ */
 export default function DataList({
   items,
   type = "default", // 'task' | 'post' | 'topic' | 'default'
@@ -11,6 +26,7 @@ export default function DataList({
   loading = false,
   className = ""
 }) {
+  console.log(`Rendering DataList of type "${type}" with ${items?.length} items.`);
 
   const renderDetails = {
     task: (item) => (
@@ -79,14 +95,20 @@ export default function DataList({
     task: (item) => (
       <>
         <button
-          onClick={() => onAction?.('status', item)}
+          onClick={() => {
+            console.log(`DataList: status action on item:`, item);
+            onAction?.('status', item);
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
-          {item.status === 'To Do' ? 'Start' : 
+          {item.status === 'To Do' ? 'Start' :
            item.status === 'In Progress' ? 'Complete' : 'Reopen'}
         </button>
         <button
-          onClick={() => onAction?.('delete', item)}
+          onClick={() => {
+            console.log(`DataList: delete action on item:`, item);
+            onAction?.('delete', item);
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] dark:bg-[var(--danger-colour)] text-white hover:brightness-90"
         >
           Delete
@@ -97,19 +119,28 @@ export default function DataList({
     post: (item) => (
       <>
         <button
-          onClick={() => onAction?.('view', item)}
+          onClick={() => {
+            console.log(`DataList: view action on item:`, item);
+            onAction?.('view', item);
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] dark:bg-[var(--secondary-colour)] text-[var(--text-primary)] dark:text-[var(--text-primary)] hover:brightness-95"
         >
           View
         </button>
         <button
-          onClick={() => onAction?.('edit', item)}
+          onClick={() => {
+            console.log(`DataList: edit action on item:`, item);
+            onAction?.('edit', item)
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
           Edit
         </button>
         <button
-          onClick={() => onAction?.('delete', item)}
+          onClick={() => {
+            console.log(`DataList: delete action on item:`, item);
+            onAction?.('delete', item)
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] dark:bg-[var(--danger-colour)] text-white hover:brightness-90"
         >
           Delete
@@ -119,7 +150,10 @@ export default function DataList({
     
     topic: (item) => (
       <button
-        onClick={() => onAction?.('select', item)}
+        onClick={() => {
+          console.log(`DataList: select action on item:`, item);
+          onAction?.('select', item);
+        }}
         className="px-4 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
       >
         Open
@@ -129,13 +163,19 @@ export default function DataList({
     default: (item) => (
       <>
         <button
-          onClick={() => onAction?.('view', item)}
+          onClick={() => {
+            console.log(`DataList: view action on item:`, item);
+            onAction?.('view', item);
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] dark:bg-[var(--secondary-colour)] text-[var(--text-primary)] dark:text-[var(--text-primary)] hover:brightness-95"
         >
           View
         </button>
         <button
-          onClick={() => onAction?.('edit', item)}
+          onClick={() => {
+            console.log(`DataList: edit action on item:`, item);
+            onAction?.('edit', item);
+          }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
         >
           Edit
@@ -157,3 +197,14 @@ export default function DataList({
     />
   );
 }
+
+DataList.propTypes = {
+  items: PropTypes.array,
+  type: PropTypes.oneOf(['task', 'post', 'topic', 'default']),
+  onAction: PropTypes.func,
+  title: PropTypes.string,
+  emptyMessage: PropTypes.string,
+  variant: PropTypes.string,
+  loading: PropTypes.bool,
+  className: PropTypes.string,
+};

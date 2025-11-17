@@ -1,5 +1,23 @@
 import Button from "./Button.jsx";
+import PropTypes from 'prop-types';
 
+/**
+ * A form component.
+ *
+ * @param {object} props - The component's props.
+ * @param {React.ReactNode} props.children - The content of the form.
+ * @param {Function} props.onSubmit - The function to call when the form is submitted.
+ * @param {string} [props.submitText="Submit"] - The text for the submit button.
+ * @param {string} [props.cancelText="Cancel"] - The text for the cancel button.
+ * @param {Function} props.onCancel - The function to call when the cancel button is clicked.
+ * @param {boolean} [props.loading=false] - Whether the form is in a loading state.
+ * @param {boolean} [props.disabled=false] - Whether the form is disabled.
+ * @param {boolean} [props.actions=true] - Whether to show the form actions (submit and cancel buttons).
+ * @param {'vertical' | 'horizontal'} [props.layout='vertical'] - The layout of the form.
+ * @param {'default' | 'compact' | 'comfortable'} [props.variant='default'] - The variant of the form.
+ * @param {string} [props.className=""] - Additional CSS classes to apply to the form.
+ * @returns {JSX.Element} The form component.
+ */
 export default function Form({
   children,
   onSubmit,
@@ -16,11 +34,13 @@ export default function Form({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted");
     if (!loading && !disabled && onSubmit) onSubmit(e);
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
+    console.log("Form cancelled");
     if (onCancel) onCancel();
   };
 
@@ -86,3 +106,17 @@ export default function Form({
     </form>
   );
 }
+
+Form.propTypes = {
+  children: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func,
+  submitText: PropTypes.string,
+  cancelText: PropTypes.string,
+  onCancel: PropTypes.func,
+  loading: PropTypes.bool,
+  disabled: PropTypes.bool,
+  actions: PropTypes.bool,
+  layout: PropTypes.oneOf(['vertical', 'horizontal']),
+  variant: PropTypes.oneOf(['default', 'compact', 'comfortable']),
+  className: PropTypes.string,
+};

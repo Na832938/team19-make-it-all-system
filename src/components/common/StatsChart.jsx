@@ -1,13 +1,22 @@
 import { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import Card from './Card.jsx';
+import PropTypes from 'prop-types';
 
+/**
+ * A component to display project statistics using a doughnut chart.
+ *
+ * @param {object} props - The component's props.
+ * @param {object} props.project - The project data to display.
+ * @returns {JSX.Element} The stats chart component.
+ */
 export default function StatsChart({ project }) {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
   useEffect(() => {
     if (!chartRef.current) return;
+    console.log(`Creating chart for project: ${project.title}`);
 
     const ctx = chartRef.current.getContext('2d');
     const rootStyles = getComputedStyle(document.documentElement);
@@ -54,6 +63,7 @@ export default function StatsChart({ project }) {
 
     return () => {
       if (chartInstance.current) {
+        console.log(`Destroying chart for project: ${project.title}`);
         chartInstance.current.destroy();
         chartInstance.current = null;
       }
@@ -87,3 +97,15 @@ export default function StatsChart({ project }) {
  
   );
 }
+
+StatsChart.propTypes = {
+  project: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.number.isRequired,
+    incomplete: PropTypes.number.isRequired,
+    teamMembers: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
+    })).isRequired,
+  }).isRequired,
+};

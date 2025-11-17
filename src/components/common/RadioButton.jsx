@@ -1,11 +1,33 @@
-export default function RadioButton({ 
-  checked = false, 
-  onChange, 
-  label = '', 
-  disabled = false, 
+import PropTypes from 'prop-types';
+
+/**
+ * A radio button component.
+ *
+ * @param {object} props - The component's props.
+ * @param {boolean} [props.checked=false] - Whether the radio button is checked.
+ * @param {Function} props.onChange - The function to call when the radio button value changes.
+ * @param {string} [props.label=''] - The label for the radio button.
+ * @param {boolean} [props.disabled=false] - Whether the radio button is disabled.
+ * @param {string} props.name - The name of the radio button group.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the radio button.
+ * @returns {JSX.Element} The radio button component.
+ */
+export default function RadioButton({
+  checked = false,
+  onChange,
+  label = '',
+  disabled = false,
   name,
   className = ''
 }) {
+
+  const handleOnChange = (e) => {
+    console.log(`Radio button "${label}" changed to: ${e.target.checked}`);
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <label
       className={`
@@ -21,7 +43,7 @@ export default function RadioButton({
         type="radio"
         name={name}
         checked={checked}
-        onChange={onChange}
+        onChange={handleOnChange}
         disabled={disabled}
         className={`
           w-4 h-4
@@ -39,3 +61,12 @@ export default function RadioButton({
     </label>
   );
 }
+
+RadioButton.propTypes = {
+  checked: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  disabled: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};

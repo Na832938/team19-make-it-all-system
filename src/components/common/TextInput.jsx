@@ -1,3 +1,18 @@
+import PropTypes from 'prop-types';
+
+/**
+ * A text input component.
+ *
+ * @param {object} props - The component's props.
+ * @param {string} [props.type='text'] - The type of the input.
+ * @param {string} props.value - The value of the input.
+ * @param {Function} props.onChange - The function to call when the input value changes.
+ * @param {string} props.placeholder - The placeholder text to display.
+ * @param {boolean} [props.disabled=false] - Whether the input is disabled.
+ * @param {'default' | 'outlined' | 'filled'} [props.variant='default'] - The variant of the input.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the input.
+ * @returns {JSX.Element} The text input component.
+ */
 export default function TextInput({
   type = 'text',
   value,
@@ -8,6 +23,12 @@ export default function TextInput({
   className = '',
   ...props
 }) {
+  const handleOnChange = (e) => {
+    console.log(`TextInput value changed: ${e.target.value}`);
+    if (onChange) {
+      onChange(e);
+    }
+  };
 
   const baseClasses = `
     w-full
@@ -41,7 +62,7 @@ export default function TextInput({
     <input
       type={type}
       value={value}
-      onChange={onChange}
+      onChange={handleOnChange}
       placeholder={placeholder}
       disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${hoverClasses} ${className}`}
@@ -49,3 +70,13 @@ export default function TextInput({
     />
   );
 }
+
+TextInput.propTypes = {
+  type: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(['default', 'outlined', 'filled']),
+  className: PropTypes.string,
+};

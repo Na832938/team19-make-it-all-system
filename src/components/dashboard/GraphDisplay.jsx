@@ -4,7 +4,12 @@ import StatsChart from '../common/StatsChart.jsx';
 import Carousel from '../common/Carousel.jsx';
 import projects from '../../data/projects.json';
 
+/**
+ * A component to display project analytics graphs.
+ * @returns {JSX.Element} The graph display component.
+ */
 export default function GraphDisplay() {
+  console.log("Rendering GraphDisplay");
   return (
     <div className="p-6 space-y-6">
       {/* Header */}

@@ -1,13 +1,28 @@
 // src/components/common/Carousel.jsx
 import { useState, useMemo } from 'react';
 import Button from './Button.jsx';
+import PropTypes from 'prop-types';
 
+/**
+ * A carousel component for displaying a collection of items.
+ *
+ * @param {object} props - The component's props.
+ * @param {Array<any>} props.items - The items to display in the carousel.
+ * @param {Function} props.renderItem - A function to render each item in the carousel.
+ * @returns {JSX.Element} The carousel component.
+ */
 export default function Carousel({ items, renderItem }) {
   const [index, setIndex] = useState(0);
   const total = items.length;
 
-  const prev = () => setIndex(i => (i - 1 + total) % total);
-  const next = () => setIndex(i => (i + 1) % total);
+  const prev = () => {
+    console.log("Carousel: showing previous item.");
+    setIndex(i => (i - 1 + total) % total);
+  }
+  const next = () => {
+    console.log("Carousel: showing next item.");
+    setIndex(i => (i + 1) % total);
+  }
 
   const slides = useMemo(() => items.map((item, idx) => renderItem(item, idx)), [items, renderItem]);
 
@@ -51,3 +66,8 @@ export default function Carousel({ items, renderItem }) {
     </div>
   );
 }
+
+Carousel.propTypes = {
+  items: PropTypes.array.isRequired,
+  renderItem: PropTypes.func.isRequired,
+};

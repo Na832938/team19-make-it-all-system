@@ -1,10 +1,31 @@
-export default function Checkbox({ 
-  checked = false, 
-  onChange, 
-  label = '', 
+import PropTypes from 'prop-types';
+
+/**
+ * A checkbox component.
+ *
+ * @param {object} props - The component's props.
+ * @param {boolean} [props.checked=false] - Whether the checkbox is checked.
+ * @param {Function} props.onChange - The function to call when the checkbox value changes.
+ * @param {string} [props.label=''] - The label for the checkbox.
+ * @param {boolean} [props.disabled=false] - Whether the checkbox is disabled.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the checkbox.
+ * @returns {JSX.Element} The checkbox component.
+ */
+export default function Checkbox({
+  checked = false,
+  onChange,
+  label = '',
   disabled = false,
   className = ''
 }) {
+
+  const handleOnChange = (e) => {
+    console.log(`Checkbox "${label}" changed to: ${e.target.checked}`);
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <label
       className={`
@@ -34,10 +55,18 @@ export default function Checkbox({
           ${disabled ? 'bg-[var(--disabled-colour)] dark:bg-[var(--disabled-colour)] cursor-not-allowed' : ''}
         `}
         checked={checked}
-        onChange={onChange}
+        onChange={handleOnChange}
         disabled={disabled}
       />
       {label && <span className="select-none">{label}</span>}
     </label>
   );
 }
+
+Checkbox.propTypes = {
+  checked: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+};

@@ -23,20 +23,27 @@ import {
   FaChartBar
 } from 'react-icons/fa';
 
+/**
+ * The main dashboard for employees.
+ * @returns {JSX.Element} The employee dashboard component.
+ */
 export default function EmployeeDashboard() {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [employee, setEmployee] = useState(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
+    console.log("EmployeeDashboard mounted");
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
-      setEmployee(JSON.parse(storedUser));
+      const userData = JSON.parse(storedUser);
+      setEmployee(userData);
+      document.title = `Employee - ${userData.username}`;
+      console.log("Current user:", userData.username);
     } else {
+      console.log("No user found, redirecting to login.");
       window.location.href = "/";
     }
-    const userData = JSON.parse(storedUser);
-    document.title = `Employee - ` + `${userData.username}`;
   }, []);
 
   if (!employee) {

@@ -1,8 +1,20 @@
-export default function Dropdown({ 
-  children, 
+import PropTypes from 'prop-types';
+
+/**
+ * A dropdown component that shows or hides content.
+ *
+ * @param {object} props - The component's props.
+ * @param {React.ReactNode} props.children - The content to display within the dropdown.
+ * @param {boolean} props.isOpen - Whether the dropdown is currently open.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the dropdown container.
+ * @returns {JSX.Element} The dropdown component.
+ */
+export default function Dropdown({
+  children,
   isOpen,
-  className = '' 
+  className = ''
 }) {
+  console.log(`Dropdown is ${isOpen ? 'open' : 'closed'}`);
   return (
     <div className={`
       dropdown-base dropdown-responsive
@@ -15,3 +27,9 @@ export default function Dropdown({
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  children: PropTypes.node.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+};

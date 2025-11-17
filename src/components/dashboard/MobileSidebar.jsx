@@ -9,7 +9,19 @@ import {
 } from 'react-icons/fa';
 
 import { Button } from '../common';
+import PropTypes from 'prop-types';
 
+/**
+ * The sidebar component for mobile devices.
+ *
+ * @param {object} props - The component's props.
+ * @param {string} props.activeSection - The currently active section.
+ * @param {Function} props.setActiveSection - The function to set the active section.
+ * @param {boolean} props.isOpen - Whether the sidebar is open.
+ * @param {Function} props.onClose - The function to close the sidebar.
+ * @param {boolean} [props.isManager=false] - Whether the user is a manager.
+ * @returns {JSX.Element|null} The mobile sidebar component, or null if it's not open.
+ */
 export default function MobileSidebar({ activeSection, setActiveSection, isOpen, onClose, isManager = false }) {
   const employeeSections = [
     { key: "dashboard", label: "Dashboard", icon: FaHome },
@@ -27,6 +39,8 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
   const sections = isManager ? managerSections : employeeSections;
 
   if (!isOpen) return null;
+
+  console.log("Rendering MobileSidebar");
 
   return (
     <>
@@ -80,3 +94,11 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
     </>
   );
 }
+
+MobileSidebar.propTypes = {
+  activeSection: PropTypes.string.isRequired,
+  setActiveSection: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  isManager: PropTypes.bool,
+};

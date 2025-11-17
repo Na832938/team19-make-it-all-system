@@ -4,6 +4,10 @@ import { Button, TextInput, Card, Alert, Form } from '../common';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../lib/AuthContext';
 
+/**
+ * A page for users to log in.
+ * @returns {JSX.Element} The login page component.
+ */
 export default function LoginPage() {
   const [formData, setFormData] = useState({
     username: "",
@@ -17,25 +21,36 @@ export default function LoginPage() {
 
   const from = location.state?.from?.pathname;
 
+  /**
+   * Handles the form submission for logging in.
+   * @param {React.FormEvent} e - The form event.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+    console.log("Attempting to log in with username:", formData.username);
 
     try {
       const result = await login(formData.username, formData.password);
       
       if (result.success) {
+        console.log("Login successful, redirecting...");
         const redirectPath = from || result.dashboardPath;
         navigate(redirectPath, { replace: true });
       }
     } catch (err) {
+      console.error("Login failed:", err.message);
       setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
   };
 
+  /**
+   * Handles changes to the form inputs.
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The change event.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({

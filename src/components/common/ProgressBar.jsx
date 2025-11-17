@@ -1,11 +1,24 @@
-export default function ProgressBar({ 
-  value = 0, 
-  max = 100, 
+import PropTypes from 'prop-types';
+
+/**
+ * A progress bar component.
+ *
+ * @param {object} props - The component's props.
+ * @param {number} [props.value=0] - The current value of the progress bar.
+ * @param {number} [props.max=100] - The maximum value of the progress bar.
+ * @param {string} props.label - The label for the progress bar.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the progress bar.
+ * @returns {JSX.Element} The progress bar component.
+ */
+export default function ProgressBar({
+  value = 0,
+  max = 100,
   label,
-  className = '' 
+  className = ''
 }) {
   const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
-  
+  console.log(`ProgressBar "${label}" value: ${percentage}%`);
+
   const getColorClass = (percent) => {
     if (percent >= 80) return 'bg-green-500 dark:bg-green-600';
     if (percent >= 50) return 'bg-blue-500 dark:bg-blue-600';
@@ -28,3 +41,10 @@ export default function ProgressBar({
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  value: PropTypes.number,
+  max: PropTypes.number,
+  label: PropTypes.string,
+  className: PropTypes.string,
+};

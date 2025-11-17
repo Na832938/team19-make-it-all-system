@@ -1,7 +1,21 @@
 import { FaInfoCircle, FaCheckCircle, FaExclamationTriangle, FaTimesCircle, FaTimes } from 'react-icons/fa';
 import Card from './Card.jsx';
 import Button from './Button.jsx';
+import PropTypes from 'prop-types';
 
+/**
+ * An alert component for displaying important messages.
+ *
+ * @param {object} props - The component's props.
+ * @param {'info' | 'success' | 'warning' | 'error'} [props.type='info'] - The type of the alert.
+ * @param {string} props.title - The title of the alert.
+ * @param {string} props.message - The message of the alert.
+ * @param {Function} props.onClose - The function to call when the alert is closed.
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the alert.
+ * @param {boolean} [props.showIcon=true] - Whether to show the icon.
+ * @param {Array<object>} props.actions - An array of actions to display in the alert.
+ * @returns {JSX.Element} The alert component.
+ */
 export default function Alert({
   type = 'info',
   title,
@@ -11,6 +25,7 @@ export default function Alert({
   showIcon = true,
   actions
 }) {
+  console.log(`Displaying ${type} alert: ${title}`);
   const alertConfig = {
     info: { 
       icon: <FaInfoCircle className="w-5 h-5" />,
@@ -82,3 +97,17 @@ export default function Alert({
     </Card>
   );
 }
+
+Alert.propTypes = {
+  type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  title: PropTypes.string,
+  message: PropTypes.string.isRequired,
+  onClose: PropTypes.func,
+  className: PropTypes.string,
+  showIcon: PropTypes.bool,
+  actions: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    type: PropTypes.string,
+  })),
+};

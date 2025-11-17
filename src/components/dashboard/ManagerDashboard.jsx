@@ -22,19 +22,27 @@ import {
 import projects from '../../data/projects.json';
 import GraphDisplay from './GraphDisplay';
 
+/**
+ * The main dashboard for managers.
+ * @returns {JSX.Element} The manager dashboard component.
+ */
 export default function ManagerDashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("dashboard");
   const { user, logout } = useAuth();
 
   useEffect(() => {
+    console.log("ManagerDashboard mounted");
     if (!user) {
+      console.log("No user found, redirecting to login.");
       window.location.href = "/";
     } else if (user.role !== 'Manager') {
+      console.log("User is not a manager, redirecting to employee dashboard.");
       window.location.href = "/app";
     }
     if (user) {
       document.title = `Manager - ${user.username}`;
+      console.log("Current user:", user.username);
     }
   }, [user]);
 

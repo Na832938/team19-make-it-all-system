@@ -3,6 +3,11 @@ import { Button, TextInput, Card, Alert, Form } from '../common';
 import { Link, useNavigate } from 'react-router-dom';
 import usersData from '../../data/users.json';
 
+/**
+ * Validates a password based on a set of rules.
+ * @param {string} password - The password to validate.
+ * @returns {boolean} - Whether the password is valid.
+ */
 function validatePassword(password) {
   const minLength = /.{8,}/;
   const hasUpper = /[A-Z]/;
@@ -10,6 +15,10 @@ function validatePassword(password) {
   return minLength.test(password) && hasUpper.test(password) && hasSpecial.test(password);
 }
 
+/**
+ * A page for users to register a new account.
+ * @returns {JSX.Element} The register page component.
+ */
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -31,10 +40,14 @@ export default function RegisterPage() {
     localStorage.setItem("registeredUsers", JSON.stringify(updated));
   };
 
+  /**
+   * Handles the user registration process.
+   */
   const register = async () => {
     setLoading(true);
     setMessage("");
     setShowAlert(false);
+    console.log("Attempting to register user:", username);
 
     await new Promise(resolve => setTimeout(resolve, 1000)); // fake delay kept
 
@@ -55,7 +68,7 @@ export default function RegisterPage() {
       );
 
       persistUsers(updatedUsers);
-
+      console.log("Registration successful for user:", username);
       setMessage(`Registration successful for ${employee.username}. You can now login.`);
       setShowAlert(true);
 
@@ -65,6 +78,7 @@ export default function RegisterPage() {
 
       setTimeout(() => navigate("/"), 2000);
     } catch (err) {
+      console.error("Registration failed:", err.message);
       setMessage(err.message);
       setShowAlert(true);
     } finally {
@@ -72,11 +86,20 @@ export default function RegisterPage() {
     }
   };
 
+  /**
+   * Handles the form submission for registration.
+   * @param {React.FormEvent} e - The form event.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     register();
   };
 
+  /**
+   * Handles changes to the form inputs.
+   * @param {string} field - The name of the field being changed.
+   * @param {string} value - The new value of the field.
+   */
   const handleChange = (field, value) => {
     if (showAlert) {
       setShowAlert(false);

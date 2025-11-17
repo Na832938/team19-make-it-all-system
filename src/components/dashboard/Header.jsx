@@ -2,21 +2,32 @@ import { useState, useEffect } from "react";
 import Button from "../common/Button.jsx";
 import useLogout from "../scripts/login.jsx";
 import logo from "../../assets/logo.png";
+import PropTypes from 'prop-types';
 
+/**
+ * The header component for the application.
+ * @param {object} props - The component's props.
+ * @param {object} props.user - The current user object.
+ * @param {Function} props.onMobileMenuToggle - The function to toggle the mobile menu.
+ * @returns {JSX.Element} The header component.
+ */
 export default function Navbar({ user, onMobileMenuToggle }) {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
+      console.log("Theme set to dark");
     } else {
       document.documentElement.classList.remove("dark");
+      console.log("Theme set to light");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const [open, setOpen] = useState(false);
   const handleLogout = useLogout();
+  console.log("Rendering Navbar for user:", user.username);
 
   return (
     <header className="sticky top-0 left-0 w-full bg-[var(--surface-colour)] border-b border-[var(--border-neutral)] shadow-lg z-50">
@@ -100,3 +111,11 @@ export default function Navbar({ user, onMobileMenuToggle }) {
     </header>
   );
 }
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  }).isRequired,
+  onMobileMenuToggle: PropTypes.func.isRequired,
+};
