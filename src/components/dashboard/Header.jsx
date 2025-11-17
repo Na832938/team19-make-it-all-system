@@ -75,34 +75,34 @@ export default function Navbar({ user, onMobileMenuToggle }) {
             </Button>
 
             {open && (
-              <div className="absolute top-full right-0 mt-2 bg-[var(--surface-colour)] border border-[var(--border-neutral)] rounded-lg shadow-xl p-4 min-w-56 z-50 text-[var(--text-primary)]">
-                <div className="flex items-center gap-3 mb-3 pb-3 border-b border-[var(--border-neutral)]">
-                  
-                  <div>
-                    <p className="font-bold text-[var(--text-primary)]">{user.username}</p>
-                    <p className="text-[var(--text-secondary)] text-sm capitalize">{user.role.toLowerCase()}</p>
+              <div className="absolute top-full right-0 mt-2 w-64 bg-surface border border-borderNeutral rounded-lg shadow-xl z-50 text-textPrimary">
+                <div className="p-4">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div>
+                      <p className="font-bold text-textPrimary">{user.username}</p>
+                      <p className="text-textSecondary text-sm capitalize">{user.role.toLowerCase()}</p>
+                    </div>
                   </div>
+                  <div className="border-t border-borderNeutral -mx-4 mb-4"></div>
+                  <Button
+                    onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                    type="secondary"
+                    size="medium"
+                    width="full"
+                    className="justify-center w-full py-2 text-sm font-semibold mb-2"
+                  >
+                    Toggle Theme
+                  </Button>
+                  <Button
+                    onClick={handleLogout}
+                    type="danger"
+                    size="medium"
+                    width="full"
+                    className="justify-center w-full py-2 text-sm font-semibold"
+                  >
+                    Sign Out
+                  </Button>
                 </div>
-
-                <Button
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                  type="secondary"
-                  size="medium"
-                  width="full"
-                  className="justify-center py-2 text-sm font-semibold mb-3 bg-[var(--surface-colour)] hover:bg-[var(--surface-colour-hover)] text-[var(--text-primary)]"
-                >
-                  Toggle Theme
-                </Button>
-
-                <Button
-                  onClick={handleLogout}
-                  type="primary"
-                  size="medium"
-                  width="full"
-                  className="justify-center py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white"
-                >
-                  Sign Out
-                </Button>
               </div>
             )}
           </div>

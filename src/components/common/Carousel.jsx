@@ -35,7 +35,7 @@ export default function Carousel({ items, renderItem }) {
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className="w-full flex-shrink-0 flex justify-center items-center"
+            className="w-full flex-shrink-0 flex justify-center items-center rounded-lg"
             style={{ height: '100%' }}
           >
             {slide}
@@ -46,18 +46,18 @@ export default function Carousel({ items, renderItem }) {
       {total > 1 && (
         <>
           <Button
-            type="orange"
+            type="primary"
             variant="carousel"
             onClick={prev}
-            className="absolute left-1 top-1/2 -translate-y-1/2 z-10 rounded-full p-2 shadow bg-[var(--surface-colour)] text-[var(--text-primary)] hover:brightness-110"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2 shadow bg-white/50 text-gray-800 hover:bg-white"
           >
             ‹
           </Button>
           <Button
-            type="orange"
+            type="primary"
             variant="carousel"
             onClick={next}
-            className="absolute right-1 top-1/2 -translate-y-1/2 z-10 rounded-full p-2 shadow bg-[var(--surface-colour)] text-[var(--text-primary)] hover:brightness-110"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2 shadow bg-white/50 text-gray-800 hover:bg-white"
           >
             ›
           </Button>

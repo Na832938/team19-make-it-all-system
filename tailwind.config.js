@@ -22,7 +22,10 @@ module.exports = {
         focus: "var(--focus-colour)",
         disabled: "var(--disabled-colour)",
       },
-      fontFamily: { ubuntu: ['Ubuntu', 'sans-serif'] },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+      },
       spacing: {
         xs: "var(--space-xs)",
         sm: "var(--space-sm)",

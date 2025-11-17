@@ -1,3 +1,5 @@
+import Button from "../common/Button";
+
 /**
  * The footer component for the application.
  * @returns {JSX.Element} The footer component.
@@ -11,9 +13,9 @@ export default function Footer() {
           © {new Date().getFullYear()} Team 19. All rights reserved.
         </p>
         <div className="flex space-x-4">
-          <button className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm">Privacy</button>
-          <button className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm">Terms</button>
-          <button className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm">Help</button>
+          <Button type="secondary" size="small">Privacy</Button>
+          <Button type="secondary" size="small">Terms</Button>
+          <Button type="secondary" size="small">Help</Button>
         </div>
       </div>
     </footer>

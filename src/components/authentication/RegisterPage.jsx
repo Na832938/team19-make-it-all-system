@@ -114,10 +114,10 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-surface transition-colors p-4">
-      <Card className="w-full max-w-md p-6 bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral transition-colors">
+      <Card className="w-full max-w-md p-8 bg-surface dark:bg-surface border border-borderNeutral dark:border-borderNeutral transition-colors shadow-lg rounded-xl">
 
-        <h2 className="text-2xl font-bold text-center mb-6 text-textPrimary dark:text-textPrimary">
-          Register Account
+        <h2 className="text-3xl font-bold text-center mb-8 text-textPrimary dark:text-textPrimary">
+          Create Your Account
         </h2>
 
         <Form

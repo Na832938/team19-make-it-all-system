@@ -180,26 +180,26 @@ export default function ManagerDashboard() {
               </div>
 
               <Card className="p-6">
-                    <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4 text-center">Manager Quick Actions</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center text-center">
-                      <Button type="green" className="flex flex-col items-center justify-center gap-2 w-full h-32">
-                        <FaChartBar className="w-6 h-6" />
-                        Generate Report
-                      </Button>
-                      <Button type="blue" className="flex flex-col items-center justify-center gap-2 w-full h-32">
-                        <FaUsers className="w-6 h-6" />
-                        Team Management
-                      </Button>
-                      <Button type="purple" className="flex flex-col items-center justify-center gap-2 w-full h-32">
-                        <FaBullseye className="w-6 h-6" />
-                        Set Goals
-                      </Button>
-                      <Button type="orange" className="flex flex-col items-center justify-center gap-2 w-full h-32">
-                        <FaChartLine className="w-6 h-6" />
-                        Performance
-                      </Button>
-                    </div>
-                  </Card>
+                <h3 className="text-lg font-semibold mb-4">Manager Quick Actions</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <Button type="green" className="flex items-center justify-center gap-2">
+                    <FaChartBar className="w-4 h-4" />
+                    Generate Report
+                  </Button>
+                  <Button type="primary" className="flex items-center justify-center gap-2">
+                    <FaUsers className="w-4 h-4" />
+                    Team Management
+                  </Button>
+                  <Button type="purple" className="flex items-center justify-center gap-2">
+                    <FaBullseye className="w-4 h-4" />
+                    Set Goals
+                  </Button>
+                  <Button type="orange" className="flex items-center justify-center gap-2">
+                    <FaChartLine className="w-4 h-4" />
+                    Performance
+                  </Button>
+                </div>
+              </Card>
 
               <Card className="p-6">
                 <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Recent Management Activity</h3>
