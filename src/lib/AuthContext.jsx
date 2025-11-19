@@ -35,6 +35,11 @@ export function AuthProvider({ children }) {
           const userData = { username: u.username, email: u.email, role: u.role || 'Employee' };
           setUser(userData);
           localStorage.setItem('currentUser', JSON.stringify(userData));
+          try {
+            const maxAge = 60 * 60 * 24 * 7; // 7 days
+            document.cookie = `auth=1; path=/; max-age=${maxAge}`;
+            document.cookie = `role=${encodeURIComponent(userData.role)}; path=/; max-age=${maxAge}`;
+          } catch {}
           return {
             success: true,
             user: userData,
@@ -56,6 +61,11 @@ export function AuthProvider({ children }) {
       
       setUser(userWithoutPassword);
       localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+      try {
+        const maxAge = 60 * 60 * 24 * 7; // 7 days
+        document.cookie = `auth=1; path=/; max-age=${maxAge}`;
+        document.cookie = `role=${encodeURIComponent(foundUser.role)}; path=/; max-age=${maxAge}`;
+      } catch {}
       
       // Determine which dashboard to redirect to
       const dashboardPath = foundUser.role === 'Manager' ? '/dashboard/manager' : '/dashboard/employee';
@@ -73,6 +83,10 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('currentUser');
+    try {
+      document.cookie = 'auth=; path=/; max-age=0';
+      document.cookie = 'role=; path=/; max-age=0';
+    } catch {}
   };
 
   const value = {
