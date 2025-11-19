@@ -1,22 +1,22 @@
-// components/ProtectedRoute.js
-import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from "@/lib/AuthContext";
+// Next.js-compatible client ProtectedRoute
+'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/AuthContext';
 import LoadingScreen from './common/LoadingScreen';
 
 export default function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
-  const location = useLocation();
+  const router = useRouter();
 
-  if (loading) {
-    return (
-      <LoadingScreen/>
-    );
-  }
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      const from = typeof window !== 'undefined' ? encodeURIComponent(window.location.pathname) : '';
+      router.replace(`/login${from ? `?from=${from}` : ''}`);
+    }
+  }, [loading, isAuthenticated, router]);
 
-  if (!isAuthenticated) {
-    // Redirect to login page with return url
-    return <Navigate to="/" state={{ from: location }} replace />;
-  }
-
+  if (loading) return <LoadingScreen />;
+  if (!isAuthenticated) return null; // briefly render nothing during redirect
   return children;
 }

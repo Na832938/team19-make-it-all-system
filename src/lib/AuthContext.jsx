@@ -26,24 +26,23 @@ export function AuthProvider({ children }) {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // FIRST: Check localStorage for registered users
-    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '{}');
-    if (registeredUsers[username] && registeredUsers[username].password === password) {
-      const userData = {
-        username: username,
-        email: registeredUsers[username].email,
-        role: registeredUsers[username].role || 'Employee'
-      };
-      
-      setUser(userData);
-      localStorage.setItem('currentUser', JSON.stringify(userData));
-      
-      return { 
-        success: true, 
-        user: userData,
-        dashboardPath: userData.role === 'Manager' ? '/manager' : '/app'
-      };
-    }
+    // FIRST: Check localStorage for registered users (array form persisted by RegisterPage)
+    try {
+      const ru = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (Array.isArray(ru)) {
+        const u = ru.find(x => x.username === username.trim() && x.password === password);
+        if (u) {
+          const userData = { username: u.username, email: u.email, role: u.role || 'Employee' };
+          setUser(userData);
+          localStorage.setItem('currentUser', JSON.stringify(userData));
+          return {
+            success: true,
+            user: userData,
+            dashboardPath: userData.role === 'Manager' ? '/dashboard/manager' : '/dashboard/employee'
+          };
+        }
+      }
+    } catch {}
     
     // SECOND: Check original users.json (for pre-registered users)
     const foundUser = usersData.find(
@@ -59,7 +58,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
       
       // Determine which dashboard to redirect to
-      const dashboardPath = foundUser.role === 'Manager' ? '/manager' : '/app';
+      const dashboardPath = foundUser.role === 'Manager' ? '/dashboard/manager' : '/dashboard/employee';
       
       return { 
         success: true, 

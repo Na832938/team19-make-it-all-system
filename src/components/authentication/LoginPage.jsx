@@ -1,7 +1,6 @@
 // src/components/authentication/LoginPage.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, TextInput, Card, Alert, Form } from '../common';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../lib/AuthContext';
 
 /**
@@ -16,10 +15,15 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { login } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [from, setFrom] = useState("");
 
-  const from = location.state?.from?.pathname;
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const f = params.get("from");
+      if (f) setFrom(f);
+    } catch {}
+  }, []);
 
   /**
    * Handles the form submission for logging in.
@@ -37,7 +41,7 @@ export default function LoginPage() {
       if (result.success) {
         console.log("Login successful, redirecting...");
         const redirectPath = from || result.dashboardPath;
-        navigate(redirectPath, { replace: true });
+        window.location.replace(redirectPath);
       }
     } catch (err) {
       console.error("Login failed:", err.message);
@@ -121,12 +125,7 @@ export default function LoginPage() {
         
         <div className="text-center text-sm text-textSecondary dark:text-textSecondary mt-4">
           Don't have an account?{" "}
-          <Link 
-            to="/register" 
-            className="text-primary hover:text-primaryHover font-medium"
-          >
-            Register here
-          </Link>
+          <a href="/register" className="text-primary hover:text-primaryHover font-medium">Register here</a>
         </div>
 
         <div className="text-xs text-textSecondary dark:text-textSecondary text-center mt-4">

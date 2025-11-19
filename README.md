@@ -1,48 +1,50 @@
 # Team19 Make-It-All System
 
-A modern helpdesk and issue-tracking system developed for the COB290 Team Projects module. This React.js application provides an efficient platform for managing support tickets and team collaboration.
+Modern helpdesk and issue-tracking app, now running on Next.js and Tailwind CSS.
 
-## Live Demo
+## Tech Stack
 
-**Live Application**: https://nanda-kumudhan.github.io/team19-make-it-all-system
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS v4 + PostCSS
+- **Charts**: chart.js
+- **Runtime**: Node 18+
 
-## Technology Stack
+## Develop
 
-- **Frontend Framework**: React.js
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Language**: JavaScript
-- **Package Manager**: npm
+```bash
+npm install
+npm run dev
+```
 
-## Project Overview
+Open [http://localhost:3000](http://localhost:3000).
 
-This project was developed as part of the COB290 Team Projects module, focusing on creating a comprehensive ticketing system for technical support teams. The application enables efficient issue tracking, assignment, and resolution workflow management.
+## Build
 
-### Key Features
-- Ticket Management: Create, view, and update support tickets
-- Team Collaboration: Assign tickets to team members and track progress
-- Responsive Design: Mobile-first approach with Tailwind CSS
-- Real-time Updates: Dynamic UI with React state management
-- User-friendly Interface: Intuitive navigation and clean design
+```bash
+npm run build
+npm start
+```
 
-## Getting Started
+## Deploy (Vercel)
 
-### Prerequisites
-- Node.js (version 16 or higher)
-- npm
+This repo is ready for Vercel:
 
-- COB290 Module Objectives
-This project demonstrates:
+- Connect the GitHub repo in Vercel
+- Framework preset: Next.js
+- Build command: `next build`
+- Output directory: `.next`
 
-Team collaboration and agile development practices
+Optional project file: `vercel.json` is included.
 
-Modern web development with React.js
+## Project Structure
 
-Responsive UI design principles
+- `src/app/` – Next.js routes (`layout.jsx`, `page.jsx`, feature pages)
+- `src/components/` – UI components (migrated as client components)
+- `src/styles/` – Global CSS imported by `app/layout.jsx`
+- `public/` – Static files (favicon, manifest, service worker)
+- `next.config.mjs` – Next.js config
 
-Version control and project management
+## Notes
 
-Software development lifecycle understanding
-
-Team Contribution
-Developed by Team 19 as part of the COB290 Team Projects module requirements, showcasing collaborative software development skills and industry-standard practices.
+- Legacy Vite setup has been removed. The app no longer uses GitHub Pages.
+- Some legacy router files remain in `src/` for reference but are not used by Next.js.

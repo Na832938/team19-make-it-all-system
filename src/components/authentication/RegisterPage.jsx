@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button, TextInput, Card, Alert, Form } from '../common';
-import { Link, useNavigate } from 'react-router-dom';
 import usersData from '../../data/users.json';
 
 /**
@@ -27,7 +26,6 @@ export default function RegisterPage() {
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("registeredUsers"));
@@ -76,7 +74,7 @@ export default function RegisterPage() {
       setEmail("");
       setPassword("");
 
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => window.location.replace("/"), 2000);
     } catch (err) {
       console.error("Registration failed:", err.message);
       setMessage(err.message);
@@ -189,12 +187,7 @@ export default function RegisterPage() {
 
         <div className="text-center text-sm text-textSecondary dark:text-textSecondary mt-4">
           Already have an account?{" "}
-          <Link
-            to="/"
-            className="text-primary hover:text-primaryHover font-medium"
-          >
-            Login here
-          </Link>
+          <a href="/" className="text-primary hover:text-primaryHover font-medium">Login here</a>
         </div>
 
         <div className="text-xs text-textSecondary dark:text-textSecondary text-center mt-4">

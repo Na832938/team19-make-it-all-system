@@ -1,12 +1,12 @@
-// src/hooks/useLogout.jsx
-import { useNavigate } from "react-router-dom";
+// Next.js-compatible logout hook
+'use client';
+import { useRouter } from 'next/navigation';
 
 export default function useLogout() {
-  const navigate = useNavigate();
-
+  const router = useRouter();
   return () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("currentUser");
-    navigate("/");
+    localStorage.removeItem('user');
+    localStorage.removeItem('currentUser');
+    router.replace('/login');
   };
 }
