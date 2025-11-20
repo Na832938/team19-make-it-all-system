@@ -1,6 +1,6 @@
 # ⚠️ ARCHIVED REPOSITORY
 
-## **Active Project: [lborocs/cob290-team19-make-it-all-2025](https://github.com/lborocs/cob290-team19-make-it-all-2025)**
+## **Active Project: [COB290-2025-team19-make-it-all-system](https://github.com/lborocs/COB290-2025-team19-make-it-all-system)**
 
 ### This repository is no longer maintained
 
@@ -13,7 +13,6 @@ All development continues in the link above.
 > This is an archived prototype of the Make-It-All helpdesk system.
 >
 > **For the current version, see:** [COB290-2025-team19-make-it-all-system](https://github.com/lborocs/COB290-2025-team19-make-it-all-system)
-
 
 ---
 
