@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A checkbox component.
@@ -20,7 +21,7 @@ export default function Checkbox({
 }) {
 
   const handleOnChange = (e) => {
-    console.log(`Checkbox "${label}" changed to: ${e.target.checked}`);
+    logger.action(`Checkbox "${label}" changed to: ${e.target.checked}`);
     if (onChange) {
       onChange(e);
     }

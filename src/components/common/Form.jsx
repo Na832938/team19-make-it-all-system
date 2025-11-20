@@ -1,5 +1,6 @@
 import Button from "./Button.jsx";
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A form component.
@@ -34,13 +35,13 @@ export default function Form({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    logger.action('Form submitted');
     if (!loading && !disabled && onSubmit) onSubmit(e);
   };
 
   const handleCancelClick = (e) => {
     e.preventDefault();
-    console.log("Form cancelled");
+    logger.action('Form cancelled');
     if (onCancel) onCancel();
   };
 

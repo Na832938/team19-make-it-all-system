@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A text input component.
@@ -24,7 +25,7 @@ export default function TextInput({
   ...props
 }) {
   const handleOnChange = (e) => {
-    console.log(`TextInput value changed: ${e.target.value}`);
+    logger.action(`TextInput value changed: ${e.target.value}`);
     if (onChange) {
       onChange(e);
     }

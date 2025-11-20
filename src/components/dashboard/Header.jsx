@@ -3,6 +3,7 @@ import Button from "../common/Button.jsx";
 import useLogout from "../scripts/login.jsx";
 import logo from "../../assets/logo.png";
 import PropTypes from 'prop-types';
+import { logger } from "../../lib/logger";
 
 /**
  * The header component for the application.
@@ -17,17 +18,17 @@ export default function Navbar({ user, onMobileMenuToggle }) {
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      console.log("Theme set to dark");
+      logger.trace('Header', 'theme changed to dark');
     } else {
       document.documentElement.classList.remove("dark");
-      console.log("Theme set to light");
+      logger.trace('Header', 'theme changed to light');
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const [open, setOpen] = useState(false);
   const handleLogout = useLogout();
-  console.log("Rendering Navbar for user:", user.username);
+  logger.trace('Header', 'render', { user: user.username });
 
   return (
     <header className="sticky top-0 left-0 w-full bg-[var(--surface-colour)] border-b border-[var(--border-neutral)] shadow-lg z-50">

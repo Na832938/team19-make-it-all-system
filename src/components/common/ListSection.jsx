@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button.jsx";
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A component to display a section of a list.
@@ -28,7 +29,7 @@ export default function ListSection({
   loading = false,
   className = ""
 }) {
-  console.log(`Rendering ListSection "${title}" with ${items.length} items.`);
+  logger.trace('ListSection', 'render', { title, itemCount: items.length });
   const variantStyles = {
     default: "space-y-3",
     compact: "space-y-2", 
@@ -141,7 +142,7 @@ export default function ListSection({
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
                       onClick={() => {
-                        console.log('Default view action on item:', item);
+                        logger.action('View item', item);
                       }}
                     >
                       👁️
@@ -151,7 +152,7 @@ export default function ListSection({
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
                       onClick={() => {
-                        console.log('Default edit action on item:', item);
+                        logger.action('Edit item', item);
                       }}
                     >
                       ✏️
@@ -161,7 +162,7 @@ export default function ListSection({
                       size="small"
                       className="!min-w-0 !px-3 !py-2"
                       onClick={() => {
-                        console.log('Default delete action on item:', item);
+                        logger.action('Delete item', item);
                       }}
                     >
                       🗑️

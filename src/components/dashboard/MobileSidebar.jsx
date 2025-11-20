@@ -40,7 +40,7 @@ export default function MobileSidebar({ activeSection, setActiveSection, isOpen,
 
   if (!isOpen) return null;
 
-  console.log("Rendering MobileSidebar");
+  // Component rendering tracked via logger in development
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * An accordion component that allows users to show and hide sections of content.
@@ -16,7 +17,7 @@ export default function Accordion({ items, allowMultiple = false, defaultExpande
   );
 
   const toggleItem = (id) => {
-    console.log(`Toggling accordion item: ${id}`);
+    logger.action(`Toggling accordion item: ${id}`);
     setExpandedIds(prev => {
       if (allowMultiple) return { ...prev, [id]: !prev[id] };
       return { [id]: !prev[id] };

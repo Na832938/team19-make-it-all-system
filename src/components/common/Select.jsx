@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A select dropdown component.
@@ -29,7 +30,7 @@ export default function Select({
 }) {
 
   const handleOnChange = (e) => {
-    console.log(`Select "${name}" changed to: ${e.target.value}`);
+    logger.action(`Select "${name}" changed to: ${e.target.value}`);
     if (onChange) {
       onChange(e);
     }

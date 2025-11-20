@@ -1,4 +1,15 @@
-// Next.js-compatible client ProtectedRoute
+/**
+ * ProtectedRoute.js
+ * 
+ * Team 19 - Make It All System
+ * 
+ * Purpose: Wraps pages that require authentication
+ * Behavior:
+ * - Checks if user is authenticated before rendering protected content
+ * - Redirects unauthenticated users to login page with return URL
+ * - Shows loading screen during auth check
+ * - Used on: Dashboard, Tasks, Topics, Posts, Knowledge Base pages
+ */
 'use client';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';

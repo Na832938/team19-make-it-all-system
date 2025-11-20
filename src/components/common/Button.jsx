@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A customizable button component.
@@ -30,7 +31,7 @@ export default function Button({
   ...props
 }) {
   const handleOnClick = (e) => {
-    console.log(`Button clicked: ${children}`);
+    logger.action(`Button clicked: ${children}`);
     if (onClick) {
       onClick(e);
     }

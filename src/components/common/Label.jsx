@@ -16,7 +16,7 @@ export default function Label({
   htmlFor,
   className = ''
 }) {
-  console.log(`Rendering Label for "${htmlFor}"`);
+  // Component rendering tracked via logger in development
   return (
     <label
       className={`

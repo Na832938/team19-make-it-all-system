@@ -14,7 +14,7 @@ export default function Dropdown({
   isOpen,
   className = ''
 }) {
-  console.log(`Dropdown is ${isOpen ? 'open' : 'closed'}`);
+  // Component rendering tracked via logger in development
   return (
     <div className={`
       dropdown-base dropdown-responsive

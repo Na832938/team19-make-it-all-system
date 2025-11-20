@@ -1,4 +1,15 @@
-// src/lib/AuthContext.js
+/**
+ * AuthContext.jsx
+ * 
+ * Team 19 - Make It All System
+ * 
+ * Purpose: Manages user authentication state and login/logout logic
+ * Features:
+ * - Handles login with credential validation
+ * - Supports both pre-registered users (users.json) and dynamically registered users
+ * - Manages user session with localStorage and cookies
+ * - Provides auth context to protected routes
+ */
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import usersData from '../data/users.json';
 

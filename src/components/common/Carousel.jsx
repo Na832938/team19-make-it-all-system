@@ -2,6 +2,7 @@
 import { useState, useMemo } from 'react';
 import Button from './Button.jsx';
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A carousel component for displaying a collection of items.
@@ -16,11 +17,11 @@ export default function Carousel({ items, renderItem }) {
   const total = items.length;
 
   const prev = () => {
-    console.log("Carousel: showing previous item.");
+    logger.action('Carousel: showing previous item.');
     setIndex(i => (i - 1 + total) % total);
   }
   const next = () => {
-    console.log("Carousel: showing next item.");
+    logger.action('Carousel: showing next item.');
     setIndex(i => (i + 1) % total);
   }
 

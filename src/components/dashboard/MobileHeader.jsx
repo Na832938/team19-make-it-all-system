@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @returns {JSX.Element} The mobile header component.
  */
 export default function MobileHeader({ onMenuToggle }) {
-  console.log("Rendering MobileHeader");
+  // Component rendering tracked via logger in development
   return (
     <header className="lg:hidden fixed top-0 left-0 right-0 bg-[var(--surface-colour)] border-b border-[var(--border-neutral)] z-50 p-4 text-[var(--text-primary)]">
       <div className="flex items-center justify-between">

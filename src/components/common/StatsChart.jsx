@@ -16,7 +16,7 @@ export default function StatsChart({ project }) {
 
   useEffect(() => {
     if (!chartRef.current) return;
-    console.log(`Creating chart for project: ${project.title}`);
+    logger.trace('StatsChart', 'creating chart', { projectTitle: project.title });
 
     const ctx = chartRef.current.getContext('2d');
     const rootStyles = getComputedStyle(document.documentElement);
@@ -63,7 +63,7 @@ export default function StatsChart({ project }) {
 
     return () => {
       if (chartInstance.current) {
-        console.log(`Destroying chart for project: ${project.title}`);
+        logger.trace('StatsChart', 'destroying chart', { projectTitle: project.title });
         chartInstance.current.destroy();
         chartInstance.current = null;
       }

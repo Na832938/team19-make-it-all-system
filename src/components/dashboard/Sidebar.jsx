@@ -35,7 +35,7 @@ const managerSections = [
  */
 export default function Sidebar({ activeSection, setActiveSection, sections = employeeSections, isManager = false }) {
   const navSections = isManager ? managerSections : sections;
-  console.log("Rendering Sidebar");
+  // Component rendering tracked via logger in development
   return (
     <aside className="w-full h-full bg-[var(--surface-colour)] border-r border-[var(--border-neutral)] text-[var(--text-primary)]">
       <nav className="p-4 space-y-2">

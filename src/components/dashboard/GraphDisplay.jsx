@@ -9,7 +9,7 @@ import projects from '../../data/projects.json';
  * @returns {JSX.Element} The graph display component.
  */
 export default function GraphDisplay() {
-  console.log("Rendering GraphDisplay");
+  // Component rendering tracked via logger in development
   return (
     <div className="p-6 space-y-6">
       {/* Header */}

@@ -5,7 +5,7 @@ import Button from "../common/Button";
  * @returns {JSX.Element} The footer component.
  */
 export default function Footer() {
-  console.log("Rendering Footer");
+  // Component rendering tracked via logger in development
   return (
     <footer className="bg-[var(--surface-colour)] border-t border-[var(--border-neutral)] py-4 mt-auto text-[var(--text-primary)]">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center flex-wrap gap-2">

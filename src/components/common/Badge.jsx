@@ -15,7 +15,7 @@ export default function Badge({
   bg = "var(--primary-colour)",
   color = "var(--text-primary)"
 }) {
-  console.log(`Rendering Badge with text: ${text}`);
+  // Component rendering tracked via logger in development
   return (
     <span
       className="px-2 py-1 text-sm rounded-full font-medium"

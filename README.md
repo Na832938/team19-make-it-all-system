@@ -1,50 +1,55 @@
-# Team19 Make-It-All System
+# ⚠️ ARCHIVED REPOSITORY
 
-Modern helpdesk and issue-tracking app, now running on Next.js and Tailwind CSS.
+## **Active Project: [lborocs/cob290-team19-make-it-all-2025](https://github.com/lborocs/cob290-team19-make-it-all-2025)**
 
-## Tech Stack
+### This repository is no longer maintained
 
-- **Framework**: Next.js (App Router)
-- **Styling**: Tailwind CSS v4 + PostCSS
-- **Charts**: chart.js
-- **Runtime**: Node 18+
+All development continues in the link above.
 
-## Develop
+---
+
+## Team19 Make-It-All System (Legacy)
+
+> This is an archived prototype of the Make-It-All helpdesk system.
+>
+> **For the current version, see:** [COB290-2025-team19-make-it-all-system](https://github.com/lborocs/COB290-2025-team19-make-it-all-system)
+
+
+---
+
+## About This Archive
+
+This repo contains the **Next.js-based prototype** developed during Part 1 of the COB290 Team Project. While functional, development has transitioned to the new repository linked above.
+
+**What was in this version:**
+
+- Next.js 16 with App Router
+- Tailwind CSS v4 styling
+- React Context for authentication
+- Chart.js integration for analytics
+- Local development setup
+
+---
+
+## For Active Development
+
+**Please visit the new repository:**
+
+### 🔗 [lborocs/part-2-team_19](https://github.com/lborocs/part-2-team_19)
+
+All updates, bug fixes, and new features are happening there.
+
+---
+
+## Local Development (Reference)
+
+To run this archived version locally:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Opens at [http://localhost:3000](http://localhost:3000).
 
-## Build
-
-```bash
-npm run build
-npm start
-```
-
-## Deploy (Vercel)
-
-This repo is ready for Vercel:
-
-- Connect the GitHub repo in Vercel
-- Framework preset: Next.js
-- Build command: `next build`
-- Output directory: `.next`
-
-Optional project file: `vercel.json` is included.
-
-## Project Structure
-
-- `src/app/` – Next.js routes (`layout.jsx`, `page.jsx`, feature pages)
-- `src/components/` – UI components (migrated as client components)
-- `src/styles/` – Global CSS imported by `app/layout.jsx`
-- `public/` – Static files (favicon, manifest, service worker)
-- `next.config.mjs` – Next.js config
-
-## Notes
-
-- Legacy Vite setup has been removed. The app no longer uses GitHub Pages.
-- Some legacy router files remain in `src/` for reference but are not used by Next.js.
+**Note:** This is for reference only. Active development is in the new repository.

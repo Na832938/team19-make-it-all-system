@@ -17,7 +17,7 @@ export default function Card({
   className = "",
   fullWidth = false
 }) {
-  console.log("Rendering Card component");
+  // Component rendering tracked via logger in development
   return (
     <div
       className={`

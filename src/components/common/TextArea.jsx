@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A textarea component.
@@ -22,7 +23,7 @@ export default function TextArea({
 }) {
 
   const handleOnChange = (e) => {
-    console.log(`TextArea value changed: ${e.target.value}`);
+    logger.action(`TextArea value changed: ${e.target.value}`);
     if (onChange) {
       onChange(e);
     }

@@ -2,6 +2,7 @@ import { FaInfoCircle, FaCheckCircle, FaExclamationTriangle, FaTimesCircle, FaTi
 import Card from './Card.jsx';
 import Button from './Button.jsx';
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * An alert component for displaying important messages.
@@ -25,7 +26,7 @@ export default function Alert({
   showIcon = true,
   actions
 }) {
-  console.log(`Displaying ${type} alert: ${title}`);
+  logger.info(`Displaying ${type} alert: ${title}`);
   const alertConfig = {
     info: { 
       icon: <FaInfoCircle className="w-5 h-5" />,

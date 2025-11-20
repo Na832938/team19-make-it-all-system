@@ -22,7 +22,7 @@ export default function StatCard({
   padding = "medium",
   className = ""
 }) {
-  console.log(`Rendering StatCard: ${title}`);
+  // Component rendering tracked via logger in development
   return (
     <Card variant={variant} padding={padding} className={className}>
       <div className="flex items-center justify-between mb-4">

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A radio button component.
@@ -22,7 +23,7 @@ export default function RadioButton({
 }) {
 
   const handleOnChange = (e) => {
-    console.log(`Radio button "${label}" changed to: ${e.target.checked}`);
+    logger.action(`Radio button "${label}" changed to: ${e.target.checked}`);
     if (onChange) {
       onChange(e);
     }

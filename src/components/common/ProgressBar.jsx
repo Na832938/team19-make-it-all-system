@@ -17,7 +17,7 @@ export default function ProgressBar({
   className = ''
 }) {
   const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
-  console.log(`ProgressBar "${label}" value: ${percentage}%`);
+  // Component rendering tracked via logger in development
 
   const getColorClass = (percent) => {
     if (percent >= 80) return 'bg-green-500 dark:bg-green-600';

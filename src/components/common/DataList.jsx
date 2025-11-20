@@ -1,6 +1,7 @@
 // src/components/common/DataList.jsx
 import ListSection from "./ListSection";
 import PropTypes from 'prop-types';
+import { logger } from '../../lib/logger';
 
 /**
  * A component to display a list of data.
@@ -26,7 +27,7 @@ export default function DataList({
   loading = false,
   className = ""
 }) {
-  console.log(`Rendering DataList of type "${type}" with ${items?.length} items.`);
+  logger.trace('DataList', 'render', { type, itemCount: items?.length });
 
   const renderDetails = {
     task: (item) => (
@@ -96,7 +97,7 @@ export default function DataList({
       <>
         <button
           onClick={() => {
-            console.log(`DataList: status action on item:`, item);
+            logger.action('DataList: status action', item);
             onAction?.('status', item);
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
@@ -106,7 +107,7 @@ export default function DataList({
         </button>
         <button
           onClick={() => {
-            console.log(`DataList: delete action on item:`, item);
+            logger.action('DataList: delete action', item);
             onAction?.('delete', item);
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] dark:bg-[var(--danger-colour)] text-white hover:brightness-90"
@@ -120,7 +121,7 @@ export default function DataList({
       <>
         <button
           onClick={() => {
-            console.log(`DataList: view action on item:`, item);
+            logger.action('DataList: view action', item);
             onAction?.('view', item);
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] dark:bg-[var(--secondary-colour)] text-[var(--text-primary)] dark:text-[var(--text-primary)] hover:brightness-95"
@@ -129,7 +130,7 @@ export default function DataList({
         </button>
         <button
           onClick={() => {
-            console.log(`DataList: edit action on item:`, item);
+            logger.action('DataList: edit action', item);
             onAction?.('edit', item)
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
@@ -138,7 +139,7 @@ export default function DataList({
         </button>
         <button
           onClick={() => {
-            console.log(`DataList: delete action on item:`, item);
+            logger.action('DataList: delete action', item);
             onAction?.('delete', item)
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--danger-colour)] dark:bg-[var(--danger-colour)] text-white hover:brightness-90"
@@ -151,7 +152,7 @@ export default function DataList({
     topic: (item) => (
       <button
         onClick={() => {
-          console.log(`DataList: select action on item:`, item);
+          logger.action('DataList: select action', item);
           onAction?.('select', item);
         }}
         className="px-4 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
@@ -164,7 +165,7 @@ export default function DataList({
       <>
         <button
           onClick={() => {
-            console.log(`DataList: view action on item:`, item);
+            logger.action('DataList: view action', item);
             onAction?.('view', item);
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--secondary-colour)] dark:bg-[var(--secondary-colour)] text-[var(--text-primary)] dark:text-[var(--text-primary)] hover:brightness-95"
@@ -173,7 +174,7 @@ export default function DataList({
         </button>
         <button
           onClick={() => {
-            console.log(`DataList: edit action on item:`, item);
+            logger.action('DataList: edit action', item);
             onAction?.('edit', item);
           }}
           className="px-3 py-2 text-sm rounded-md transition-colors bg-[var(--primary-colour)] dark:bg-[var(--primary-colour)] text-white hover:brightness-90"
